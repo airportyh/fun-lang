@@ -1,6 +1,7 @@
 const { parse } = require("../src/parser");
 const { check } = require("../src/checker");
 const { generateCode } = require("../src/generator");
+const util = require("util");
 const fs = require("mz/fs");
 const path = require("path");
 const yaml = require("js-yaml");
@@ -32,7 +33,9 @@ async function main() {
 
             const baseFileName = path.basename(file, ".fun");
             const outputFileName = path.join(__dirname, "..", "examples", baseFileName + ".result");
-            await fs.writeFile(outputFileName, yaml.safeDump(result));
+            
+            await fs.writeFile(outputFileName, 
+                yaml.safeDump(JSON.parse(JSON.stringify(result))));
             console.log(`Wrote ${outputFileName}.`);
         }
     }

@@ -1,3 +1,9 @@
+@{%
+const lexer = require("./lexer");
+%}
+
+@lexer lexer
+
 input -> top_level_statements {% id %}
 
 top_level_statements
@@ -223,69 +229,14 @@ dictionary_entry
             d => [d[0], d[4]]
         %}
 
-line_comment
-    -> "#" [^\n]:*
-        {%
-            d => ({
-                type: "comment",
-                text: d[1].join("")
-            })
-        %}
+line_comment -> %comment {% id %}
 
-string_literal
-    -> "\"" string_characters "\""
-        {%
-            d => ({
-                type: "string_literal",
-                value: d[1]
-            })
-        %}
+string_literal -> %string_literal {% id %}
 
-string_characters -> string_character:*
-    {%
-        d => d[0].join("")
-    %}
+number -> %number_literal {% id %}
 
-string_character
-    -> [^\"\\]   {% id %}
-    |  "\\" escape_character
-        {%
-            d => d[1]
-        %}
+identifier -> %identifier {% id %}
 
-escape_character
-    -> "\""  {% () => '"' %}
-    |  "\\"  {% () => "\\" %}
-    |  "/"   {% () => "/" %}
-    |  "b"   {% () => "\b" %}
-    |  "f"   {% () => "\f" %}
-    |  "n"   {% () => "\n" %}
-    |  "r"   {% () => "\r" %}
-    |  "t"   {% () => "\t" %}
+__ -> %ws:+
 
-number
-    -> digits "." digits
-        {%
-            d => ({
-                type: "number_literal",
-                value: Number(d[0] + "." + d[2])
-            })
-        %}
-    |  digits
-        {%
-            d => ({
-                type: "number_literal",
-                value: Number(d[0])
-            })
-        %}
-
-digits -> [0-9]:+  {% d => d[0].join("") %}
-
-identifier -> [a-z_] [a-z_0-9]:*
-    {%
-        d => d[0] + d[1].join("")
-    %}
-
-__ -> [ \t]:+
-
-_ -> [ \t]:*
+_ -> %ws:*

@@ -1,40 +1,112 @@
 parse:
   ast:
     - type: proc_definition
-      name: main
+      name:
+        type: identifier
+        value: main
+        text: main
+        offset: 5
+        lineBreaks: 0
+        line: 1
+        col: 6
       parameters: []
       body:
         - type: var_assignment
-          var_name: dict
+          var_name:
+            type: identifier
+            value: dict
+            text: dict
+            offset: 18
+            lineBreaks: 0
+            line: 2
+            col: 5
           value:
             type: dictionary_literal
             entries:
-              - - name
+              - - type: identifier
+                  value: name
+                  text: name
+                  offset: 27
+                  lineBreaks: 0
+                  line: 2
+                  col: 14
                 - type: string_literal
                   value: George
-              - - age
+                  text: '"George"'
+                  offset: 33
+                  lineBreaks: 0
+                  line: 2
+                  col: 20
+              - - type: identifier
+                  value: age
+                  text: age
+                  offset: 43
+                  lineBreaks: 0
+                  line: 2
+                  col: 30
                 - type: number_literal
                   value: 12
+                  text: '12'
+                  offset: 48
+                  lineBreaks: 0
+                  line: 2
+                  col: 35
         - type: indexed_assignment
           subject:
             type: var_reference
-            var_name: dict
+            var_name:
+              type: identifier
+              value: dict
+              text: dict
+              offset: 57
+              lineBreaks: 0
+              line: 3
+              col: 5
           index:
             type: string_literal
             value: name
+            text: '"name"'
+            offset: 62
+            lineBreaks: 0
+            line: 3
+            col: 10
           value:
             type: string_literal
             value: Barnes
+            text: '"Barnes"'
+            offset: 72
+            lineBreaks: 0
+            line: 3
+            col: 20
         - type: call_expression
-          fun_name: print
+          fun_name:
+            type: identifier
+            value: print
+            text: print
+            offset: 85
+            lineBreaks: 0
+            line: 4
+            col: 5
           arguments:
             - type: indexed_access
               subject:
                 type: var_reference
-                var_name: dict
+                var_name:
+                  type: identifier
+                  value: dict
+                  text: dict
+                  offset: 91
+                  lineBreaks: 0
+                  line: 4
+                  col: 11
               index:
                 type: string_literal
                 value: name
+                text: '"name"'
+                offset: 96
+                lineBreaks: 0
+                line: 4
+                col: 16
 check: []
 generate:
   error: |-
@@ -46,4 +118,4 @@ generate:
         at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:4:16)
         at Array.map (<anonymous>)
         at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:3:24)
-        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:24:46)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:25:46)
