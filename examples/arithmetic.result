@@ -1,0 +1,74 @@
+parse:
+  ast:
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name: x1
+          value:
+            type: number_literal
+            value: 23
+        - type: var_assignment
+          var_name: y1
+          value:
+            type: number_literal
+            value: 84
+        - type: var_assignment
+          var_name: x2
+          value:
+            type: number_literal
+            value: 46
+        - type: var_assignment
+          var_name: y2
+          value:
+            type: number_literal
+            value: 23
+        - type: var_assignment
+          var_name: dist
+          value:
+            type: call_expression
+            fun_name: sqrt
+            arguments:
+              - type: binary_operation
+                operator: +
+                left:
+                  type: call_expression
+                  fun_name: sqr
+                  arguments:
+                    - type: binary_operation
+                      operator: '-'
+                      left:
+                        type: var_reference
+                        var_name: x1
+                      right:
+                        type: var_reference
+                        var_name: x2
+                right:
+                  type: call_expression
+                  fun_name: sqr
+                  arguments:
+                    - type: binary_operation
+                      operator: '-'
+                      left:
+                        type: var_reference
+                        var_name: x2
+                      right:
+                        type: var_reference
+                        var_name: y2
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: var_reference
+              var_name: dist
+check: []
+generate:
+  js: |-
+    async function main() {
+        var x1 = 23;
+        var y1 = 84;
+        var x2 = 46;
+        var y2 = 23;
+        var dist = sqrt(sqr(x1 - x2) + sqr(x2 - y2));
+        print(dist);
+    }

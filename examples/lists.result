@@ -1,0 +1,51 @@
+parse:
+  ast:
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name: names
+          value:
+            type: list_literal
+            items:
+              - type: string_literal
+                value: Darren
+              - type: string_literal
+                value: Kwan
+              - type: string_literal
+                value: James
+              - type: string_literal
+                value: Merrin
+        - type: indexed_assignment
+          subject:
+            type: var_reference
+            var_name: names
+          index:
+            type: number_literal
+            value: 3
+          value:
+            type: string_literal
+            value: JR
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: indexed_access
+              subject:
+                type: var_reference
+                var_name: names
+              index:
+                type: number_literal
+                value: 3
+check: []
+generate:
+  error: |-
+    Error: BLARG
+        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:41:15)
+        at node.body.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:21:29)
+        at Array.map (<anonymous>)
+        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:20:32)
+        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:4:16)
+        at Array.map (<anonymous>)
+        at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:3:24)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:24:46)

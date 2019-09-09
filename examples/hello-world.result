@@ -1,0 +1,17 @@
+parse:
+  ast:
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: string_literal
+              value: 'Hello, world!'
+check: []
+generate:
+  js: |-
+    async function main() {
+        print("Hello, world!");
+    }

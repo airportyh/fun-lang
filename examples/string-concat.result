@@ -1,0 +1,53 @@
+parse:
+  ast:
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name: greeting
+          value:
+            type: string_literal
+            value: Hello
+        - type: var_assignment
+          var_name: name
+          value:
+            type: string_literal
+            value: McGinnis
+        - type: var_assignment
+          var_name: message
+          value:
+            type: binary_operation
+            operator: +
+            left:
+              type: var_reference
+              var_name: greeting
+            right:
+              type: binary_operation
+              operator: +
+              left:
+                type: string_literal
+                value: ', '
+              right:
+                type: binary_operation
+                operator: +
+                left:
+                  type: var_reference
+                  var_name: name
+                right:
+                  type: string_literal
+                  value: '!'
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: var_reference
+              var_name: message
+check: []
+generate:
+  js: |-
+    async function main() {
+        var greeting = "Hello";
+        var name = "McGinnis";
+        var message = greeting + ", " + name + "!";
+        print(message);
+    }

@@ -1,0 +1,24 @@
+parse:
+  ast:
+    - type: comment
+      text: ' Hello! This is a fun program'
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: comment
+          text: ' This is the body of the main proc'
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: string_literal
+              value: 'Hello, world!'
+check: []
+generate:
+  js: |-
+    // Hello! This is a fun program
+
+    async function main() {
+        // This is the body of the main proc
+        print("Hello, world!");
+    }

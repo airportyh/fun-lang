@@ -1,8 +1,7 @@
 Features
 
-* test suite
 * add tokenizer and line info in diagnostics
-* add runtime with the built-in functions
+* add runtime with the built-in functions??
 * parenthesis
 * multi-line allowance
 * list - push, pop
@@ -20,6 +19,7 @@ Features
     * split
 * type checking differentiating funs vs procs
 
+* test suite (x)
 * index notation (x)
     * get
     * set

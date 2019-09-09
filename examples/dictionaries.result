@@ -1,0 +1,49 @@
+parse:
+  ast:
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name: dict
+          value:
+            type: dictionary_literal
+            entries:
+              - - name
+                - type: string_literal
+                  value: George
+              - - age
+                - type: number_literal
+                  value: 12
+        - type: indexed_assignment
+          subject:
+            type: var_reference
+            var_name: dict
+          index:
+            type: string_literal
+            value: name
+          value:
+            type: string_literal
+            value: Barnes
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: indexed_access
+              subject:
+                type: var_reference
+                var_name: dict
+              index:
+                type: string_literal
+                value: name
+check: []
+generate:
+  error: |-
+    Error: BLARG
+        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:41:15)
+        at node.body.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:21:29)
+        at Array.map (<anonymous>)
+        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:20:32)
+        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:4:16)
+        at Array.map (<anonymous>)
+        at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:3:24)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:24:46)

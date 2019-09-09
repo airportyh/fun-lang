@@ -1,0 +1,7 @@
+parse:
+  error: |-
+    Error: The parser found ambiguous parses.
+        at parse (/Users/airportyh/Home/Playground/fun-lang/src/parser.js:9:15)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:20:36)
+check: null
+generate: {}
