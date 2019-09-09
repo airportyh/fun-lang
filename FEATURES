@@ -1,6 +1,5 @@
 Features
 
-* add tokenizer and line info in checker and other diagnostics
 * add runtime with the built-in functions??
 * parenthesis
 * multi-line allowance
@@ -20,6 +19,7 @@ Features
 * type checking differentiating funs vs procs
 * back-in-time debugger
 
+* add tokenizer and line info in checker and other diagnostics (x)
 * test suite (x)
 * index notation (x)
     * get

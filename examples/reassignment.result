@@ -1,0 +1,150 @@
+parse:
+  ast:
+    - type: fun_definition
+      name:
+        type: identifier
+        value: total
+        text: total
+        offset: 4
+        lineBreaks: 0
+        line: 1
+        col: 5
+      parameters:
+        - type: identifier
+          value: a
+          text: a
+          offset: 10
+          lineBreaks: 0
+          line: 1
+          col: 11
+        - type: identifier
+          value: b
+          text: b
+          offset: 13
+          lineBreaks: 0
+          line: 1
+          col: 14
+        - type: identifier
+          value: c
+          text: c
+          offset: 16
+          lineBreaks: 0
+          line: 1
+          col: 17
+      body:
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: sum
+            text: sum
+            offset: 25
+            lineBreaks: 0
+            line: 2
+            col: 5
+          value:
+            type: var_reference
+            var_name:
+              type: identifier
+              value: a
+              text: a
+              offset: 31
+              lineBreaks: 0
+              line: 2
+              col: 11
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: sum
+            text: sum
+            offset: 37
+            lineBreaks: 0
+            line: 3
+            col: 5
+          value:
+            type: binary_operation
+            operator:
+              type: plus
+              value: +
+              text: +
+              offset: 47
+              lineBreaks: 0
+              line: 3
+              col: 15
+            left:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: sum
+                text: sum
+                offset: 43
+                lineBreaks: 0
+                line: 3
+                col: 11
+            right:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: b
+                text: b
+                offset: 49
+                lineBreaks: 0
+                line: 3
+                col: 17
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: sum
+            text: sum
+            offset: 55
+            lineBreaks: 0
+            line: 4
+            col: 5
+          value:
+            type: binary_operation
+            operator:
+              type: plus
+              value: +
+              text: +
+              offset: 65
+              lineBreaks: 0
+              line: 4
+              col: 15
+            left:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: sum
+                text: sum
+                offset: 61
+                lineBreaks: 0
+                line: 4
+                col: 11
+            right:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: c
+                text: c
+                offset: 67
+                lineBreaks: 0
+                line: 4
+                col: 17
+        - type: return_statement
+          value:
+            type: var_reference
+            var_name:
+              type: identifier
+              value: sum
+              text: sum
+              offset: 80
+              lineBreaks: 0
+              line: 5
+              col: 12
+check:
+  - >-
+    Re-assignment of variable "sum" on line 3 column 5. This is disallowed in
+    funs. First assignment of "sum" found on line 2 column 5.
+  - >-
+    Re-assignment of variable "sum" on line 4 column 5. This is disallowed in
+    funs. First assignment of "sum" found on line 2 column 5.
+generate: {}

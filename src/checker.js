@@ -24,9 +24,20 @@ function checkFun(fun) {
     for (let statement of fun.body) {
         if (statement.type === "var_assignment") {
             if (statement.var_name in vars) {
-                result.push("Reassignment of variable: " + statement.var_name + ", this is disallowed in funs.");
+                const first = vars[statement.var_name];
+                result.push(
+                    "Re-assignment of variable " + 
+                    '"' + statement.var_name + '"' +
+                    " on line " + statement.var_name.line + 
+                    " column " + statement.var_name.col +
+                    ". This is disallowed in funs. " +
+                    "First assignment of " +
+                    '"' + statement.var_name + '"' +
+                    " found on line " + first.line + 
+                    " column " + first.col + ".");
+            } else {
+                vars[statement.var_name] = statement.var_name;
             }
-            vars[statement.var_name] = true;
         }
     }
     return result;
