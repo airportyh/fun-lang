@@ -1,7 +1,69 @@
 parse:
-  error: |-
-    Error: The parser found ambiguous parses.
-        at parse (/Users/airportyh/Home/Playground/fun-lang/src/parser.js:9:15)
-        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:20:36)
-check: null
-generate: {}
+  ast:
+    - type: fun_definition
+      name: distance
+      parameters:
+        - x1
+        - y1
+        - x2
+        - y2
+      body:
+        - type: return_statement
+          value:
+            type: call_expression
+            fun_name: sqrt
+            arguments:
+              - type: binary_operation
+                operator: +
+                left:
+                  type: call_expression
+                  fun_name: sqr
+                  arguments:
+                    - type: binary_operation
+                      operator: '-'
+                      left:
+                        type: var_reference
+                        var_name: x1
+                      right:
+                        type: var_reference
+                        var_name: x2
+                right:
+                  type: call_expression
+                  fun_name: sqr
+                  arguments:
+                    - type: binary_operation
+                      operator: '-'
+                      left:
+                        type: var_reference
+                        var_name: x2
+                      right:
+                        type: var_reference
+                        var_name: y2
+    - type: proc_definition
+      name: main
+      parameters: []
+      body:
+        - type: call_expression
+          fun_name: print
+          arguments:
+            - type: call_expression
+              fun_name: distance
+              arguments:
+                - type: number_literal
+                  value: 34
+                - type: number_literal
+                  value: 96
+                - type: number_literal
+                  value: 23
+                - type: number_literal
+                  value: 56
+check: []
+generate:
+  js: |-
+    function distance(x1, y1, x2, y2) {
+        return sqrt(sqr(x1 - x2) + sqr(x2 - y2));
+    }
+
+    async function main() {
+        print(distance(34, 96, 23, 56));
+    }

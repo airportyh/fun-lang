@@ -129,9 +129,9 @@ call_expression
 argument_list
     -> null {% () => [] %}
     |  _ expression _  {% d => [d[1]] %}
-    |  _ expression _ "," _ argument_list
+    |  _ expression _ "," argument_list
         {%
-            d => [d[1], ...d[5]]
+            d => [d[1], ...d[4]]
         %}
 
 expression -> additive_expression         {% id %}
