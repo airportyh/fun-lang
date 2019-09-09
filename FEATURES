@@ -1,0 +1,36 @@
+Features
+
+* test suite
+* add tokenizer and line info in diagnostics
+* add runtime with the built-in functions
+* parenthesis
+* multi-line allowance
+* list - push, pop
+* loops
+* for loops for lists
+* if statements
+* map/filter/reduce
+* runtime type checking
+* runtime diagnostics
+* IO
+    * print
+    * read_file
+    * write_file
+* string
+    * split
+* type checking differentiating funs vs procs
+
+* index notation (x)
+    * get
+    * set
+* funs (x)
+* procs (x)
+* numbers + simple arithmetic (x)
+* strings + simple arithmetic (x)
+* list (x)
+* dictionaries (x)
+* comments (x)
+
+Later
+
+* type annotations

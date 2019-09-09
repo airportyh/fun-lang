@@ -1,0 +1,248 @@
+[
+  {
+    "type": "comment",
+    "text": " this is a function definition"
+  },
+  {
+    "type": "fun_definition",
+    "name": "hello",
+    "parameters": [],
+    "body": [
+      {
+        "type": "var_assignment",
+        "var_name": "total",
+        "value": {
+          "type": "number_literal",
+          "value": 0
+        }
+      },
+      {
+        "type": "var_assignment",
+        "var_name": "total",
+        "value": {
+          "type": "number_literal",
+          "value": 1
+        }
+      },
+      {
+        "type": "comment",
+        "text": " this is a return statement"
+      },
+      {
+        "type": "return_statement",
+        "value": {
+          "type": "string_literal",
+          "value": "Hello, world!"
+        }
+      }
+    ]
+  },
+  {
+    "type": "fun_definition",
+    "name": "distance",
+    "parameters": [
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "body": [
+      {
+        "type": "var_assignment",
+        "var_name": "delta_x",
+        "value": {
+          "type": "binary_operation",
+          "operator": "-",
+          "left": {
+            "type": "var_reference",
+            "var_name": "x1"
+          },
+          "right": {
+            "type": "var_reference",
+            "var_name": "x2"
+          }
+        }
+      },
+      {
+        "type": "var_assignment",
+        "var_name": "delta_y",
+        "value": {
+          "type": "binary_operation",
+          "operator": "-",
+          "left": {
+            "type": "var_reference",
+            "var_name": "y1"
+          },
+          "right": {
+            "type": "var_reference",
+            "var_name": "y2"
+          }
+        }
+      },
+      {
+        "type": "return_statement",
+        "value": {
+          "type": "call_expression",
+          "fun_name": "sqrt",
+          "arguments": [
+            {
+              "type": "binary_operation",
+              "operator": "+",
+              "left": {
+                "type": "call_expression",
+                "fun_name": "sqr",
+                "arguments": [
+                  {
+                    "type": "var_reference",
+                    "var_name": "delta_x"
+                  }
+                ]
+              },
+              "right": {
+                "type": "call_expression",
+                "fun_name": "sqr",
+                "arguments": [
+                  {
+                    "type": "var_reference",
+                    "var_name": "delta_y"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "proc_definition",
+    "name": "print_hello",
+    "parameters": [],
+    "body": [
+      {
+        "type": "call_expression",
+        "fun_name": "print",
+        "arguments": [
+          {
+            "type": "call_expression",
+            "fun_name": "hello",
+            "arguments": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "proc_definition",
+    "name": "main",
+    "parameters": [
+      "argv"
+    ],
+    "body": [
+      {
+        "type": "var_assignment",
+        "var_name": "total",
+        "value": {
+          "type": "number_literal",
+          "value": 0
+        }
+      },
+      {
+        "type": "var_assignment",
+        "var_name": "numbers",
+        "value": {
+          "type": "list_literal",
+          "items": [
+            {
+              "type": "number_literal",
+              "value": 1
+            },
+            {
+              "type": "number_literal",
+              "value": 2
+            },
+            {
+              "type": "number_literal",
+              "value": 3
+            },
+            {
+              "type": "number_literal",
+              "value": 4
+            },
+            {
+              "type": "number_literal",
+              "value": 5
+            }
+          ]
+        }
+      },
+      [
+        {
+          "type": "indexed_assignment",
+          "subject": {
+            "type": "indexed_access",
+            "subject": {
+              "type": "var_reference",
+              "var_name": "ball"
+            },
+            "index": {
+              "type": "number_literal",
+              "value": 0
+            }
+          },
+          "index": {
+            "type": "indexed_access",
+            "subject": {
+              "type": "var_reference",
+              "var_name": "numbers"
+            },
+            "index": {
+              "type": "number_literal",
+              "value": 0
+            }
+          },
+          "value": {
+            "type": "number_literal",
+            "value": 2
+          }
+        }
+      ],
+      {
+        "type": "var_assignment",
+        "var_name": "total",
+        "value": {
+          "type": "number_literal",
+          "value": 1
+        }
+      },
+      {
+        "type": "var_assignment",
+        "var_name": "mapping",
+        "value": {
+          "type": "dictionary_literal",
+          "entries": [
+            [
+              "name",
+              {
+                "type": "string_literal",
+                "value": "Bob"
+              }
+            ],
+            [
+              "age",
+              {
+                "type": "number_literal",
+                "value": 8
+              }
+            ]
+          ]
+        }
+      },
+      {
+        "type": "call_expression",
+        "fun_name": "print_hello",
+        "arguments": []
+      }
+    ]
+  }
+]

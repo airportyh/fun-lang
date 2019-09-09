@@ -1,0 +1,50 @@
+[
+  {
+    "type": "comment",
+    "text": " this is a function definition"
+  },
+  {
+    "type": "fun_definition",
+    "name": "hello",
+    "parameters": [],
+    "body": [
+      {
+        "type": "var_assignment",
+        "var_name": "total",
+        "value": {
+          "type": "number_literal",
+          "value": 0
+        }
+      },
+      {
+        "type": "var_assignment",
+        "var_name": "total",
+        "value": {
+          "type": "number_literal",
+          "value": 1
+        }
+      },
+      {
+        "type": "comment",
+        "text": " blah"
+      },
+      {
+        "type": "call_expression",
+        "fun_name": "print",
+        "arguments": [
+          {
+            "type": "string_literal",
+            "value": "this is a return statement"
+          }
+        ]
+      },
+      {
+        "type": "return_statement",
+        "value": {
+          "type": "string_literal",
+          "value": "Hello, world!"
+        }
+      }
+    ]
+  }
+]
