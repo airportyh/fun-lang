@@ -3,13 +3,13 @@
 This document gives an overview of the structure of the source code of
 the implementation of the Fun programming language. Other than the
 documentation files: `README.md`, `CONTRIBUTING.md` and `USER_MANUAL.md`
-at the top project directory, the following three directories are of
+at the top level project directory, the following three directories are of
 interest:
 
 * `src` - contains the core source code of the Fun Programming Language ([more...](src/README.md))
 * `scripts` - contains some command line utilities ([more...](scripts/README.md))
-* `examples` - contains some code examples as well as the results of testing ([more...](examples/README.md))
-these code examples using the `scripts/test-examples.js` script.
+* `examples` - contains some code examples as well as the results of testing 
+these code examples using the `scripts/test-examples.js` script ([more...](examples/README.md))
 
 ## Architecture
 
