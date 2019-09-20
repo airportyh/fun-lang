@@ -9,15 +9,6 @@ The compiler consists of the following modules:
 
 More details about each is covered below.
 
-## Project Setup
-
-You need to do the following before starting to make changes to the source code
-and try them out:
-
-* Install Node.js (https://nodejs.org)
-* Change into the project directory
-* `npm install`
-
 ## The Fun Parser
 
 The Fun parser is implemented using the [Nearley parser generator](https://nearley.js.org/).

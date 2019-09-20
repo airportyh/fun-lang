@@ -159,6 +159,15 @@ source file the source code for the node came from:
 This information allows the checker and the generator and potentially
 other tools to output line number information with their error messages.
 
+## Project Setup
+
+You need to do the following before starting to make changes to the source code
+and try them out:
+
+* Install Node.js (https://nodejs.org)
+* Change into the project directory
+* `npm install`
+
 ## Dig Deeper
 
 * [src directory](src/README.md)
