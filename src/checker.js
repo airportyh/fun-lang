@@ -25,11 +25,12 @@ function checkFun(fun, userFunctions) {
     const vars = {};
     for (let statement of fun.body) {
         if (statement.type === "var_assignment") {
-            if (statement.var_name in vars) {
-                const first = vars[statement.var_name];
+            const var_name = statement.var_name.text;
+            if (var_name in vars) {
+                const first = vars[var_name];
                 results.push(
                     "Re-assignment of variable " + 
-                    '"' + statement.var_name.text + '"' +
+                    '"' + var_name + '"' +
                     " on line " + statement.var_name.line + 
                     " column " + statement.var_name.col +
                     ". This is disallowed in funs. " +
@@ -38,7 +39,7 @@ function checkFun(fun, userFunctions) {
                     " found on line " + first.line + 
                     " column " + first.col + ".");
             } else {
-                vars[statement.var_name] = statement.var_name;
+                vars[var_name] = statement.var_name;
             }
             results.push(...checkExpression(statement.value, userFunctions));
         } else if (statement.type === "indexed_assignment") {

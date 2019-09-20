@@ -43,3 +43,8 @@ exports.sqr = function sqr(num) {
     return num * num;
 };
 exports.sqr.pure = true;
+
+exports.join = function join(array, separator) {
+    return array.join(separator);
+}
+exports.join.pure = true;

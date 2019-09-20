@@ -1,0 +1,24 @@
+## Built-in functions
+
+* print
+* map, filter, reduce
+* split, starts_with, ends_with
+* read_file, write_file
+* http_request
+
+## Checker Responsibilities
+
+* both funs and procs:
+    * correct number of call arguments to callables
+    * referenced variables are defined
+    * show warning for unused variables
+* funs only:
+    * no re-assignment of variables
+    * no indexed assignments
+    * no loops
+    * no calls to non-funs
+    * one return statement in each possible branch
+* loose funs:
+    * can only mutate values that were initialized within the function
+    * no calls to non-funs
+* type checking - (at a later future point)

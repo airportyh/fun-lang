@@ -1,0 +1,54 @@
+## TODOS
+
+* write comments and readmes
+* make checker support loops and if statements
+* improve error message with run.js
+* length of an array or dictionary
+* ensure pure functions don't call non-pure ones
+* allow for loop to loop through dictionary
+* parenthesis
+* plus equals
+* check for undefined and unused variables
+* check for wrong number of arguments in function calls
+* mandatory return statements in funs?
+* regex
+* multi-line allowance
+* runtime type checking
+* runtime diagnostics
+* IO
+    * read_file
+    * write_file
+* back-in-time debugger
+
+## Done
+
+* write some simple programs (x)
+* string split (x)
+* make run script (x)
+* list - concat, pop (x)
+* while loops (x)
+* for loops for lists (x)
+* if statements (x)
+* print (x)
+* have test runner execute the generated js (x)
+* built-in functions and check for unknown functions (x)
+* map/filter/reduce (x)
+* more checks: can't do indexed assignment (x)
+* add tokenizer and line info in checker and other diagnostics (x)
+* test suite (x)
+* index notation (x)
+    * get
+    * set
+* type checking differentiating funs vs procs (x)
+* funs (x)
+* procs (x)
+* numbers + simple arithmetic (x)
+* strings + simple arithmetic (x)
+* list (x)
+* dictionaries (x)
+* comments (x)
+
+## Later
+
+* type annotations
+* source maps
