@@ -164,9 +164,4 @@ other tools to output line number information with their error messages.
 * [src directory](src/README.md)
 * [scripts directory](scripts/README.md)
 * [examples directory](examples/README.md)
-
-## Learn Prog Lang
-
-Toby created a [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) covering how to create a programming language using JavaScript. Much of the tools and techniques used in those videos are used in this project.
-If you are interested in digging into the source code, you can watch this video series to
-get ramped up.
+* This [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) covers how to create a programming language using JavaScript. Much of the tools and techniques used in those videos are used in this project.
