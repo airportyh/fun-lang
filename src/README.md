@@ -57,4 +57,7 @@ string containing JavaScript code. Similarly to the checker, it recursively
 iterates the AST, but instead of checking for mistakes, it generates the
 JavaScript representation of the code at each AST node, propagating the
 results from the lower parts of the tree to the upper parts of the tree
-in succession.
+in succession. The `built-in-functions.js` contains JavaScript functions
+that are used by the generated JavaScript and are therefore
+included with the generated JavaScript programs. The built-in functions
+can be consider the *runtime* of the language.
