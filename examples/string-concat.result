@@ -153,6 +153,10 @@ generate:
 
     // Built-in Functions:
 
+    function split(string, separator) {
+        return string.split(separator)
+    }
+
     function print(...args) {
         console.log(...args);
     }

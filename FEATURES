@@ -1,7 +1,9 @@
 ## Features
 
+* string split
 * make run script
 * write some simple programs
+* ensure pure functions don't call non-pure ones
 * add comments to source code
 * parenthesis
 * plus equals

@@ -11,8 +11,10 @@ async function main() {
     const result = check(ast);
     if (result.length === 0) {
         console.log("Ok");
+        process.exit(0);
     } else {
         console.log(result.join("\n"));
+        process.exit(1);
     }
 }
 

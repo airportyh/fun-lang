@@ -1,3 +1,7 @@
+exports.split = function split(string, separator) {
+    return string.split(separator)
+};
+
 exports.print = function print(...args) {
     console.log(...args);
 };

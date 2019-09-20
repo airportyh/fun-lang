@@ -32,7 +32,7 @@ function generateCodeForTopLevelStatement(node) {
         }).join("\n"));
         return line1 + "\n" + body + "\n}";
     } else {
-        throw new Error("Unknown AST Node type: " + node.type);
+        throw new Error("Unknown AST Node type for top level statements: " + node.type);
     }
 }
 
@@ -66,8 +66,13 @@ function generateCodeForExecutableStatement(statement) {
             indent(statement.body.map(statement => {
                 return generateCodeForExecutableStatement(statement);
             }).join("\n")) + "\n}";
+    } else if (statement.type === "indexed_assignment") {
+        const subject = generateCodeForExpression(statement.subject);
+        const index = generateCodeForExpression(statement.index);
+        const value = generateCodeForExpression(statement.value);
+        return `${subject}[${index}] = ${value}`;
     } else {
-        throw new Error("Unknown AST node type: " + statement.type);
+        throw new Error("Unknown AST node type for executable statements: " + statement.type);
     }
 }
 
@@ -105,9 +110,13 @@ function generateCodeForExpression(expression) {
             expression.arguments.map(generateCodeForExpression)
                 .join(", ")
         + ")";
+    } else if (expression.type === "indexed_access") {
+        const subject = generateCodeForExpression(expression.subject);
+        const index = generateCodeForExpression(expression.index);
+        return `${subject}[${index}]`;
     } else {
         console.log("expression", expression);
-        throw new Error("Unsupported type: " + expression.type);
+        throw new Error("Unsupported AST node type for expressions: " + expression.type);
     }
 }
 
