@@ -161,6 +161,6 @@ other tools to output line number information with their error messages.
 
 ## Dig Deeper
 
-* [src](src/README.md)
-* [scripts](scripts/README.md)
-* [examples](examples/README.md)
+* [src directory](src/README.md)
+* [scripts directory](scripts/README.md)
+* [examples directory](examples/README.md)
