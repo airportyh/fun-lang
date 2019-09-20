@@ -48,7 +48,7 @@ to solve code challenges on sites like Codewars or HackerRank to sharpen your un
 2. To provide an programming language project for developers to *learn or teach programming language implementation* - if you are interested in learning how
 to build a programming language, you may learn by digging
 into the source code of Fun. It is designed to be self-documenting and hackable from the ground up. There
-is also a supplementing [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) covering the basics.
+is also a supplementing video series covering the basics.
 
 ## Dig Deeper
 
