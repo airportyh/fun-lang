@@ -28,7 +28,10 @@ const lexer = moo.compile({
     multiply: "*",
     divide: "*",
     colon: ":",
-    comment: /#[^\n]*/,
+    comment: {
+        match: /#[^\n]*/,
+        value: s => s.substring(1)
+    },
     string_literal: {
         match: /"(?:[^\n\\"]|\\["\\ntbfr])*"/,
         value: s => s.slice(1, -1)

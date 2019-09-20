@@ -1,7 +1,7 @@
 parse:
   ast:
     - type: comment
-      value: '# Hello! This is a fun program'
+      value: ' Hello! This is a fun program'
       text: '# Hello! This is a fun program'
       offset: 0
       lineBreaks: 0
@@ -19,7 +19,7 @@ parse:
       parameters: []
       body:
         - type: comment
-          value: '# This is the body of the main proc'
+          value: ' This is the body of the main proc'
           text: '# This is the body of the main proc'
           offset: 49
           lineBreaks: 0
@@ -45,10 +45,10 @@ parse:
 check: []
 generate:
   js: |-
-    //# Hello! This is a fun program
+    // Hello! This is a fun program
 
     async function main() {
-        //# This is the body of the main proc
+        // This is the body of the main proc
         print("Hello, world!");
     }
 
