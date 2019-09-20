@@ -1,7 +1,7 @@
 ## TODOS
 
+* 
 * embed examples and docs in the grammar file?
-* write comments and readmes
 * make checker support loops and if statements
 * improve error message with run.js
 * length of an array or dictionary
@@ -23,6 +23,7 @@
 
 ## Done
 
+* write comments and readmes (x)
 * write some simple programs (x)
 * string split (x)
 * make run script (x)
