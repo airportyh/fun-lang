@@ -34,3 +34,47 @@ generate:
     async function main() {
         print("Hello, world!");
     }
+
+    main().catch(err => console.log(err.message));
+
+    // Built-in Functions:
+
+    function print(...args) {
+        console.log(...args);
+    }
+
+    function pop(array) {
+        return array.pop();
+    }
+
+    function push(array, item) {
+        return array.push(item);
+    }
+
+    function concat(one, other) {
+        return one.concat(other);
+    }
+
+    function map(fn, arr) {
+        return arr.map(fn);
+    }
+
+    function filter(fn, arr) {
+        return arr.filter(fn);
+    }
+
+    function reduce(fn, initValue, arr) {
+        return arr.reduce(fn, initValue);
+    }
+
+    function sqrt(num) {
+        return Math.sqrt(num);
+    }
+
+    function sqr(num) {
+        return num * num;
+    }
+exec:
+  stdout: |
+    Hello, world!
+  stderr: ''

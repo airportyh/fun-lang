@@ -1,0 +1,321 @@
+parse:
+  ast:
+    - type: proc_definition
+      name:
+        type: identifier
+        value: main
+        text: main
+        offset: 5
+        lineBreaks: 0
+        line: 1
+        col: 6
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: age
+            text: age
+            offset: 18
+            lineBreaks: 0
+            line: 2
+            col: 5
+          value:
+            type: number_literal
+            value: 15
+            text: '15'
+            offset: 24
+            lineBreaks: 0
+            line: 2
+            col: 11
+        - type: if_statement
+          condition:
+            type: binary_operation
+            operator:
+              type: gt
+              value: '>'
+              text: '>'
+              offset: 38
+              lineBreaks: 0
+              line: 3
+              col: 12
+            left:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: age
+                text: age
+                offset: 34
+                lineBreaks: 0
+                line: 3
+                col: 8
+            right:
+              type: number_literal
+              value: 21
+              text: '21'
+              offset: 40
+              lineBreaks: 0
+              line: 3
+              col: 14
+          consequent:
+            - type: call_expression
+              fun_name:
+                type: identifier
+                value: print
+                text: print
+                offset: 53
+                lineBreaks: 0
+                line: 4
+                col: 9
+              arguments:
+                - type: string_literal
+                  value: You may come in
+                  text: '"You may come in"'
+                  offset: 59
+                  lineBreaks: 0
+                  line: 4
+                  col: 15
+        - type: if_statement
+          condition:
+            type: binary_operation
+            operator:
+              type: gt
+              value: '>'
+              text: '>'
+              offset: 95
+              lineBreaks: 0
+              line: 6
+              col: 12
+            left:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: age
+                text: age
+                offset: 91
+                lineBreaks: 0
+                line: 6
+                col: 8
+            right:
+              type: number_literal
+              value: 21
+              text: '21'
+              offset: 97
+              lineBreaks: 0
+              line: 6
+              col: 14
+          consequent:
+            - type: call_expression
+              fun_name:
+                type: identifier
+                value: print
+                text: print
+                offset: 110
+                lineBreaks: 0
+                line: 7
+                col: 9
+              arguments:
+                - type: string_literal
+                  value: You may come in
+                  text: '"You may come in"'
+                  offset: 116
+                  lineBreaks: 0
+                  line: 7
+                  col: 15
+          alternate:
+            - type: call_expression
+              fun_name:
+                type: identifier
+                value: print
+                text: print
+                offset: 156
+                lineBreaks: 0
+                line: 9
+                col: 9
+              arguments:
+                - type: string_literal
+                  value: Keep out
+                  text: '"Keep out"'
+                  offset: 162
+                  lineBreaks: 0
+                  line: 9
+                  col: 15
+        - type: if_statement
+          condition:
+            type: binary_operation
+            operator:
+              type: gt
+              value: '>'
+              text: '>'
+              offset: 191
+              lineBreaks: 0
+              line: 11
+              col: 12
+            left:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: age
+                text: age
+                offset: 187
+                lineBreaks: 0
+                line: 11
+                col: 8
+            right:
+              type: number_literal
+              value: 21
+              text: '21'
+              offset: 193
+              lineBreaks: 0
+              line: 11
+              col: 14
+          consequent:
+            - type: call_expression
+              fun_name:
+                type: identifier
+                value: print
+                text: print
+                offset: 206
+                lineBreaks: 0
+                line: 12
+                col: 9
+              arguments:
+                - type: string_literal
+                  value: You may come in
+                  text: '"You may come in"'
+                  offset: 212
+                  lineBreaks: 0
+                  line: 12
+                  col: 15
+          alternate:
+            type: if_statement
+            condition:
+              type: binary_operation
+              operator:
+                type: gt
+                value: '>'
+                text: '>'
+                offset: 249
+                lineBreaks: 0
+                line: 13
+                col: 19
+              left:
+                type: var_reference
+                var_name:
+                  type: identifier
+                  value: age
+                  text: age
+                  offset: 245
+                  lineBreaks: 0
+                  line: 13
+                  col: 15
+              right:
+                type: number_literal
+                value: 17
+                text: '17'
+                offset: 251
+                lineBreaks: 0
+                line: 13
+                col: 21
+            consequent:
+              - type: call_expression
+                fun_name:
+                  type: identifier
+                  value: print
+                  text: print
+                  offset: 264
+                  lineBreaks: 0
+                  line: 14
+                  col: 9
+                arguments:
+                  - type: string_literal
+                    value: Wait a couple years
+                    text: '"Wait a couple years"'
+                    offset: 270
+                    lineBreaks: 0
+                    line: 14
+                    col: 15
+            alternate:
+              - type: call_expression
+                fun_name:
+                  type: identifier
+                  value: print
+                  text: print
+                  offset: 314
+                  lineBreaks: 0
+                  line: 16
+                  col: 9
+                arguments:
+                  - type: string_literal
+                    value: Keep out
+                    text: '"Keep out"'
+                    offset: 320
+                    lineBreaks: 0
+                    line: 16
+                    col: 15
+check: []
+generate:
+  js: |-
+    async function main() {
+        var age = 15;
+        if (age > 21) {
+            print("You may come in");
+        }
+        if (age > 21) {
+            print("You may come in");
+        } else {
+            print("Keep out");
+        }
+        if (age > 21) {
+            print("You may come in");
+        } else if (age > 17) {
+            print("Wait a couple years");
+        } else {
+            print("Keep out");
+        }
+    }
+
+    main().catch(err => console.log(err.message));
+
+    // Built-in Functions:
+
+    function print(...args) {
+        console.log(...args);
+    }
+
+    function pop(array) {
+        return array.pop();
+    }
+
+    function push(array, item) {
+        return array.push(item);
+    }
+
+    function concat(one, other) {
+        return one.concat(other);
+    }
+
+    function map(fn, arr) {
+        return arr.map(fn);
+    }
+
+    function filter(fn, arr) {
+        return arr.filter(fn);
+    }
+
+    function reduce(fn, initValue, arr) {
+        return arr.reduce(fn, initValue);
+    }
+
+    function sqrt(num) {
+        return Math.sqrt(num);
+    }
+
+    function sqr(num) {
+        return num * num;
+    }
+exec:
+  stdout: |
+    Keep out
+    Keep out
+  stderr: ''

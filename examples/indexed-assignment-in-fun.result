@@ -1,0 +1,50 @@
+parse:
+  ast:
+    - type: fun_definition
+      name:
+        type: identifier
+        value: do_it
+        text: do_it
+        offset: 4
+        lineBreaks: 0
+        line: 1
+        col: 5
+      parameters:
+        - type: identifier
+          value: d
+          text: d
+          offset: 10
+          lineBreaks: 0
+          line: 1
+          col: 11
+      body:
+        - type: indexed_assignment
+          subject:
+            type: var_reference
+            var_name:
+              type: identifier
+              value: d
+              text: d
+              offset: 19
+              lineBreaks: 0
+              line: 2
+              col: 5
+          index:
+            type: number_literal
+            value: 1
+            text: '1'
+            offset: 21
+            lineBreaks: 0
+            line: 2
+            col: 7
+          value:
+            type: string_literal
+            value: Hello
+            text: '"Hello"'
+            offset: 26
+            lineBreaks: 0
+            line: 2
+            col: 12
+check:
+  - Indexed assignment on line 2 column 5. This is disallowed in funs.
+generate: null

@@ -1,81 +1,234 @@
 [
   {
     "type": "comment",
-    "text": " this is a function definition"
+    "value": "# this is a function definition",
+    "text": "# this is a function definition",
+    "offset": 1,
+    "lineBreaks": 0,
+    "line": 2,
+    "col": 1
   },
   {
     "type": "fun_definition",
-    "name": "hello",
+    "name": {
+      "type": "identifier",
+      "value": "hello",
+      "text": "hello",
+      "offset": 37,
+      "lineBreaks": 0,
+      "line": 3,
+      "col": 5
+    },
     "parameters": [],
     "body": [
       {
         "type": "var_assignment",
-        "var_name": "total",
+        "var_name": {
+          "type": "identifier",
+          "value": "total",
+          "text": "total",
+          "offset": 51,
+          "lineBreaks": 0,
+          "line": 4,
+          "col": 5
+        },
         "value": {
           "type": "number_literal",
-          "value": 0
+          "value": 0,
+          "text": "0",
+          "offset": 59,
+          "lineBreaks": 0,
+          "line": 4,
+          "col": 13
         }
       },
       {
         "type": "var_assignment",
-        "var_name": "total",
+        "var_name": {
+          "type": "identifier",
+          "value": "total",
+          "text": "total",
+          "offset": 65,
+          "lineBreaks": 0,
+          "line": 5,
+          "col": 5
+        },
         "value": {
           "type": "number_literal",
-          "value": 1
+          "value": 1,
+          "text": "1",
+          "offset": 73,
+          "lineBreaks": 0,
+          "line": 5,
+          "col": 13
         }
       },
       {
         "type": "comment",
-        "text": " this is a return statement"
+        "value": "# this is a return statement",
+        "text": "# this is a return statement",
+        "offset": 79,
+        "lineBreaks": 0,
+        "line": 6,
+        "col": 5
       },
       {
         "type": "return_statement",
         "value": {
           "type": "string_literal",
-          "value": "Hello, world!"
+          "value": "Hello, world!",
+          "text": "\"Hello, world!\"",
+          "offset": 119,
+          "lineBreaks": 0,
+          "line": 7,
+          "col": 12
         }
       }
     ]
   },
   {
     "type": "fun_definition",
-    "name": "distance",
+    "name": {
+      "type": "identifier",
+      "value": "distance",
+      "text": "distance",
+      "offset": 142,
+      "lineBreaks": 0,
+      "line": 10,
+      "col": 5
+    },
     "parameters": [
-      "x1",
-      "y1",
-      "x2",
-      "y2"
+      {
+        "type": "identifier",
+        "value": "x1",
+        "text": "x1",
+        "offset": 151,
+        "lineBreaks": 0,
+        "line": 10,
+        "col": 14
+      },
+      {
+        "type": "identifier",
+        "value": "y1",
+        "text": "y1",
+        "offset": 155,
+        "lineBreaks": 0,
+        "line": 10,
+        "col": 18
+      },
+      {
+        "type": "identifier",
+        "value": "x2",
+        "text": "x2",
+        "offset": 159,
+        "lineBreaks": 0,
+        "line": 10,
+        "col": 22
+      },
+      {
+        "type": "identifier",
+        "value": "y2",
+        "text": "y2",
+        "offset": 163,
+        "lineBreaks": 0,
+        "line": 10,
+        "col": 26
+      }
     ],
     "body": [
       {
         "type": "var_assignment",
-        "var_name": "delta_x",
+        "var_name": {
+          "type": "identifier",
+          "value": "delta_x",
+          "text": "delta_x",
+          "offset": 173,
+          "lineBreaks": 0,
+          "line": 11,
+          "col": 5
+        },
         "value": {
           "type": "binary_operation",
-          "operator": "-",
+          "operator": {
+            "type": "minus",
+            "value": "-",
+            "text": "-",
+            "offset": 186,
+            "lineBreaks": 0,
+            "line": 11,
+            "col": 18
+          },
           "left": {
             "type": "var_reference",
-            "var_name": "x1"
+            "var_name": {
+              "type": "identifier",
+              "value": "x1",
+              "text": "x1",
+              "offset": 183,
+              "lineBreaks": 0,
+              "line": 11,
+              "col": 15
+            }
           },
           "right": {
             "type": "var_reference",
-            "var_name": "x2"
+            "var_name": {
+              "type": "identifier",
+              "value": "x2",
+              "text": "x2",
+              "offset": 188,
+              "lineBreaks": 0,
+              "line": 11,
+              "col": 20
+            }
           }
         }
       },
       {
         "type": "var_assignment",
-        "var_name": "delta_y",
+        "var_name": {
+          "type": "identifier",
+          "value": "delta_y",
+          "text": "delta_y",
+          "offset": 195,
+          "lineBreaks": 0,
+          "line": 12,
+          "col": 5
+        },
         "value": {
           "type": "binary_operation",
-          "operator": "-",
+          "operator": {
+            "type": "minus",
+            "value": "-",
+            "text": "-",
+            "offset": 208,
+            "lineBreaks": 0,
+            "line": 12,
+            "col": 18
+          },
           "left": {
             "type": "var_reference",
-            "var_name": "y1"
+            "var_name": {
+              "type": "identifier",
+              "value": "y1",
+              "text": "y1",
+              "offset": 205,
+              "lineBreaks": 0,
+              "line": 12,
+              "col": 15
+            }
           },
           "right": {
             "type": "var_reference",
-            "var_name": "y2"
+            "var_name": {
+              "type": "identifier",
+              "value": "y2",
+              "text": "y2",
+              "offset": 210,
+              "lineBreaks": 0,
+              "line": 12,
+              "col": 20
+            }
           }
         }
       },
@@ -83,28 +236,76 @@
         "type": "return_statement",
         "value": {
           "type": "call_expression",
-          "fun_name": "sqrt",
+          "fun_name": {
+            "type": "identifier",
+            "value": "sqrt",
+            "text": "sqrt",
+            "offset": 224,
+            "lineBreaks": 0,
+            "line": 13,
+            "col": 12
+          },
           "arguments": [
             {
               "type": "binary_operation",
-              "operator": "+",
+              "operator": {
+                "type": "plus",
+                "value": "+",
+                "text": "+",
+                "offset": 242,
+                "lineBreaks": 0,
+                "line": 13,
+                "col": 30
+              },
               "left": {
                 "type": "call_expression",
-                "fun_name": "sqr",
+                "fun_name": {
+                  "type": "identifier",
+                  "value": "sqr",
+                  "text": "sqr",
+                  "offset": 229,
+                  "lineBreaks": 0,
+                  "line": 13,
+                  "col": 17
+                },
                 "arguments": [
                   {
                     "type": "var_reference",
-                    "var_name": "delta_x"
+                    "var_name": {
+                      "type": "identifier",
+                      "value": "delta_x",
+                      "text": "delta_x",
+                      "offset": 233,
+                      "lineBreaks": 0,
+                      "line": 13,
+                      "col": 21
+                    }
                   }
                 ]
               },
               "right": {
                 "type": "call_expression",
-                "fun_name": "sqr",
+                "fun_name": {
+                  "type": "identifier",
+                  "value": "sqr",
+                  "text": "sqr",
+                  "offset": 244,
+                  "lineBreaks": 0,
+                  "line": 13,
+                  "col": 32
+                },
                 "arguments": [
                   {
                     "type": "var_reference",
-                    "var_name": "delta_y"
+                    "var_name": {
+                      "type": "identifier",
+                      "value": "delta_y",
+                      "text": "delta_y",
+                      "offset": 248,
+                      "lineBreaks": 0,
+                      "line": 13,
+                      "col": 36
+                    }
                   }
                 ]
               }
@@ -116,16 +317,40 @@
   },
   {
     "type": "proc_definition",
-    "name": "print_hello",
+    "name": {
+      "type": "identifier",
+      "value": "print_hello",
+      "text": "print_hello",
+      "offset": 266,
+      "lineBreaks": 0,
+      "line": 16,
+      "col": 6
+    },
     "parameters": [],
     "body": [
       {
         "type": "call_expression",
-        "fun_name": "print",
+        "fun_name": {
+          "type": "identifier",
+          "value": "print",
+          "text": "print",
+          "offset": 286,
+          "lineBreaks": 0,
+          "line": 17,
+          "col": 5
+        },
         "arguments": [
           {
             "type": "call_expression",
-            "fun_name": "hello",
+            "fun_name": {
+              "type": "identifier",
+              "value": "hello",
+              "text": "hello",
+              "offset": 292,
+              "lineBreaks": 0,
+              "line": 17,
+              "col": 11
+            },
             "arguments": []
           }
         ]
@@ -134,114 +359,123 @@
   },
   {
     "type": "proc_definition",
-    "name": "main",
+    "name": {
+      "type": "identifier",
+      "value": "main",
+      "text": "main",
+      "offset": 309,
+      "lineBreaks": 0,
+      "line": 20,
+      "col": 6
+    },
     "parameters": [
-      "argv"
+      {
+        "type": "identifier",
+        "value": "argv",
+        "text": "argv",
+        "offset": 314,
+        "lineBreaks": 0,
+        "line": 20,
+        "col": 11
+      }
     ],
     "body": [
       {
         "type": "var_assignment",
-        "var_name": "total",
+        "var_name": {
+          "type": "identifier",
+          "value": "d",
+          "text": "d",
+          "offset": 326,
+          "lineBreaks": 0,
+          "line": 21,
+          "col": 5
+        },
         "value": {
-          "type": "number_literal",
-          "value": 0
-        }
-      },
-      {
-        "type": "var_assignment",
-        "var_name": "numbers",
-        "value": {
-          "type": "list_literal",
-          "items": [
-            {
-              "type": "number_literal",
-              "value": 1
-            },
-            {
-              "type": "number_literal",
-              "value": 2
-            },
-            {
-              "type": "number_literal",
-              "value": 3
-            },
-            {
-              "type": "number_literal",
-              "value": 4
-            },
-            {
-              "type": "number_literal",
-              "value": 5
-            }
-          ]
-        }
-      },
-      [
-        {
-          "type": "indexed_assignment",
-          "subject": {
-            "type": "indexed_access",
-            "subject": {
-              "type": "var_reference",
-              "var_name": "ball"
-            },
-            "index": {
-              "type": "number_literal",
-              "value": 0
-            }
+          "type": "call_expression",
+          "fun_name": {
+            "type": "identifier",
+            "value": "distance",
+            "text": "distance",
+            "offset": 330,
+            "lineBreaks": 0,
+            "line": 21,
+            "col": 9
           },
-          "index": {
-            "type": "indexed_access",
-            "subject": {
-              "type": "var_reference",
-              "var_name": "numbers"
-            },
-            "index": {
+          "arguments": [
+            {
               "type": "number_literal",
-              "value": 0
+              "value": 4,
+              "text": "4",
+              "offset": 339,
+              "lineBreaks": 0,
+              "line": 21,
+              "col": 18
+            },
+            {
+              "type": "number_literal",
+              "value": 9,
+              "text": "9",
+              "offset": 342,
+              "lineBreaks": 0,
+              "line": 21,
+              "col": 21
+            },
+            {
+              "type": "number_literal",
+              "value": 5,
+              "text": "5",
+              "offset": 345,
+              "lineBreaks": 0,
+              "line": 21,
+              "col": 24
+            },
+            {
+              "type": "number_literal",
+              "value": 12,
+              "text": "12",
+              "offset": 348,
+              "lineBreaks": 0,
+              "line": 21,
+              "col": 27
             }
-          },
-          "value": {
-            "type": "number_literal",
-            "value": 2
-          }
-        }
-      ],
-      {
-        "type": "var_assignment",
-        "var_name": "total",
-        "value": {
-          "type": "number_literal",
-          "value": 1
-        }
-      },
-      {
-        "type": "var_assignment",
-        "var_name": "mapping",
-        "value": {
-          "type": "dictionary_literal",
-          "entries": [
-            [
-              "name",
-              {
-                "type": "string_literal",
-                "value": "Bob"
-              }
-            ],
-            [
-              "age",
-              {
-                "type": "number_literal",
-                "value": 8
-              }
-            ]
           ]
         }
       },
       {
         "type": "call_expression",
-        "fun_name": "print_hello",
-        "arguments": []
+        "fun_name": {
+          "type": "identifier",
+          "value": "print",
+          "text": "print",
+          "offset": 356,
+          "lineBreaks": 0,
+          "line": 22,
+          "col": 5
+        },
+        "arguments": [
+          {
+            "type": "string_literal",
+            "value": "The distance is",
+            "text": "\"The distance is\"",
+            "offset": 362,
+            "lineBreaks": 0,
+            "line": 22,
+            "col": 11
+          },
+          {
+            "type": "var_reference",
+            "var_name": {
+              "type": "identifier",
+              "value": "d",
+              "text": "d",
+              "offset": 381,
+              "lineBreaks": 0,
+              "line": 22,
+              "col": 30
+            }
+          }
+        ]
       }
     ]
   }

@@ -110,12 +110,12 @@ parse:
 check: []
 generate:
   error: |-
-    Error: BLARG
-        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:41:15)
-        at node.body.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:21:29)
+    Error: Unknown AST node type: indexed_assignment
+        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:70:15)
+        at node.body.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:31:20)
         at Array.map (<anonymous>)
-        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:20:32)
-        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:4:16)
+        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:30:39)
+        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:6:16)
         at Array.map (<anonymous>)
-        at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:3:24)
-        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:25:46)
+        at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:5:24)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:26:36)

@@ -81,6 +81,9 @@ executable_statement
    |  call_expression      {% id %}
    |  line_comment         {% id %}
    |  indexed_assignment   {% id %}
+   |  while_loop           {% id %}
+   |  if_statement         {% id %}
+   |  for_loop             {% id %}
 
 var_assignment
     -> identifier _ "=" _ expression
@@ -113,6 +116,57 @@ indexed_assignment
             })
         %}
 
+while_loop
+    -> "while" __ expression __ "[" _ "\n" executable_statements "]"
+        {%
+            d => ({
+                type: "while_loop",
+                condition: d[2],
+                body: d[7]
+            })
+        %}
+
+if_statement
+    -> "if" __ expression __ "[" _ "\n" executable_statements "]"
+        {%
+            d => ({
+                type: "if_statement",
+                condition: d[2],
+                consequent: d[7]
+            })
+        %}
+    |  "if" __ expression _ "[" _ "\n" executable_statements "]" _
+       "else" __ "[" _ "\n" executable_statements "]"
+        {%
+            d => ({
+                type: "if_statement",
+                condition: d[2],
+                consequent: d[7],
+                alternate: d[15]
+            })
+        %}
+    |  "if" __ expression _ "[" _ "\n" executable_statements "]" _
+       "else" __ if_statement
+       {%
+            d => ({
+                type: "if_statement",
+                condition: d[2],
+                consequent: d[7],
+                alternate: d[12]
+            })
+       %}
+
+for_loop
+    -> "for" __ identifier __ "in" __ expression _ "[" _ "\n" executable_statements "]"
+        {%
+            d => ({
+                type: "for_loop",
+                loop_variable: d[2],
+                iterable: d[6],
+                body: d[11]
+            })
+        %}
+
 return_statement
     -> "return" __ expression
         {%
@@ -140,7 +194,25 @@ argument_list
             d => [d[1], ...d[4]]
         %}
 
-expression -> additive_expression         {% id %}
+expression -> comparison_expression         {% id %}
+
+comparison_expression
+    -> additive_expression    {% id %}
+    |  additive_expression _ comparison_operator _ comparison_expression
+        {%
+            d => ({
+                type: "binary_operation",
+                operator: d[2],
+                left: d[0],
+                right: d[4]
+            })
+        %}
+
+comparison_operator
+    -> ">"   {% id %}
+    |  ">="  {% id %}
+    |  "<"   {% id %}
+    |  "<="  {% id %}
 
 additive_expression
     -> multiplicative_expression    {% id %}

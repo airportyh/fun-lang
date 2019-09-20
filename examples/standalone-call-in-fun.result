@@ -1,0 +1,33 @@
+parse:
+  ast:
+    - type: fun_definition
+      name:
+        type: identifier
+        value: hello
+        text: hello
+        offset: 4
+        lineBreaks: 0
+        line: 1
+        col: 5
+      parameters: []
+      body:
+        - type: call_expression
+          fun_name:
+            type: identifier
+            value: print
+            text: print
+            offset: 18
+            lineBreaks: 0
+            line: 2
+            col: 5
+          arguments:
+            - type: string_literal
+              value: hello
+              text: '"hello"'
+              offset: 24
+              lineBreaks: 0
+              line: 2
+              col: 11
+check:
+  - Call statement on it's own on line 2 column 5. This is disallowed in funs.
+generate: null

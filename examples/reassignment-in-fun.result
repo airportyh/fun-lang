@@ -147,4 +147,4 @@ check:
   - >-
     Re-assignment of variable "sum" on line 4 column 5. This is disallowed in
     funs. First assignment of "sum" found on line 2 column 5.
-generate: {}
+generate: null

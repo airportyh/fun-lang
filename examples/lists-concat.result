@@ -1,0 +1,162 @@
+parse:
+  ast:
+    - type: proc_definition
+      name:
+        type: identifier
+        value: main
+        text: main
+        offset: 5
+        lineBreaks: 0
+        line: 1
+        col: 6
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: names
+            text: names
+            offset: 18
+            lineBreaks: 0
+            line: 2
+            col: 5
+          value:
+            type: list_literal
+            items:
+              - type: string_literal
+                value: Darren
+                text: '"Darren"'
+                offset: 27
+                lineBreaks: 0
+                line: 2
+                col: 14
+              - type: string_literal
+                value: Kwan
+                text: '"Kwan"'
+                offset: 37
+                lineBreaks: 0
+                line: 2
+                col: 24
+              - type: string_literal
+                value: James
+                text: '"James"'
+                offset: 45
+                lineBreaks: 0
+                line: 2
+                col: 32
+              - type: string_literal
+                value: Merrin
+                text: '"Merrin"'
+                offset: 54
+                lineBreaks: 0
+                line: 2
+                col: 41
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: names
+            text: names
+            offset: 68
+            lineBreaks: 0
+            line: 3
+            col: 5
+          value:
+            type: call_expression
+            fun_name:
+              type: identifier
+              value: concat
+              text: concat
+              offset: 76
+              lineBreaks: 0
+              line: 3
+              col: 13
+            arguments:
+              - type: var_reference
+                var_name:
+                  type: identifier
+                  value: names
+                  text: names
+                  offset: 83
+                  lineBreaks: 0
+                  line: 3
+                  col: 20
+              - type: list_literal
+                items:
+                  - type: string_literal
+                    value: Karen
+                    text: '"Karen"'
+                    offset: 91
+                    lineBreaks: 0
+                    line: 3
+                    col: 28
+        - type: call_expression
+          fun_name:
+            type: identifier
+            value: print
+            text: print
+            offset: 105
+            lineBreaks: 0
+            line: 4
+            col: 5
+          arguments:
+            - type: var_reference
+              var_name:
+                type: identifier
+                value: names
+                text: names
+                offset: 111
+                lineBreaks: 0
+                line: 4
+                col: 11
+check: []
+generate:
+  js: |-
+    async function main() {
+        var names = ["Darren", "Kwan", "James", "Merrin"];
+        var names = concat(names, ["Karen"]);
+        print(names);
+    }
+
+    main().catch(err => console.log(err.message));
+
+    // Built-in Functions:
+
+    function print(...args) {
+        console.log(...args);
+    }
+
+    function pop(array) {
+        return array.pop();
+    }
+
+    function push(array, item) {
+        return array.push(item);
+    }
+
+    function concat(one, other) {
+        return one.concat(other);
+    }
+
+    function map(fn, arr) {
+        return arr.map(fn);
+    }
+
+    function filter(fn, arr) {
+        return arr.filter(fn);
+    }
+
+    function reduce(fn, initValue, arr) {
+        return arr.reduce(fn, initValue);
+    }
+
+    function sqrt(num) {
+        return Math.sqrt(num);
+    }
+
+    function sqr(num) {
+        return num * num;
+    }
+exec:
+  stdout: |
+    [ 'Darren', 'Kwan', 'James', 'Merrin', 'Karen' ]
+  stderr: ''

@@ -8,13 +8,14 @@ async function main() {
         console.warn("Please provide a file name.");
         return;
     }
-    const outputFilename = path.basename(filename, ".fun") + ".ast";
+    const dir = path.dirname(filename);
+    const outputFilePath = path.join(dir, path.basename(filename, ".fun") + ".ast");
     const code = (await fs.readFile(filename)).toString();
     
     try {
         const ast = parse(code);
-        await fs.writeFile(outputFilename, JSON.stringify(ast, null, "  "));
-        console.log(`Wrote ${outputFilename}.`);
+        await fs.writeFile(outputFilePath, JSON.stringify(ast, null, "  "));
+        console.log(`Wrote ${outputFilePath}.`);
     } catch (e) {
         console.log(e.message);
     }

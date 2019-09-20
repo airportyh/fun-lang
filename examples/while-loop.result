@@ -1,0 +1,198 @@
+parse:
+  ast:
+    - type: proc_definition
+      name:
+        type: identifier
+        value: main
+        text: main
+        offset: 5
+        lineBreaks: 0
+        line: 1
+        col: 6
+      parameters: []
+      body:
+        - type: var_assignment
+          var_name:
+            type: identifier
+            value: count
+            text: count
+            offset: 18
+            lineBreaks: 0
+            line: 2
+            col: 5
+          value:
+            type: number_literal
+            value: 1
+            text: '1'
+            offset: 26
+            lineBreaks: 0
+            line: 2
+            col: 13
+        - type: while_loop
+          condition:
+            type: binary_operation
+            operator:
+              type: lte
+              value: <=
+              text: <=
+              offset: 44
+              lineBreaks: 0
+              line: 3
+              col: 17
+            left:
+              type: var_reference
+              var_name:
+                type: identifier
+                value: count
+                text: count
+                offset: 38
+                lineBreaks: 0
+                line: 3
+                col: 11
+            right:
+              type: number_literal
+              value: 10
+              text: '10'
+              offset: 47
+              lineBreaks: 0
+              line: 3
+              col: 20
+          body:
+            - type: call_expression
+              fun_name:
+                type: identifier
+                value: print
+                text: print
+                offset: 60
+                lineBreaks: 0
+                line: 4
+                col: 9
+              arguments:
+                - type: var_reference
+                  var_name:
+                    type: identifier
+                    value: count
+                    text: count
+                    offset: 66
+                    lineBreaks: 0
+                    line: 4
+                    col: 15
+            - type: var_assignment
+              var_name:
+                type: identifier
+                value: count
+                text: count
+                offset: 81
+                lineBreaks: 0
+                line: 5
+                col: 9
+              value:
+                type: binary_operation
+                operator:
+                  type: plus
+                  value: +
+                  text: +
+                  offset: 95
+                  lineBreaks: 0
+                  line: 5
+                  col: 23
+                left:
+                  type: var_reference
+                  var_name:
+                    type: identifier
+                    value: count
+                    text: count
+                    offset: 89
+                    lineBreaks: 0
+                    line: 5
+                    col: 17
+                right:
+                  type: number_literal
+                  value: 1
+                  text: '1'
+                  offset: 97
+                  lineBreaks: 0
+                  line: 5
+                  col: 25
+        - type: call_expression
+          fun_name:
+            type: identifier
+            value: print
+            text: print
+            offset: 109
+            lineBreaks: 0
+            line: 7
+            col: 5
+          arguments:
+            - type: string_literal
+              value: done
+              text: '"done"'
+              offset: 115
+              lineBreaks: 0
+              line: 7
+              col: 11
+check: []
+generate:
+  js: |-
+    async function main() {
+        var count = 1;
+        while (count <= 10) {
+            print(count);
+            var count = count + 1;
+        }
+        print("done");
+    }
+
+    main().catch(err => console.log(err.message));
+
+    // Built-in Functions:
+
+    function print(...args) {
+        console.log(...args);
+    }
+
+    function pop(array) {
+        return array.pop();
+    }
+
+    function push(array, item) {
+        return array.push(item);
+    }
+
+    function concat(one, other) {
+        return one.concat(other);
+    }
+
+    function map(fn, arr) {
+        return arr.map(fn);
+    }
+
+    function filter(fn, arr) {
+        return arr.filter(fn);
+    }
+
+    function reduce(fn, initValue, arr) {
+        return arr.reduce(fn, initValue);
+    }
+
+    function sqrt(num) {
+        return Math.sqrt(num);
+    }
+
+    function sqr(num) {
+        return num * num;
+    }
+exec:
+  stdout: |
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    done
+  stderr: ''

@@ -18,10 +18,6 @@ proc print_hello() [
 ]
 
 proc main(argv) [
-    total = 0
-    numbers = [1, 2, 3, 4, 5]
-    ball[0][numbers[0]] = 2
-    total = 1
-    mapping = { name: "Bob", age: 8 }
-    print_hello()
+    d = distance(4, 9, 5, 12)
+    print("The distance is", d)
 ]

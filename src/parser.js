@@ -1,4 +1,3 @@
-const fs = require("mz/fs");
 const nearley = require("nearley");
 const grammar = require("./fun-lang");
 
