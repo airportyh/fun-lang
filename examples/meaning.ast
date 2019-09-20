@@ -1,0 +1,59 @@
+[
+  {
+    "type": "proc_definition",
+    "name": {
+      "type": "identifier",
+      "value": "main",
+      "text": "main",
+      "offset": 5,
+      "lineBreaks": 0,
+      "line": 1,
+      "col": 6
+    },
+    "parameters": [],
+    "body": [
+      {
+        "type": "var_assignment",
+        "var_name": {
+          "type": "identifier",
+          "value": "answer",
+          "text": "answer",
+          "offset": 18,
+          "lineBreaks": 0,
+          "line": 2,
+          "col": 5
+        },
+        "value": {
+          "type": "binary_operation",
+          "operator": {
+            "type": "multiply",
+            "value": "*",
+            "text": "*",
+            "offset": 29,
+            "lineBreaks": 0,
+            "line": 2,
+            "col": 16
+          },
+          "left": {
+            "type": "number_literal",
+            "value": 6,
+            "text": "6",
+            "offset": 27,
+            "lineBreaks": 0,
+            "line": 2,
+            "col": 14
+          },
+          "right": {
+            "type": "number_literal",
+            "value": 7,
+            "text": "7",
+            "offset": 31,
+            "lineBreaks": 0,
+            "line": 2,
+            "col": 18
+          }
+        }
+      }
+    ]
+  }
+]

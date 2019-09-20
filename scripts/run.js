@@ -12,21 +12,13 @@ async function main() {
     try {
         await exec(`node ${__dirname}/check.js ${fileBaseName}.ast`);
         await exec(`node ${__dirname}/generate.js ${fileBaseName}.ast`);
-        await runJs(fileBaseName);
+        const [stdout, stderr] = await exec(`node ${fileBaseName}.js`);
+        process.stdout.write(stdout.toString());
+        if (stderr.toString()) {
+            process.stdout.write(stderr.toString());
+        }
     } catch (e) {
         console.log(e);
-    }
-}
-
-async function generateJs(fileBaseName) {
-
-}
-
-async function runJs(fileBaseName) {
-    const [stdout, stderr] = await exec(`node ${fileBaseName}.js`);
-    process.stdout.write(stdout.toString());
-    if (stderr.toString()) {
-        process.stdout.write(stderr.toString());
     }
 }
 

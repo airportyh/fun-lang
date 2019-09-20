@@ -1,5 +1,6 @@
 ## TODOS
 
+* embed examples and docs in the grammar file?
 * write comments and readmes
 * make checker support loops and if statements
 * improve error message with run.js

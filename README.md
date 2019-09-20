@@ -49,3 +49,10 @@ to solve code challenges on sites like Codewars or HackerRank to sharpen your un
 to build a programming language, you may learn by digging
 into the source code of Fun. It is designed to be self-documenting and hackable from the ground up. There
 is also a supplementing [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) covering the basics.
+
+## Dig Deeper
+
+If you'd like to learn more about this project, you may visit:
+
+* [The Fun User Manual](USER_MANUAL.md)
+* [The Fun Developer Manual](CONTRIBUTING.md)

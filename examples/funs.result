@@ -253,6 +253,10 @@ generate:
     function sqr(num) {
         return num * num;
     }
+
+    function join(array, separator) {
+        return array.join(separator);
+    }
 exec:
   stdout: |
     34.785054261852174

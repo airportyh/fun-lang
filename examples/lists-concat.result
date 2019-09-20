@@ -160,6 +160,10 @@ generate:
     function sqr(num) {
         return num * num;
     }
+
+    function join(array, separator) {
+        return array.join(separator);
+    }
 exec:
   stdout: |
     [ 'Darren', 'Kwan', 'James', 'Merrin', 'Karen' ]
