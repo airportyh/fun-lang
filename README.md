@@ -52,7 +52,7 @@ is also a supplementing video series covering the basics.
 
 ## Dig Deeper
 
-If you'd like to learn more about this project, read:
+To learn more, read:
 
 * [The Fun User Manual](USER_MANUAL.md)
 * [The Fun Developer Manual](CONTRIBUTING.md)
