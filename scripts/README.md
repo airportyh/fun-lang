@@ -69,3 +69,15 @@ node scripts/run.js hello.fun
 
 to execute it. Internally, it will call `parse.js`, `check.js`, `generate.js`, and then execute
 the resulting JavaScript program using Node.js.
+
+## test-examples.js
+
+This script tests all example programs (`.fun` files) under the examples directory. For each
+`.fun` file in there, it will parse, check, generate, and execute it, node using the scripts
+in the directory but using the functions provided in `src` directly. The test results for
+each program will be stored in a `.result` file with the corresponding
+name as the program. To test the examples, do:
+
+```
+node scripts/test-examples.js
+```
