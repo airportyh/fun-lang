@@ -6,9 +6,9 @@ documentation files: `README.md`, `CONTRIBUTING.md` and `USER_MANUAL.md`
 at the top level project directory, the following three directories are of
 interest:
 
-* `src` - contains the core source code of the Fun Programming Language ([more...](src/README.md))
-* `scripts` - contains some command line utilities ([more...](scripts/README.md))
-* `examples` - contains some code examples as well as the results of testing 
+* [src](src) - contains the core source code of the Fun Programming Language ([more...](src/README.md))
+* [scripts](scripts) - contains some command line utilities ([more...](scripts/README.md))
+* [examples](examples) - contains some code examples as well as the results of testing 
 these code examples using the `scripts/test-examples.js` script ([more...](examples/README.md))
 
 ## Architecture

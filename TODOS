@@ -1,10 +1,12 @@
 ## TODOS
 
-* 
+* improve runtime errors
 * embed examples and docs in the grammar file?
+* anonymous funs
+* currying
+* function composition
 * make checker support loops and if statements
-* improve error message with run.js
-* length of an array or dictionary
+* function to get length of an array or dictionary
 * ensure pure functions don't call non-pure ones
 * allow for loop to loop through dictionary
 * parenthesis
@@ -14,15 +16,21 @@
 * mandatory return statements in funs?
 * regex
 * multi-line allowance
-* runtime type checking
 * runtime diagnostics
 * IO
     * read_file
     * write_file
 * back-in-time debugger
 
+## Later
+
+* type annotations and compile-time type checking
+* source maps
+
 ## Done
 
+* improve error message with run.js (x)
+* unify test-example.js and run.js code (x)
 * write comments and readmes (x)
 * write some simple programs (x)
 * string split (x)
@@ -49,8 +57,3 @@
 * list (x)
 * dictionaries (x)
 * comments (x)
-
-## Later
-
-* type annotations
-* source maps
