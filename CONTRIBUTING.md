@@ -170,6 +170,7 @@ and try them out:
 
 ## Dig Deeper
 
-* [src directory](src/README.md)
-* [scripts directory](scripts/README.md)
+* [src directory](src)
+* [scripts directory](scripts)
+* [examples directory](examples)
 * This [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) covers how to create a programming language using JavaScript. Much of the tools and techniques used in those videos are used in this project.
