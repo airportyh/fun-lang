@@ -7,7 +7,8 @@ at the top level project directory, the following three directories are of
 interest:
 
 * [src](src) - contains the core source code of the Fun Programming Language
-* [scripts](scripts) - contains some command line utilities
+* [scripts](scripts) - contains command line utilities for running
+and diagnosing Fun programs
 * [examples](examples) - contains some code examples as well as the results of testing 
 these code examples using the `scripts/test-examples.js` script
 
