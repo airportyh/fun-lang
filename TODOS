@@ -2,6 +2,8 @@
 
 * improve runtime errors
 * embed examples and docs in the grammar file?
+* reduce the size of token nodes in AST
+* add line number/range info in all nodes
 * anonymous funs
 * currying
 * function composition

@@ -143,7 +143,7 @@ In JSON format, it is:
 
 As you can see, each node of the tree (AST node) is represented as a plain
 object and contains a `type` property to allow a program to distinguish
-it from another type of syntax construct. Each type of AST node
+it from other types of syntax construct. Each type of AST node
 will also have additional properties that are specific to that type.
 For example, a `var_assignment` has the properties:
 
