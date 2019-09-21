@@ -167,7 +167,7 @@ and try them out:
 
 * Install Node.js (https://nodejs.org)
 * Change into the project directory
-* `npm install`
+* Perform the command: `npm install`
 
 ## Dig Deeper
 
