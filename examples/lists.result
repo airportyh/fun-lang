@@ -1,112 +1,146 @@
 parse:
-  ast:
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 5
-        lineBreaks: 0
-        line: 1
-        col: 6
-      parameters: []
-      body:
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: names
-            text: names
-            offset: 18
-            lineBreaks: 0
-            line: 2
-            col: 5
-          value:
-            type: list_literal
-            items:
-              - type: string_literal
-                value: Darren
-                text: '"Darren"'
-                offset: 27
-                lineBreaks: 0
-                line: 2
-                col: 14
-              - type: string_literal
-                value: Kwan
-                text: '"Kwan"'
-                offset: 37
-                lineBreaks: 0
-                line: 2
-                col: 24
-              - type: string_literal
-                value: James
-                text: '"James"'
-                offset: 45
-                lineBreaks: 0
-                line: 2
-                col: 32
-              - type: string_literal
-                value: Merrin
-                text: '"Merrin"'
-                offset: 54
-                lineBreaks: 0
-                line: 2
-                col: 41
-        - type: indexed_assignment
-          subject:
-            type: var_reference
-            var_name:
-              type: identifier
-              value: names
-              text: names
-              offset: 68
-              lineBreaks: 0
-              line: 3
-              col: 5
-          index:
-            type: number_literal
-            value: 3
-            text: '3'
-            offset: 74
-            lineBreaks: 0
-            line: 3
-            col: 11
-          value:
-            type: string_literal
-            value: JR
-            text: '"JR"'
-            offset: 79
-            lineBreaks: 0
-            line: 3
-            col: 16
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 88
-            lineBreaks: 0
-            line: 4
-            col: 5
-          arguments:
-            - type: indexed_access
-              subject:
-                type: var_reference
-                var_name:
-                  type: identifier
-                  value: names
-                  text: names
-                  offset: 94
-                  lineBreaks: 0
-                  line: 4
-                  col: 11
-              index:
-                type: number_literal
-                value: 3
-                text: '3'
-                offset: 100
-                lineBreaks: 0
-                line: 4
-                col: 17
+  ast: |-
+    [
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 5,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "names",
+                        "text": "names",
+                        "offset": 18,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "list_literal",
+                        "items": [
+                            {
+                                "type": "string_literal",
+                                "value": "Darren",
+                                "text": "\"Darren\"",
+                                "offset": 27,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 14
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "Kwan",
+                                "text": "\"Kwan\"",
+                                "offset": 37,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 24
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "James",
+                                "text": "\"James\"",
+                                "offset": 45,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 32
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "Merrin",
+                                "text": "\"Merrin\"",
+                                "offset": 54,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 41
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "indexed_assignment",
+                    "subject": {
+                        "type": "var_reference",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "names",
+                            "text": "names",
+                            "offset": 68,
+                            "lineBreaks": 0,
+                            "line": 3,
+                            "col": 5
+                        }
+                    },
+                    "index": {
+                        "type": "number_literal",
+                        "value": 3,
+                        "text": "3",
+                        "offset": 74,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 11
+                    },
+                    "value": {
+                        "type": "string_literal",
+                        "value": "JR",
+                        "text": "\"JR\"",
+                        "offset": 79,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 16
+                    }
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 88,
+                        "lineBreaks": 0,
+                        "line": 4,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "indexed_access",
+                            "subject": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "names",
+                                    "text": "names",
+                                    "offset": 94,
+                                    "lineBreaks": 0,
+                                    "line": 4,
+                                    "col": 11
+                                }
+                            },
+                            "index": {
+                                "type": "number_literal",
+                                "value": 3,
+                                "text": "3",
+                                "offset": 100,
+                                "lineBreaks": 0,
+                                "line": 4,
+                                "col": 17
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-

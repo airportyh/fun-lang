@@ -1,33 +1,45 @@
 parse:
-  ast:
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 5
-        lineBreaks: 0
-        line: 1
-        col: 6
-      parameters: []
-      body:
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 18
-            lineBreaks: 0
-            line: 2
-            col: 5
-          arguments:
-            - type: string_literal
-              value: 'Hello, world!'
-              text: '"Hello, world!"'
-              offset: 24
-              lineBreaks: 0
-              line: 2
-              col: 11
+  ast: |-
+    [
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 5,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 18,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "string_literal",
+                            "value": "Hello, world!",
+                            "text": "\"Hello, world!\"",
+                            "offset": 24,
+                            "lineBreaks": 0,
+                            "line": 2,
+                            "col": 11
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-

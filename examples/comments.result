@@ -1,47 +1,63 @@
 parse:
-  ast:
-    - type: comment
-      value: ' Hello! This is a fun program'
-      text: '# Hello! This is a fun program'
-      offset: 0
-      lineBreaks: 0
-      line: 1
-      col: 1
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 36
-        lineBreaks: 0
-        line: 2
-        col: 6
-      parameters: []
-      body:
-        - type: comment
-          value: ' This is the body of the main proc'
-          text: '# This is the body of the main proc'
-          offset: 49
-          lineBreaks: 0
-          line: 3
-          col: 5
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 89
-            lineBreaks: 0
-            line: 4
-            col: 5
-          arguments:
-            - type: string_literal
-              value: 'Hello, world!'
-              text: '"Hello, world!"'
-              offset: 95
-              lineBreaks: 0
-              line: 4
-              col: 11
+  ast: |-
+    [
+        {
+            "type": "comment",
+            "value": " Hello! This is a fun program",
+            "text": "# Hello! This is a fun program",
+            "offset": 0,
+            "lineBreaks": 0,
+            "line": 1,
+            "col": 1
+        },
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 36,
+                "lineBreaks": 0,
+                "line": 2,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "comment",
+                    "value": " This is the body of the main proc",
+                    "text": "# This is the body of the main proc",
+                    "offset": 49,
+                    "lineBreaks": 0,
+                    "line": 3,
+                    "col": 5
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 89,
+                        "lineBreaks": 0,
+                        "line": 4,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "string_literal",
+                            "value": "Hello, world!",
+                            "text": "\"Hello, world!\"",
+                            "offset": 95,
+                            "lineBreaks": 0,
+                            "line": 4,
+                            "col": 11
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-

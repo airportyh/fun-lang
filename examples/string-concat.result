@@ -1,144 +1,180 @@
 parse:
-  ast:
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 5
-        lineBreaks: 0
-        line: 1
-        col: 6
-      parameters: []
-      body:
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: greeting
-            text: greeting
-            offset: 18
-            lineBreaks: 0
-            line: 2
-            col: 5
-          value:
-            type: string_literal
-            value: Hello
-            text: '"Hello"'
-            offset: 29
-            lineBreaks: 0
-            line: 2
-            col: 16
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: name
-            text: name
-            offset: 41
-            lineBreaks: 0
-            line: 3
-            col: 5
-          value:
-            type: string_literal
-            value: McGinnis
-            text: '"McGinnis"'
-            offset: 48
-            lineBreaks: 0
-            line: 3
-            col: 12
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: message
-            text: message
-            offset: 63
-            lineBreaks: 0
-            line: 4
-            col: 5
-          value:
-            type: binary_operation
-            operator:
-              type: plus
-              value: +
-              text: +
-              offset: 82
-              lineBreaks: 0
-              line: 4
-              col: 24
-            left:
-              type: var_reference
-              var_name:
-                type: identifier
-                value: greeting
-                text: greeting
-                offset: 73
-                lineBreaks: 0
-                line: 4
-                col: 15
-            right:
-              type: binary_operation
-              operator:
-                type: plus
-                value: +
-                text: +
-                offset: 89
-                lineBreaks: 0
-                line: 4
-                col: 31
-              left:
-                type: string_literal
-                value: ', '
-                text: '", "'
-                offset: 84
-                lineBreaks: 0
-                line: 4
-                col: 26
-              right:
-                type: binary_operation
-                operator:
-                  type: plus
-                  value: +
-                  text: +
-                  offset: 96
-                  lineBreaks: 0
-                  line: 4
-                  col: 38
-                left:
-                  type: var_reference
-                  var_name:
-                    type: identifier
-                    value: name
-                    text: name
-                    offset: 91
-                    lineBreaks: 0
-                    line: 4
-                    col: 33
-                right:
-                  type: string_literal
-                  value: '!'
-                  text: '"!"'
-                  offset: 98
-                  lineBreaks: 0
-                  line: 4
-                  col: 40
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 106
-            lineBreaks: 0
-            line: 5
-            col: 5
-          arguments:
-            - type: var_reference
-              var_name:
-                type: identifier
-                value: message
-                text: message
-                offset: 112
-                lineBreaks: 0
-                line: 5
-                col: 11
+  ast: |-
+    [
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 5,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "greeting",
+                        "text": "greeting",
+                        "offset": 18,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "string_literal",
+                        "value": "Hello",
+                        "text": "\"Hello\"",
+                        "offset": 29,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 16
+                    }
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "name",
+                        "text": "name",
+                        "offset": 41,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "string_literal",
+                        "value": "McGinnis",
+                        "text": "\"McGinnis\"",
+                        "offset": 48,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 12
+                    }
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "message",
+                        "text": "message",
+                        "offset": 63,
+                        "lineBreaks": 0,
+                        "line": 4,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "binary_operation",
+                        "operator": {
+                            "type": "plus",
+                            "value": "+",
+                            "text": "+",
+                            "offset": 82,
+                            "lineBreaks": 0,
+                            "line": 4,
+                            "col": 24
+                        },
+                        "left": {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "greeting",
+                                "text": "greeting",
+                                "offset": 73,
+                                "lineBreaks": 0,
+                                "line": 4,
+                                "col": 15
+                            }
+                        },
+                        "right": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "plus",
+                                "value": "+",
+                                "text": "+",
+                                "offset": 89,
+                                "lineBreaks": 0,
+                                "line": 4,
+                                "col": 31
+                            },
+                            "left": {
+                                "type": "string_literal",
+                                "value": ", ",
+                                "text": "\", \"",
+                                "offset": 84,
+                                "lineBreaks": 0,
+                                "line": 4,
+                                "col": 26
+                            },
+                            "right": {
+                                "type": "binary_operation",
+                                "operator": {
+                                    "type": "plus",
+                                    "value": "+",
+                                    "text": "+",
+                                    "offset": 96,
+                                    "lineBreaks": 0,
+                                    "line": 4,
+                                    "col": 38
+                                },
+                                "left": {
+                                    "type": "var_reference",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "name",
+                                        "text": "name",
+                                        "offset": 91,
+                                        "lineBreaks": 0,
+                                        "line": 4,
+                                        "col": 33
+                                    }
+                                },
+                                "right": {
+                                    "type": "string_literal",
+                                    "value": "!",
+                                    "text": "\"!\"",
+                                    "offset": 98,
+                                    "lineBreaks": 0,
+                                    "line": 4,
+                                    "col": 40
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 106,
+                        "lineBreaks": 0,
+                        "line": 5,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "message",
+                                "text": "message",
+                                "offset": 112,
+                                "lineBreaks": 0,
+                                "line": 5,
+                                "col": 11
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-

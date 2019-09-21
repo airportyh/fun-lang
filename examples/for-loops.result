@@ -1,131 +1,169 @@
 parse:
-  ast:
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 5
-        lineBreaks: 0
-        line: 1
-        col: 6
-      parameters: []
-      body:
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: names
-            text: names
-            offset: 18
-            lineBreaks: 0
-            line: 2
-            col: 5
-          value:
-            type: list_literal
-            items:
-              - type: string_literal
-                value: Darren
-                text: '"Darren"'
-                offset: 27
-                lineBreaks: 0
-                line: 2
-                col: 14
-              - type: string_literal
-                value: Kwan
-                text: '"Kwan"'
-                offset: 37
-                lineBreaks: 0
-                line: 2
-                col: 24
-              - type: string_literal
-                value: James
-                text: '"James"'
-                offset: 45
-                lineBreaks: 0
-                line: 2
-                col: 32
-              - type: string_literal
-                value: Merrin
-                text: '"Merrin"'
-                offset: 54
-                lineBreaks: 0
-                line: 2
-                col: 41
-        - type: for_loop
-          loop_variable:
-            type: identifier
-            value: name
-            text: name
-            offset: 72
-            lineBreaks: 0
-            line: 3
-            col: 9
-          iterable:
-            type: var_reference
-            var_name:
-              type: identifier
-              value: names
-              text: names
-              offset: 80
-              lineBreaks: 0
-              line: 3
-              col: 17
-          body:
-            - type: call_expression
-              fun_name:
-                type: identifier
-                value: print
-                text: print
-                offset: 96
-                lineBreaks: 0
-                line: 4
-                col: 9
-              arguments:
-                - type: binary_operation
-                  operator:
-                    type: plus
-                    value: +
-                    text: +
-                    offset: 112
-                    lineBreaks: 0
-                    line: 4
-                    col: 25
-                  left:
-                    type: string_literal
-                    value: 'Hello, '
-                    text: '"Hello, "'
-                    offset: 102
-                    lineBreaks: 0
-                    line: 4
-                    col: 15
-                  right:
-                    type: binary_operation
-                    operator:
-                      type: plus
-                      value: +
-                      text: +
-                      offset: 119
-                      lineBreaks: 0
-                      line: 4
-                      col: 32
-                    left:
-                      type: var_reference
-                      var_name:
-                        type: identifier
-                        value: name
-                        text: name
-                        offset: 114
-                        lineBreaks: 0
-                        line: 4
-                        col: 27
-                    right:
-                      type: string_literal
-                      value: '!'
-                      text: '"!"'
-                      offset: 121
-                      lineBreaks: 0
-                      line: 4
-                      col: 34
+  ast: |-
+    [
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 5,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "names",
+                        "text": "names",
+                        "offset": 18,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "list_literal",
+                        "items": [
+                            {
+                                "type": "string_literal",
+                                "value": "Darren",
+                                "text": "\"Darren\"",
+                                "offset": 27,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 14
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "Kwan",
+                                "text": "\"Kwan\"",
+                                "offset": 37,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 24
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "James",
+                                "text": "\"James\"",
+                                "offset": 45,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 32
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "Merrin",
+                                "text": "\"Merrin\"",
+                                "offset": 54,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 41
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "for_loop",
+                    "loop_variable": {
+                        "type": "identifier",
+                        "value": "name",
+                        "text": "name",
+                        "offset": 72,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 9
+                    },
+                    "iterable": {
+                        "type": "var_reference",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "names",
+                            "text": "names",
+                            "offset": 80,
+                            "lineBreaks": 0,
+                            "line": 3,
+                            "col": 17
+                        }
+                    },
+                    "body": [
+                        {
+                            "type": "call_expression",
+                            "fun_name": {
+                                "type": "identifier",
+                                "value": "print",
+                                "text": "print",
+                                "offset": 96,
+                                "lineBreaks": 0,
+                                "line": 4,
+                                "col": 9
+                            },
+                            "arguments": [
+                                {
+                                    "type": "binary_operation",
+                                    "operator": {
+                                        "type": "plus",
+                                        "value": "+",
+                                        "text": "+",
+                                        "offset": 112,
+                                        "lineBreaks": 0,
+                                        "line": 4,
+                                        "col": 25
+                                    },
+                                    "left": {
+                                        "type": "string_literal",
+                                        "value": "Hello, ",
+                                        "text": "\"Hello, \"",
+                                        "offset": 102,
+                                        "lineBreaks": 0,
+                                        "line": 4,
+                                        "col": 15
+                                    },
+                                    "right": {
+                                        "type": "binary_operation",
+                                        "operator": {
+                                            "type": "plus",
+                                            "value": "+",
+                                            "text": "+",
+                                            "offset": 119,
+                                            "lineBreaks": 0,
+                                            "line": 4,
+                                            "col": 32
+                                        },
+                                        "left": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "name",
+                                                "text": "name",
+                                                "offset": 114,
+                                                "lineBreaks": 0,
+                                                "line": 4,
+                                                "col": 27
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "string_literal",
+                                            "value": "!",
+                                            "text": "\"!\"",
+                                            "offset": 121,
+                                            "lineBreaks": 0,
+                                            "line": 4,
+                                            "col": 34
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-

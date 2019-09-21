@@ -6,6 +6,7 @@ The compiler consists of the following modules:
 * The parser
 * The checker
 * The generator
+* The runner
 
 More details about each is covered below.
 
@@ -51,7 +52,7 @@ Not all of these features have been implemented.
 
 ## Generator
 
-The code generator is implemented in `generator.js`. The entry point is the
+The Fun code generator is implemented in `generator.js`. The entry point is the
 exported `generateCode(ast)` function. The return value of the function is a
 string containing JavaScript code. Similarly to the checker, it recursively
 iterates the AST, but instead of checking for mistakes, it generates the
@@ -61,3 +62,32 @@ in succession. The `built-in-functions.js` contains JavaScript functions
 that are used by the generated JavaScript and are therefore
 included with the generated JavaScript programs. The built-in functions
 can be consider the *runtime* of the language.
+
+## Runner
+
+The Fun runner in implemented in `runner.js`. It combines the 
+following 4 steps into 1:
+
+1. Parse the program
+2. Check the program
+3. Generate the JavaScript code
+4. Execute the JavaScript using Node.js
+
+The entry point of the runner is the `run(code)` that is exported by
+`runner.js`. It takes in Fun code as a string, and returns a
+result object that contains the following:
+
+* a `parse` property which contains an object within which
+there is either an `error` property containing the error message - in
+which case there was a parse error, or an `ast` property, in which case
+there is the AST in JSON format.
+* a `check` property which contains an array of errors. If the array
+is empty that means there were no checker errors.
+* a `generate` property hich contains an object within which
+there is either an `error` property containing the error message -
+in case of a generator error, or a `js` property containing the
+generated JavaScript as a string.
+* an `exec` property which contains an object within which there
+is a `stdout` property containing the standard output content of
+the resulting JavaScript as executed in Node.js, and a `stderr`
+property containing that of the standard error output.

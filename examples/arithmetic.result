@@ -1,212 +1,270 @@
 parse:
-  ast:
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 5
-        lineBreaks: 0
-        line: 1
-        col: 6
-      parameters: []
-      body:
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: x1
-            text: x1
-            offset: 18
-            lineBreaks: 0
-            line: 2
-            col: 5
-          value:
-            type: number_literal
-            value: 23
-            text: '23'
-            offset: 23
-            lineBreaks: 0
-            line: 2
-            col: 10
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: y1
-            text: y1
-            offset: 30
-            lineBreaks: 0
-            line: 3
-            col: 5
-          value:
-            type: number_literal
-            value: 84
-            text: '84'
-            offset: 35
-            lineBreaks: 0
-            line: 3
-            col: 10
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: x2
-            text: x2
-            offset: 42
-            lineBreaks: 0
-            line: 4
-            col: 5
-          value:
-            type: number_literal
-            value: 46
-            text: '46'
-            offset: 47
-            lineBreaks: 0
-            line: 4
-            col: 10
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: y2
-            text: y2
-            offset: 54
-            lineBreaks: 0
-            line: 5
-            col: 5
-          value:
-            type: number_literal
-            value: 23
-            text: '23'
-            offset: 59
-            lineBreaks: 0
-            line: 5
-            col: 10
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: dist
-            text: dist
-            offset: 66
-            lineBreaks: 0
-            line: 6
-            col: 5
-          value:
-            type: call_expression
-            fun_name:
-              type: identifier
-              value: sqrt
-              text: sqrt
-              offset: 73
-              lineBreaks: 0
-              line: 6
-              col: 12
-            arguments:
-              - type: binary_operation
-                operator:
-                  type: plus
-                  value: +
-                  text: +
-                  offset: 91
-                  lineBreaks: 0
-                  line: 6
-                  col: 30
-                left:
-                  type: call_expression
-                  fun_name:
-                    type: identifier
-                    value: sqr
-                    text: sqr
-                    offset: 78
-                    lineBreaks: 0
-                    line: 6
-                    col: 17
-                  arguments:
-                    - type: binary_operation
-                      operator:
-                        type: minus
-                        value: '-'
-                        text: '-'
-                        offset: 85
-                        lineBreaks: 0
-                        line: 6
-                        col: 24
-                      left:
-                        type: var_reference
-                        var_name:
-                          type: identifier
-                          value: x1
-                          text: x1
-                          offset: 82
-                          lineBreaks: 0
-                          line: 6
-                          col: 21
-                      right:
-                        type: var_reference
-                        var_name:
-                          type: identifier
-                          value: x2
-                          text: x2
-                          offset: 87
-                          lineBreaks: 0
-                          line: 6
-                          col: 26
-                right:
-                  type: call_expression
-                  fun_name:
-                    type: identifier
-                    value: sqr
-                    text: sqr
-                    offset: 93
-                    lineBreaks: 0
-                    line: 6
-                    col: 32
-                  arguments:
-                    - type: binary_operation
-                      operator:
-                        type: minus
-                        value: '-'
-                        text: '-'
-                        offset: 100
-                        lineBreaks: 0
-                        line: 6
-                        col: 39
-                      left:
-                        type: var_reference
-                        var_name:
-                          type: identifier
-                          value: x2
-                          text: x2
-                          offset: 97
-                          lineBreaks: 0
-                          line: 6
-                          col: 36
-                      right:
-                        type: var_reference
-                        var_name:
-                          type: identifier
-                          value: y2
-                          text: y2
-                          offset: 102
-                          lineBreaks: 0
-                          line: 6
-                          col: 41
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 111
-            lineBreaks: 0
-            line: 7
-            col: 5
-          arguments:
-            - type: var_reference
-              var_name:
-                type: identifier
-                value: dist
-                text: dist
-                offset: 117
-                lineBreaks: 0
-                line: 7
-                col: 11
+  ast: |-
+    [
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 5,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "x1",
+                        "text": "x1",
+                        "offset": 18,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "number_literal",
+                        "value": 23,
+                        "text": "23",
+                        "offset": 23,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 10
+                    }
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "y1",
+                        "text": "y1",
+                        "offset": 30,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "number_literal",
+                        "value": 84,
+                        "text": "84",
+                        "offset": 35,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 10
+                    }
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "x2",
+                        "text": "x2",
+                        "offset": 42,
+                        "lineBreaks": 0,
+                        "line": 4,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "number_literal",
+                        "value": 46,
+                        "text": "46",
+                        "offset": 47,
+                        "lineBreaks": 0,
+                        "line": 4,
+                        "col": 10
+                    }
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "y2",
+                        "text": "y2",
+                        "offset": 54,
+                        "lineBreaks": 0,
+                        "line": 5,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "number_literal",
+                        "value": 23,
+                        "text": "23",
+                        "offset": 59,
+                        "lineBreaks": 0,
+                        "line": 5,
+                        "col": 10
+                    }
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "dist",
+                        "text": "dist",
+                        "offset": 66,
+                        "lineBreaks": 0,
+                        "line": 6,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "sqrt",
+                            "text": "sqrt",
+                            "offset": 73,
+                            "lineBreaks": 0,
+                            "line": 6,
+                            "col": 12
+                        },
+                        "arguments": [
+                            {
+                                "type": "binary_operation",
+                                "operator": {
+                                    "type": "plus",
+                                    "value": "+",
+                                    "text": "+",
+                                    "offset": 91,
+                                    "lineBreaks": 0,
+                                    "line": 6,
+                                    "col": 30
+                                },
+                                "left": {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "sqr",
+                                        "text": "sqr",
+                                        "offset": 78,
+                                        "lineBreaks": 0,
+                                        "line": 6,
+                                        "col": 17
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "binary_operation",
+                                            "operator": {
+                                                "type": "minus",
+                                                "value": "-",
+                                                "text": "-",
+                                                "offset": 85,
+                                                "lineBreaks": 0,
+                                                "line": 6,
+                                                "col": 24
+                                            },
+                                            "left": {
+                                                "type": "var_reference",
+                                                "var_name": {
+                                                    "type": "identifier",
+                                                    "value": "x1",
+                                                    "text": "x1",
+                                                    "offset": 82,
+                                                    "lineBreaks": 0,
+                                                    "line": 6,
+                                                    "col": 21
+                                                }
+                                            },
+                                            "right": {
+                                                "type": "var_reference",
+                                                "var_name": {
+                                                    "type": "identifier",
+                                                    "value": "x2",
+                                                    "text": "x2",
+                                                    "offset": 87,
+                                                    "lineBreaks": 0,
+                                                    "line": 6,
+                                                    "col": 26
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "right": {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "sqr",
+                                        "text": "sqr",
+                                        "offset": 93,
+                                        "lineBreaks": 0,
+                                        "line": 6,
+                                        "col": 32
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "binary_operation",
+                                            "operator": {
+                                                "type": "minus",
+                                                "value": "-",
+                                                "text": "-",
+                                                "offset": 100,
+                                                "lineBreaks": 0,
+                                                "line": 6,
+                                                "col": 39
+                                            },
+                                            "left": {
+                                                "type": "var_reference",
+                                                "var_name": {
+                                                    "type": "identifier",
+                                                    "value": "x2",
+                                                    "text": "x2",
+                                                    "offset": 97,
+                                                    "lineBreaks": 0,
+                                                    "line": 6,
+                                                    "col": 36
+                                                }
+                                            },
+                                            "right": {
+                                                "type": "var_reference",
+                                                "var_name": {
+                                                    "type": "identifier",
+                                                    "value": "y2",
+                                                    "text": "y2",
+                                                    "offset": 102,
+                                                    "lineBreaks": 0,
+                                                    "line": 6,
+                                                    "col": 41
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 111,
+                        "lineBreaks": 0,
+                        "line": 7,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "dist",
+                                "text": "dist",
+                                "offset": 117,
+                                "lineBreaks": 0,
+                                "line": 7,
+                                "col": 11
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-

@@ -67,8 +67,7 @@ Assuming you have a Fun program, call it `hello.fun`, then you can simply do:
 node scripts/run.js hello.fun
 ```
 
-to execute it. Internally, it will call `parse.js`, `check.js`, `generate.js`, and then execute
-the resulting JavaScript program using Node.js.
+to execute it.
 
 ## test-examples.js
 

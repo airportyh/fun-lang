@@ -1,5 +1,5 @@
-const { exec } = require("mz/child_process");
-const path = require("path");
+const { run } = require("../src/runner");
+const fs = require("mz/fs");
 
 async function main() {
     const filename = process.argv[2];
@@ -7,18 +7,22 @@ async function main() {
         console.log("Please provide a file name.");
         return;
     }
-    const fileBaseName = path.basename(filename, ".fun");
-    await exec(`node ${__dirname}/parse.js ${filename}`);
-    try {
-        await exec(`node ${__dirname}/check.js ${fileBaseName}.ast`);
-        await exec(`node ${__dirname}/generate.js ${fileBaseName}.ast`);
-        const [stdout, stderr] = await exec(`node ${fileBaseName}.js`);
-        process.stdout.write(stdout.toString());
-        if (stderr.toString()) {
-            process.stdout.write(stderr.toString());
+    const code = (await fs.readFile(filename)).toString();
+    const result = await run(code);
+    if (result.parse.error) {
+        console.error("Parser Error: " + result.parse.error);
+    } else if (result.check.length > 0) {
+        console.error("Checker Error:");
+        for (let error of result.check) {
+            console.log("    " + error);
         }
-    } catch (e) {
-        console.log(e);
+    } else if (result.generate.error) {
+        console.log("Generator Error: " + result.generate.error);
+    } else if (result.exec.error) {
+        console.log("Runtime Error: " + result.exec.error);
+    } else {
+        process.stdout.write(result.exec.stdout);
+        process.stderr.write(result.exec.stderr);
     }
 }
 

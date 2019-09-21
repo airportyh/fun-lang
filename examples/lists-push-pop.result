@@ -1,156 +1,209 @@
 parse:
-  ast:
-    - type: proc_definition
-      name:
-        type: identifier
-        value: main
-        text: main
-        offset: 5
-        lineBreaks: 0
-        line: 1
-        col: 6
-      parameters: []
-      body:
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: names
-            text: names
-            offset: 18
-            lineBreaks: 0
-            line: 2
-            col: 5
-          value:
-            type: list_literal
-            items:
-              - type: string_literal
-                value: Darren
-                text: '"Darren"'
-                offset: 27
-                lineBreaks: 0
-                line: 2
-                col: 14
-              - type: string_literal
-                value: Kwan
-                text: '"Kwan"'
-                offset: 37
-                lineBreaks: 0
-                line: 2
-                col: 24
-              - type: string_literal
-                value: James
-                text: '"James"'
-                offset: 45
-                lineBreaks: 0
-                line: 2
-                col: 32
-              - type: string_literal
-                value: Merrin
-                text: '"Merrin"'
-                offset: 54
-                lineBreaks: 0
-                line: 2
-                col: 41
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: push
-            text: push
-            offset: 68
-            lineBreaks: 0
-            line: 3
-            col: 5
-          arguments:
-            - type: var_reference
-              var_name:
-                type: identifier
-                value: names
-                text: names
-                offset: 73
-                lineBreaks: 0
-                line: 3
-                col: 10
-            - type: string_literal
-              value: Karen
-              text: '"Karen"'
-              offset: 80
-              lineBreaks: 0
-              line: 3
-              col: 17
-        - type: var_assignment
-          var_name:
-            type: identifier
-            value: removed
-            text: removed
-            offset: 93
-            lineBreaks: 0
-            line: 4
-            col: 5
-          value:
-            type: call_expression
-            fun_name:
-              type: identifier
-              value: pop
-              text: pop
-              offset: 103
-              lineBreaks: 0
-              line: 4
-              col: 15
-            arguments:
-              - type: var_reference
-                var_name:
-                  type: identifier
-                  value: names
-                  text: names
-                  offset: 107
-                  lineBreaks: 0
-                  line: 4
-                  col: 19
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 118
-            lineBreaks: 0
-            line: 5
-            col: 5
-          arguments:
-            - type: string_literal
-              value: Removed
-              text: '"Removed"'
-              offset: 124
-              lineBreaks: 0
-              line: 5
-              col: 11
-            - type: var_reference
-              var_name:
-                type: identifier
-                value: removed
-                text: removed
-                offset: 135
-                lineBreaks: 0
-                line: 5
-                col: 22
-        - type: call_expression
-          fun_name:
-            type: identifier
-            value: print
-            text: print
-            offset: 148
-            lineBreaks: 0
-            line: 6
-            col: 5
-          arguments:
-            - type: var_reference
-              var_name:
-                type: identifier
-                value: names
-                text: names
-                offset: 154
-                lineBreaks: 0
-                line: 6
-                col: 11
+  ast: |-
+    [
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "text": "main",
+                "offset": 5,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 6
+            },
+            "parameters": [],
+            "body": [
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "names",
+                        "text": "names",
+                        "offset": 18,
+                        "lineBreaks": 0,
+                        "line": 2,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "list_literal",
+                        "items": [
+                            {
+                                "type": "string_literal",
+                                "value": "Darren",
+                                "text": "\"Darren\"",
+                                "offset": 27,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 14
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "Kwan",
+                                "text": "\"Kwan\"",
+                                "offset": 37,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 24
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "James",
+                                "text": "\"James\"",
+                                "offset": 45,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 32
+                            },
+                            {
+                                "type": "string_literal",
+                                "value": "Merrin",
+                                "text": "\"Merrin\"",
+                                "offset": 54,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 41
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "push",
+                        "text": "push",
+                        "offset": 68,
+                        "lineBreaks": 0,
+                        "line": 3,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "names",
+                                "text": "names",
+                                "offset": 73,
+                                "lineBreaks": 0,
+                                "line": 3,
+                                "col": 10
+                            }
+                        },
+                        {
+                            "type": "string_literal",
+                            "value": "Karen",
+                            "text": "\"Karen\"",
+                            "offset": 80,
+                            "lineBreaks": 0,
+                            "line": 3,
+                            "col": 17
+                        }
+                    ]
+                },
+                {
+                    "type": "var_assignment",
+                    "var_name": {
+                        "type": "identifier",
+                        "value": "removed",
+                        "text": "removed",
+                        "offset": 93,
+                        "lineBreaks": 0,
+                        "line": 4,
+                        "col": 5
+                    },
+                    "value": {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "pop",
+                            "text": "pop",
+                            "offset": 103,
+                            "lineBreaks": 0,
+                            "line": 4,
+                            "col": 15
+                        },
+                        "arguments": [
+                            {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "names",
+                                    "text": "names",
+                                    "offset": 107,
+                                    "lineBreaks": 0,
+                                    "line": 4,
+                                    "col": 19
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 118,
+                        "lineBreaks": 0,
+                        "line": 5,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "string_literal",
+                            "value": "Removed",
+                            "text": "\"Removed\"",
+                            "offset": 124,
+                            "lineBreaks": 0,
+                            "line": 5,
+                            "col": 11
+                        },
+                        {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "removed",
+                                "text": "removed",
+                                "offset": 135,
+                                "lineBreaks": 0,
+                                "line": 5,
+                                "col": 22
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "call_expression",
+                    "fun_name": {
+                        "type": "identifier",
+                        "value": "print",
+                        "text": "print",
+                        "offset": 148,
+                        "lineBreaks": 0,
+                        "line": 6,
+                        "col": 5
+                    },
+                    "arguments": [
+                        {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "names",
+                                "text": "names",
+                                "offset": 154,
+                                "lineBreaks": 0,
+                                "line": 6,
+                                "col": 11
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 check: []
 generate:
   js: |-
