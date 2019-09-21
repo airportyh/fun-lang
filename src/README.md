@@ -10,7 +10,7 @@ The compiler consists of the following modules:
 
 More details about each is covered below.
 
-## The Fun Parser
+## Parser
 
 The Fun parser is implemented using the [Nearley parser generator](https://nearley.js.org/).
 The grammar of the language is described in `fun-lang.ne` in the Nearley file format.
