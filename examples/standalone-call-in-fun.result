@@ -6,40 +6,76 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "hello",
-                "text": "hello",
-                "offset": 4,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 5
+                "start": {
+                    "line": 1,
+                    "col": 4
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "string_literal",
-                            "value": "hello",
-                            "text": "\"hello\"",
-                            "offset": 24,
-                            "lineBreaks": 0,
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "print",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 9
+                            }
+                        },
+                        "arguments": [
+                            {
+                                "type": "string_literal",
+                                "value": "hello",
+                                "start": {
+                                    "line": 2,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "col": 17
+                                }
+                            }
+                        ],
+                        "start": {
                             "line": 2,
-                            "col": 11
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 18
                         }
-                    ]
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 3,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 3,
+                "col": 1
+            }
         }
     ]
 check:
-  - Call statement on it's own on line 2 column 5. This is disallowed in funs.
+  - "\e[35m1\e[39m  fun hello() [\n\e[35m2\e[39m      \e[30m\e[41mprint(\"hello\")\e[49m\e[39m\n       \e[31m↑\e[39m\nCall statement on it's own line found. \nThis is disallowed in funs because it implies what is called has a side-effect."
 generate: null

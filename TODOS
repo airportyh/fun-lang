@@ -1,15 +1,16 @@
 ## TODOS
 
 * improve runtime errors
+* write user manual
+* documentation on the examples' test results format
 * embed examples and docs in the grammar file?
 * reduce the size of token nodes in AST
-* add line number/range info in all nodes
+* extract code_block into a grammar symbol
 * anonymous funs
 * currying
 * function composition
 * make checker support loops and if statements
 * function to get length of an array or dictionary
-* ensure pure functions don't call non-pure ones
 * allow for loop to loop through dictionary
 * parenthesis
 * plus equals
@@ -31,6 +32,10 @@
 
 ## Done
 
+* ensure pure functions don't call non-pure ones (x)
+* add code context display to checker errors and generator errors (x)
+* add line number/range info in all nodes (x)
+* add syntax checker for gen-parser (x)
 * improve error message with run.js (x)
 * unify test-example.js and run.js code (x)
 * write comments and readmes (x)

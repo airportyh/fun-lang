@@ -6,243 +6,55 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "age",
-                        "text": "age",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "number_literal",
-                        "value": 15,
-                        "text": "15",
-                        "offset": 24,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 11
-                    }
-                },
-                {
-                    "type": "if_statement",
-                    "condition": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "gt",
-                            "value": ">",
-                            "text": ">",
-                            "offset": 38,
-                            "lineBreaks": 0,
-                            "line": 3,
-                            "col": 12
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "age",
-                                "text": "age",
-                                "offset": 34,
-                                "lineBreaks": 0,
-                                "line": 3,
-                                "col": 8
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "age",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 7
                             }
                         },
-                        "right": {
+                        "value": {
                             "type": "number_literal",
-                            "value": 21,
-                            "text": "21",
-                            "offset": 40,
-                            "lineBreaks": 0,
-                            "line": 3,
-                            "col": 14
-                        }
-                    },
-                    "consequent": [
-                        {
-                            "type": "call_expression",
-                            "fun_name": {
-                                "type": "identifier",
-                                "value": "print",
-                                "text": "print",
-                                "offset": 53,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 9
+                            "value": 15,
+                            "start": {
+                                "line": 2,
+                                "col": 10
                             },
-                            "arguments": [
-                                {
-                                    "type": "string_literal",
-                                    "value": "You may come in",
-                                    "text": "\"You may come in\"",
-                                    "offset": 59,
-                                    "lineBreaks": 0,
-                                    "line": 4,
-                                    "col": 15
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "if_statement",
-                    "condition": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "gt",
-                            "value": ">",
-                            "text": ">",
-                            "offset": 95,
-                            "lineBreaks": 0,
-                            "line": 6,
-                            "col": 12
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "age",
-                                "text": "age",
-                                "offset": 91,
-                                "lineBreaks": 0,
-                                "line": 6,
-                                "col": 8
+                            "end": {
+                                "line": 2,
+                                "col": 12
                             }
                         },
-                        "right": {
-                            "type": "number_literal",
-                            "value": 21,
-                            "text": "21",
-                            "offset": 97,
-                            "lineBreaks": 0,
-                            "line": 6,
-                            "col": 14
-                        }
-                    },
-                    "consequent": [
-                        {
-                            "type": "call_expression",
-                            "fun_name": {
-                                "type": "identifier",
-                                "value": "print",
-                                "text": "print",
-                                "offset": 110,
-                                "lineBreaks": 0,
-                                "line": 7,
-                                "col": 9
-                            },
-                            "arguments": [
-                                {
-                                    "type": "string_literal",
-                                    "value": "You may come in",
-                                    "text": "\"You may come in\"",
-                                    "offset": 116,
-                                    "lineBreaks": 0,
-                                    "line": 7,
-                                    "col": 15
-                                }
-                            ]
-                        }
-                    ],
-                    "alternate": [
-                        {
-                            "type": "call_expression",
-                            "fun_name": {
-                                "type": "identifier",
-                                "value": "print",
-                                "text": "print",
-                                "offset": 156,
-                                "lineBreaks": 0,
-                                "line": 9,
-                                "col": 9
-                            },
-                            "arguments": [
-                                {
-                                    "type": "string_literal",
-                                    "value": "Keep out",
-                                    "text": "\"Keep out\"",
-                                    "offset": 162,
-                                    "lineBreaks": 0,
-                                    "line": 9,
-                                    "col": 15
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "if_statement",
-                    "condition": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "gt",
-                            "value": ">",
-                            "text": ">",
-                            "offset": 191,
-                            "lineBreaks": 0,
-                            "line": 11,
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
                             "col": 12
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "age",
-                                "text": "age",
-                                "offset": 187,
-                                "lineBreaks": 0,
-                                "line": 11,
-                                "col": 8
-                            }
-                        },
-                        "right": {
-                            "type": "number_literal",
-                            "value": 21,
-                            "text": "21",
-                            "offset": 193,
-                            "lineBreaks": 0,
-                            "line": 11,
-                            "col": 14
                         }
                     },
-                    "consequent": [
-                        {
-                            "type": "call_expression",
-                            "fun_name": {
-                                "type": "identifier",
-                                "value": "print",
-                                "text": "print",
-                                "offset": 206,
-                                "lineBreaks": 0,
-                                "line": 12,
-                                "col": 9
-                            },
-                            "arguments": [
-                                {
-                                    "type": "string_literal",
-                                    "value": "You may come in",
-                                    "text": "\"You may come in\"",
-                                    "offset": 212,
-                                    "lineBreaks": 0,
-                                    "line": 12,
-                                    "col": 15
-                                }
-                            ]
-                        }
-                    ],
-                    "alternate": {
+                    {
                         "type": "if_statement",
                         "condition": {
                             "type": "binary_operation",
@@ -250,159 +62,593 @@ parse:
                                 "type": "gt",
                                 "value": ">",
                                 "text": ">",
-                                "offset": 249,
+                                "offset": 38,
                                 "lineBreaks": 0,
-                                "line": 13,
-                                "col": 19
+                                "line": 3,
+                                "col": 12
                             },
                             "left": {
                                 "type": "var_reference",
                                 "var_name": {
                                     "type": "identifier",
                                     "value": "age",
-                                    "text": "age",
-                                    "offset": 245,
-                                    "lineBreaks": 0,
-                                    "line": 13,
-                                    "col": 15
+                                    "start": {
+                                        "line": 3,
+                                        "col": 7
+                                    },
+                                    "end": {
+                                        "line": 3,
+                                        "col": 10
+                                    }
+                                },
+                                "start": {
+                                    "line": 3,
+                                    "col": 7
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 10
                                 }
                             },
                             "right": {
                                 "type": "number_literal",
-                                "value": 17,
-                                "text": "17",
-                                "offset": 251,
-                                "lineBreaks": 0,
-                                "line": 13,
-                                "col": 21
+                                "value": 21,
+                                "start": {
+                                    "line": 3,
+                                    "col": 13
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 15
+                                }
+                            },
+                            "start": {
+                                "line": 3,
+                                "col": 7
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 15
                             }
                         },
-                        "consequent": [
-                            {
-                                "type": "call_expression",
-                                "fun_name": {
-                                    "type": "identifier",
-                                    "value": "print",
-                                    "text": "print",
-                                    "offset": 264,
-                                    "lineBreaks": 0,
-                                    "line": 14,
-                                    "col": 9
-                                },
-                                "arguments": [
-                                    {
-                                        "type": "string_literal",
-                                        "value": "Wait a couple years",
-                                        "text": "\"Wait a couple years\"",
-                                        "offset": 270,
-                                        "lineBreaks": 0,
-                                        "line": 14,
-                                        "col": 15
+                        "consequent": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "print",
+                                        "start": {
+                                            "line": 4,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 4,
+                                            "col": 13
+                                        }
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "string_literal",
+                                            "value": "You may come in",
+                                            "start": {
+                                                "line": 4,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 4,
+                                                "col": 31
+                                            }
+                                        }
+                                    ],
+                                    "start": {
+                                        "line": 4,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 32
                                     }
-                                ]
+                                }
+                            ],
+                            "start": {
+                                "line": 3,
+                                "col": 16
+                            },
+                            "end": {
+                                "line": 5,
+                                "col": 5
                             }
-                        ],
-                        "alternate": [
-                            {
-                                "type": "call_expression",
-                                "fun_name": {
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 5,
+                            "col": 5
+                        }
+                    },
+                    {
+                        "type": "if_statement",
+                        "condition": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "gt",
+                                "value": ">",
+                                "text": ">",
+                                "offset": 95,
+                                "lineBreaks": 0,
+                                "line": 6,
+                                "col": 12
+                            },
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
                                     "type": "identifier",
-                                    "value": "print",
-                                    "text": "print",
-                                    "offset": 314,
-                                    "lineBreaks": 0,
-                                    "line": 16,
-                                    "col": 9
-                                },
-                                "arguments": [
-                                    {
-                                        "type": "string_literal",
-                                        "value": "Keep out",
-                                        "text": "\"Keep out\"",
-                                        "offset": 320,
-                                        "lineBreaks": 0,
-                                        "line": 16,
-                                        "col": 15
+                                    "value": "age",
+                                    "start": {
+                                        "line": 6,
+                                        "col": 7
+                                    },
+                                    "end": {
+                                        "line": 6,
+                                        "col": 10
                                     }
-                                ]
+                                },
+                                "start": {
+                                    "line": 6,
+                                    "col": 7
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 10
+                                }
+                            },
+                            "right": {
+                                "type": "number_literal",
+                                "value": 21,
+                                "start": {
+                                    "line": 6,
+                                    "col": 13
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 15
+                                }
+                            },
+                            "start": {
+                                "line": 6,
+                                "col": 7
+                            },
+                            "end": {
+                                "line": 6,
+                                "col": 15
                             }
-                        ]
+                        },
+                        "consequent": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "print",
+                                        "start": {
+                                            "line": 7,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 7,
+                                            "col": 13
+                                        }
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "string_literal",
+                                            "value": "You may come in",
+                                            "start": {
+                                                "line": 7,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 7,
+                                                "col": 31
+                                            }
+                                        }
+                                    ],
+                                    "start": {
+                                        "line": 7,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 7,
+                                        "col": 32
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 6,
+                                "col": 16
+                            },
+                            "end": {
+                                "line": 8,
+                                "col": 5
+                            }
+                        },
+                        "alternate": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "print",
+                                        "start": {
+                                            "line": 9,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 9,
+                                            "col": 13
+                                        }
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "string_literal",
+                                            "value": "Keep out",
+                                            "start": {
+                                                "line": 9,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 9,
+                                                "col": 24
+                                            }
+                                        }
+                                    ],
+                                    "start": {
+                                        "line": 9,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 9,
+                                        "col": 25
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 8,
+                                "col": 11
+                            },
+                            "end": {
+                                "line": 10,
+                                "col": 5
+                            }
+                        },
+                        "start": {
+                            "line": 6,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 10,
+                            "col": 5
+                        }
+                    },
+                    {
+                        "type": "if_statement",
+                        "condition": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "gt",
+                                "value": ">",
+                                "text": ">",
+                                "offset": 191,
+                                "lineBreaks": 0,
+                                "line": 11,
+                                "col": 12
+                            },
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "age",
+                                    "start": {
+                                        "line": 11,
+                                        "col": 7
+                                    },
+                                    "end": {
+                                        "line": 11,
+                                        "col": 10
+                                    }
+                                },
+                                "start": {
+                                    "line": 11,
+                                    "col": 7
+                                },
+                                "end": {
+                                    "line": 11,
+                                    "col": 10
+                                }
+                            },
+                            "right": {
+                                "type": "number_literal",
+                                "value": 21,
+                                "start": {
+                                    "line": 11,
+                                    "col": 13
+                                },
+                                "end": {
+                                    "line": 11,
+                                    "col": 15
+                                }
+                            },
+                            "start": {
+                                "line": 11,
+                                "col": 7
+                            },
+                            "end": {
+                                "line": 11,
+                                "col": 15
+                            }
+                        },
+                        "consequent": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "print",
+                                        "start": {
+                                            "line": 12,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 12,
+                                            "col": 13
+                                        }
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "string_literal",
+                                            "value": "You may come in",
+                                            "start": {
+                                                "line": 12,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 12,
+                                                "col": 31
+                                            }
+                                        }
+                                    ],
+                                    "start": {
+                                        "line": 12,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 12,
+                                        "col": 32
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 11,
+                                "col": 16
+                            },
+                            "end": {
+                                "line": 13,
+                                "col": 5
+                            }
+                        },
+                        "alternate": {
+                            "type": "if_statement",
+                            "condition": {
+                                "type": "binary_operation",
+                                "operator": {
+                                    "type": "gt",
+                                    "value": ">",
+                                    "text": ">",
+                                    "offset": 249,
+                                    "lineBreaks": 0,
+                                    "line": 13,
+                                    "col": 19
+                                },
+                                "left": {
+                                    "type": "var_reference",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "age",
+                                        "start": {
+                                            "line": 13,
+                                            "col": 14
+                                        },
+                                        "end": {
+                                            "line": 13,
+                                            "col": 17
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 13,
+                                        "col": 14
+                                    },
+                                    "end": {
+                                        "line": 13,
+                                        "col": 17
+                                    }
+                                },
+                                "right": {
+                                    "type": "number_literal",
+                                    "value": 17,
+                                    "start": {
+                                        "line": 13,
+                                        "col": 20
+                                    },
+                                    "end": {
+                                        "line": 13,
+                                        "col": 22
+                                    }
+                                },
+                                "start": {
+                                    "line": 13,
+                                    "col": 14
+                                },
+                                "end": {
+                                    "line": 13,
+                                    "col": 22
+                                }
+                            },
+                            "consequent": {
+                                "type": "code_block",
+                                "statements": [
+                                    {
+                                        "type": "call_expression",
+                                        "fun_name": {
+                                            "type": "identifier",
+                                            "value": "print",
+                                            "start": {
+                                                "line": 14,
+                                                "col": 8
+                                            },
+                                            "end": {
+                                                "line": 14,
+                                                "col": 13
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "string_literal",
+                                                "value": "Wait a couple years",
+                                                "start": {
+                                                    "line": 14,
+                                                    "col": 14
+                                                },
+                                                "end": {
+                                                    "line": 14,
+                                                    "col": 35
+                                                }
+                                            }
+                                        ],
+                                        "start": {
+                                            "line": 14,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 14,
+                                            "col": 36
+                                        }
+                                    }
+                                ],
+                                "start": {
+                                    "line": 13,
+                                    "col": 23
+                                },
+                                "end": {
+                                    "line": 15,
+                                    "col": 5
+                                }
+                            },
+                            "alternate": {
+                                "type": "code_block",
+                                "statements": [
+                                    {
+                                        "type": "call_expression",
+                                        "fun_name": {
+                                            "type": "identifier",
+                                            "value": "print",
+                                            "start": {
+                                                "line": 16,
+                                                "col": 8
+                                            },
+                                            "end": {
+                                                "line": 16,
+                                                "col": 13
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "string_literal",
+                                                "value": "Keep out",
+                                                "start": {
+                                                    "line": 16,
+                                                    "col": 14
+                                                },
+                                                "end": {
+                                                    "line": 16,
+                                                    "col": 24
+                                                }
+                                            }
+                                        ],
+                                        "start": {
+                                            "line": 16,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 16,
+                                            "col": 25
+                                        }
+                                    }
+                                ],
+                                "start": {
+                                    "line": 15,
+                                    "col": 11
+                                },
+                                "end": {
+                                    "line": 17,
+                                    "col": 5
+                                }
+                            },
+                            "start": {
+                                "line": 13,
+                                "col": 11
+                            },
+                            "end": {
+                                "line": 17,
+                                "col": 5
+                            }
+                        },
+                        "start": {
+                            "line": 11,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 17,
+                            "col": 5
+                        }
                     }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 18,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 18,
+                "col": 1
+            }
         }
     ]
 check: []
 generate:
-  js: |-
-    async function main() {
-        var age = 15;
-        if (age > 21) {
-            print("You may come in");
-        }
-        if (age > 21) {
-            print("You may come in");
-        } else {
-            print("Keep out");
-        }
-        if (age > 21) {
-            print("You may come in");
-        } else if (age > 17) {
-            print("Wait a couple years");
-        } else {
-            print("Keep out");
-        }
-    }
-
-    main().catch(err => console.log(err.message));
-
-    // Built-in Functions:
-
-    function split(string, separator) {
-        return string.split(separator)
-    }
-
-    function print(...args) {
-        console.log(...args);
-    }
-
-    function pop(array) {
-        return array.pop();
-    }
-
-    function push(array, item) {
-        return array.push(item);
-    }
-
-    function concat(one, other) {
-        return one.concat(other);
-    }
-
-    function map(fn, arr) {
-        return arr.map(fn);
-    }
-
-    function filter(fn, arr) {
-        return arr.filter(fn);
-    }
-
-    function reduce(fn, initValue, arr) {
-        return arr.reduce(fn, initValue);
-    }
-
-    function sqrt(num) {
-        return Math.sqrt(num);
-    }
-
-    function sqr(num) {
-        return num * num;
-    }
-
-    function join(array, separator) {
-        return array.join(separator);
-    }
-exec:
-  stdout: |
-    Keep out
-    Keep out
-  stderr: ''
+  error: |-
+    TypeError: statement.consequent.map is not a function
+        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:56:41)
+        at codeBlock.statements.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:124:22)
+        at Array.map (<anonymous>)
+        at generateCodeForCodeBlock (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:123:40)
+        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:29:22)
+        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:7:16)
+        at Array.map (<anonymous>)
+        at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:6:24)
+        at run (/Users/airportyh/Home/Playground/fun-lang/src/runner.js:19:28)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:12:34)

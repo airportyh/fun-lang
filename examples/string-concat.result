@@ -6,109 +6,136 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "greeting",
-                        "text": "greeting",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "string_literal",
-                        "value": "Hello",
-                        "text": "\"Hello\"",
-                        "offset": 29,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 16
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "name",
-                        "text": "name",
-                        "offset": 41,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "string_literal",
-                        "value": "McGinnis",
-                        "text": "\"McGinnis\"",
-                        "offset": 48,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 12
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "message",
-                        "text": "message",
-                        "offset": 63,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "plus",
-                            "value": "+",
-                            "text": "+",
-                            "offset": 82,
-                            "lineBreaks": 0,
-                            "line": 4,
-                            "col": 24
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "greeting",
-                                "text": "greeting",
-                                "offset": 73,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 15
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "greeting",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 12
                             }
                         },
-                        "right": {
+                        "value": {
+                            "type": "string_literal",
+                            "value": "Hello",
+                            "start": {
+                                "line": 2,
+                                "col": 15
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 22
+                            }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 22
+                        }
+                    },
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "name",
+                            "start": {
+                                "line": 3,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 8
+                            }
+                        },
+                        "value": {
+                            "type": "string_literal",
+                            "value": "McGinnis",
+                            "start": {
+                                "line": 3,
+                                "col": 11
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 21
+                            }
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 3,
+                            "col": 21
+                        }
+                    },
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "message",
+                            "start": {
+                                "line": 4,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 11
+                            }
+                        },
+                        "value": {
                             "type": "binary_operation",
                             "operator": {
                                 "type": "plus",
                                 "value": "+",
                                 "text": "+",
-                                "offset": 89,
+                                "offset": 82,
                                 "lineBreaks": 0,
                                 "line": 4,
-                                "col": 31
+                                "col": 24
                             },
                             "left": {
-                                "type": "string_literal",
-                                "value": ", ",
-                                "text": "\", \"",
-                                "offset": 84,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 26
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "greeting",
+                                    "start": {
+                                        "line": 4,
+                                        "col": 14
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 22
+                                    }
+                                },
+                                "start": {
+                                    "line": 4,
+                                    "col": 14
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 22
+                                }
                             },
                             "right": {
                                 "type": "binary_operation",
@@ -116,63 +143,171 @@ parse:
                                     "type": "plus",
                                     "value": "+",
                                     "text": "+",
-                                    "offset": 96,
+                                    "offset": 89,
                                     "lineBreaks": 0,
                                     "line": 4,
-                                    "col": 38
+                                    "col": 31
                                 },
                                 "left": {
-                                    "type": "var_reference",
-                                    "var_name": {
-                                        "type": "identifier",
-                                        "value": "name",
-                                        "text": "name",
-                                        "offset": 91,
-                                        "lineBreaks": 0,
+                                    "type": "string_literal",
+                                    "value": ", ",
+                                    "start": {
                                         "line": 4,
-                                        "col": 33
+                                        "col": 25
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 29
                                     }
                                 },
                                 "right": {
-                                    "type": "string_literal",
-                                    "value": "!",
-                                    "text": "\"!\"",
-                                    "offset": 98,
-                                    "lineBreaks": 0,
+                                    "type": "binary_operation",
+                                    "operator": {
+                                        "type": "plus",
+                                        "value": "+",
+                                        "text": "+",
+                                        "offset": 96,
+                                        "lineBreaks": 0,
+                                        "line": 4,
+                                        "col": 38
+                                    },
+                                    "left": {
+                                        "type": "var_reference",
+                                        "var_name": {
+                                            "type": "identifier",
+                                            "value": "name",
+                                            "start": {
+                                                "line": 4,
+                                                "col": 32
+                                            },
+                                            "end": {
+                                                "line": 4,
+                                                "col": 36
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 4,
+                                            "col": 32
+                                        },
+                                        "end": {
+                                            "line": 4,
+                                            "col": 36
+                                        }
+                                    },
+                                    "right": {
+                                        "type": "string_literal",
+                                        "value": "!",
+                                        "start": {
+                                            "line": 4,
+                                            "col": 39
+                                        },
+                                        "end": {
+                                            "line": 4,
+                                            "col": 42
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 4,
+                                        "col": 32
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 42
+                                    }
+                                },
+                                "start": {
                                     "line": 4,
-                                    "col": 40
+                                    "col": 25
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 42
+                                }
+                            },
+                            "start": {
+                                "line": 4,
+                                "col": 14
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 42
+                            }
+                        },
+                        "start": {
+                            "line": 4,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 4,
+                            "col": 42
+                        }
+                    },
+                    {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "print",
+                            "start": {
+                                "line": 5,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 5,
+                                "col": 9
+                            }
+                        },
+                        "arguments": [
+                            {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "message",
+                                    "start": {
+                                        "line": 5,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 5,
+                                        "col": 17
+                                    }
+                                },
+                                "start": {
+                                    "line": 5,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 5,
+                                    "col": 17
                                 }
                             }
+                        ],
+                        "start": {
+                            "line": 5,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 5,
+                            "col": 18
                         }
                     }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
                 },
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 106,
-                        "lineBreaks": 0,
-                        "line": 5,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "message",
-                                "text": "message",
-                                "offset": 112,
-                                "lineBreaks": 0,
-                                "line": 5,
-                                "col": 11
-                            }
-                        }
-                    ]
+                "end": {
+                    "line": 6,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 6,
+                "col": 1
+            }
         }
     ]
 check: []
@@ -188,6 +323,24 @@ generate:
     main().catch(err => console.log(err.message));
 
     // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
 
     function split(string, separator) {
         return string.split(separator)

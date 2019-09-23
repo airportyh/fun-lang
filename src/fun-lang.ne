@@ -1,5 +1,37 @@
 @{%
 const lexer = require("./lexer");
+
+function tokenStart(token) {
+    return {
+        line: token.line,
+        col: token.col - 1
+    };
+}
+
+function tokenEnd(token) {
+    const lastNewLine = token.text.lastIndexOf("\n");
+    if (lastNewLine !== -1) {
+        throw new Error("Unsupported case: token with line breaks");
+    }
+    return {
+        line: token.line,
+        col: token.col + token.text.length - 1
+    };
+}
+
+function convertToken(token) {
+    return {
+        type: token.type,
+        value: token.value,
+        start: tokenStart(token),
+        end: tokenEnd(token)
+    };
+}
+
+function convertTokenId(data) {
+    return convertToken(data[0]);
+}
+
 %}
 
 @lexer lexer
@@ -29,24 +61,28 @@ top_level_statement
     |  line_comment     {% id %}
 
 fun_definition
-    -> "fun" __ identifier _ "(" _ parameter_list _ ")" _ block
+    -> "fun" __ identifier _ "(" _ parameter_list _ ")" _ code_block
         {%
             d => ({
                 type: "fun_definition",
                 name: d[2],
                 parameters: d[6],
-                body: d[10]
+                body: d[10],
+                start: tokenStart(d[0]),
+                end: d[10].end
             })
         %}
 
 proc_definition
-    -> "proc" __ identifier _ "(" _ parameter_list _ ")" _ block
+    -> "proc" __ identifier _ "(" _ parameter_list _ ")" _ code_block
         {%
             d => ({
                 type: "proc_definition",
                 name: d[2],
                 parameters: d[6],
-                body: d[10]
+                body: d[10],
+                start: tokenStart(d[0]),
+                end: d[10].end
             })
         %}
 
@@ -58,9 +94,14 @@ parameter_list
             d => [d[0], ...d[4]]
         %}
 
-block -> "[" executable_statements "]"
+code_block -> "[" executable_statements "]"
     {%
-        (d) => d[1]
+        (d) => ({
+            type: "code_block",
+            statements: d[1],
+            start: tokenStart(d[0]),
+            end: tokenEnd(d[2])
+        })
     %}
 
 executable_statements
@@ -91,7 +132,9 @@ var_assignment
             d => ({
                 type: "var_assignment",
                 var_name: d[0],
-                value: d[4]
+                value: d[4],
+                start: d[0].start,
+                end: d[4].end
             })
         %}
 
@@ -101,7 +144,9 @@ indexed_access
             d => ({
                 type: "indexed_access",
                 subject: d[0],
-                index: d[4]
+                index: d[4],
+                start: d[0].start,
+                end: tokenEnd(d[6])
             })
         %}
 
@@ -112,58 +157,70 @@ indexed_assignment
                 type: "indexed_assignment",
                 subject: d[0],
                 index: d[4],
-                value: d[10]
+                value: d[10],
+                start: d[0].start,
+                end: d[10].end
             })
         %}
 
 while_loop
-    -> "while" __ expression __ "[" _ "\n" executable_statements "]"
+    -> "while" __ expression __ code_block
         {%
             d => ({
                 type: "while_loop",
                 condition: d[2],
-                body: d[7]
+                body: d[4],
+                start: tokenStart(d[0]),
+                end: d[4].end
             })
         %}
 
 if_statement
-    -> "if" __ expression __ "[" _ "\n" executable_statements "]"
+    -> "if" __ expression __ code_block
         {%
             d => ({
                 type: "if_statement",
                 condition: d[2],
-                consequent: d[7]
+                consequent: d[4],
+                start: tokenStart(d[0]),
+                end: d[4].end
             })
         %}
-    |  "if" __ expression _ "[" _ "\n" executable_statements "]" _
-       "else" __ "[" _ "\n" executable_statements "]"
+    |  "if" __ expression _ code_block _
+       "else" __ code_block
         {%
             d => ({
                 type: "if_statement",
                 condition: d[2],
-                consequent: d[7],
-                alternate: d[15]
+                consequent: d[4],
+                alternate: d[8],
+                start: tokenStart(d[0]),
+                end: d[8].end
             })
         %}
-    |  "if" __ expression _ "[" _ "\n" executable_statements "]" _
+    |  "if" __ expression _ code_block _
        "else" __ if_statement
        {%
             d => ({
                 type: "if_statement",
                 condition: d[2],
-                consequent: d[7],
-                alternate: d[12]
+                consequent: d[4],
+                alternate: d[8],
+                start: tokenStart(d[0]),
+                end: d[8].end
             })
        %}
 
 for_loop
-    -> "for" __ identifier __ "in" __ expression _ "[" _ "\n" executable_statements "]"
+    -> "for" __ identifier __ "in" __ expression _ code_block
         {%
             d => ({
                 type: "for_loop",
                 loop_variable: d[2],
                 iterable: d[6],
-                body: d[11]
+                body: d[8],
+                start: tokenStart(d[0]),
+                end: d[8].end
             })
         %}
 
@@ -172,7 +229,9 @@ return_statement
         {%
             d => ({
                 type: "return_statement",
-                value: d[2]
+                value: d[2],
+                start: tokenStart(d[0]),
+                end: d[2].end
             })
         %}
 
@@ -182,7 +241,9 @@ call_expression
             d => ({
                 type: "call_expression",
                 fun_name: d[0],
-                arguments: d[3]
+                arguments: d[3],
+                start: d[0].start,
+                end: tokenEnd(d[4])
             })
         %}
 
@@ -204,7 +265,9 @@ comparison_expression
                 type: "binary_operation",
                 operator: d[2],
                 left: d[0],
-                right: d[4]
+                right: d[4],
+                start: d[0].start,
+                end: d[4].end
             })
         %}
 
@@ -222,7 +285,9 @@ additive_expression
                 type: "binary_operation",
                 operator: d[2],
                 left: d[0],
-                right: d[4]
+                right: d[4],
+                start: d[0].start,
+                end: d[4].end
             })
         %}
 
@@ -234,7 +299,9 @@ multiplicative_expression
                 type: "binary_operation",
                 operator: d[2],
                 left: d[0],
-                right: d[4]
+                right: d[4],
+                start: d[0].start,
+                end: d[4].end
             })
         %}
 
@@ -244,7 +311,9 @@ unary_expression
         {%
             d => ({
                 type: "var_reference",
-                var_name: d[0]
+                var_name: d[0],
+                start: d[0].start,
+                end: d[0].end
             })
         %}
     |  call_expression      {% id %}
@@ -252,13 +321,16 @@ unary_expression
     |  list_literal         {% id %}
     |  dictionary_literal   {% id %}
     |  indexed_access       {% id %}
+    |  fun_expression  {% id %}
 
 list_literal
     -> "[" list_items "]"
         {%
             d => ({
                 type: "list_literal",
-                items: d[1]
+                items: d[1],
+                start: tokenStart(d[0]),
+                end: tokenEnd(d[2])
             })
         %}
 
@@ -280,7 +352,9 @@ dictionary_literal
         {% 
             d => ({
                 type: "dictionary_literal",
-                entries: d[1]
+                entries: d[1],
+                start: tokenStart(d[0]),
+                end: tokenEnd(d[2])
             })
         %}
 
@@ -301,13 +375,25 @@ dictionary_entry
             d => [d[0], d[4]]
         %}
 
-line_comment -> %comment {% id %}
+fun_expression
+    -> "fun" _ "(" _ parameter_list _ ")" _ "[" _ "\n" executable_statements "]"
+        {%
+            d => ({
+                type: "fun_expression",
+                parameters: d[4],
+                body: d[11],
+                start: tokenStart(d[0]),
+                end: tokenEnd(d[12])
+            })
+        %}
 
-string_literal -> %string_literal {% id %}
+line_comment -> %comment {% convertTokenId %}
 
-number -> %number_literal {% id %}
+string_literal -> %string_literal {% convertTokenId %}
 
-identifier -> %identifier {% id %}
+number -> %number_literal {% convertTokenId %}
+
+identifier -> %identifier {% convertTokenId %}
 
 __ -> %ws:+
 

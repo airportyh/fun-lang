@@ -1,3 +1,22 @@
+exports.range = function range(...args) {
+    let start, end;
+    if (args.length === 1) {
+        start = 0
+        end = args[0];
+    } else if (args.length === 2) {
+        start = args[0];
+        end = args[1];
+    } else {
+        throw new Error("Wrong number of arguments");
+    }
+    const ret = [];
+    for (let i = start; i < end; i++) {
+        ret.push(i);
+    }
+    return ret;
+};
+exports.range.pure = true;
+
 exports.split = function split(string, separator) {
     return string.split(separator)
 };

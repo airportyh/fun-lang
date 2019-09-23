@@ -13,7 +13,7 @@ exports.run = async function run(code) {
     try {
         ast = parse(code);
         result.parse = { ast: JSON.stringify(ast, null, "    ") };
-        result.check = check(ast);
+        result.check = check(ast, code);
         if (result.check.length === 0) {
             try {
                 const js = generateCode(ast);

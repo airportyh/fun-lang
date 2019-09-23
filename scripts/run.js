@@ -1,5 +1,6 @@
 const { run } = require("../src/runner");
 const fs = require("mz/fs");
+const indent = require("../src/indent");
 
 async function main() {
     const filename = process.argv[2];
@@ -12,9 +13,9 @@ async function main() {
     if (result.parse.error) {
         console.error("Parser Error: " + result.parse.error);
     } else if (result.check.length > 0) {
-        console.error("Checker Error:");
         for (let error of result.check) {
-            console.log("    " + error);
+            console.log("Checker Error:\n");
+            console.log(indent(error));
         }
     } else if (result.generate.error) {
         console.log("Generator Error: " + result.generate.error);

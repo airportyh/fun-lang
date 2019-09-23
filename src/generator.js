@@ -1,4 +1,5 @@
 const builtInFunctions = require("./built-in-functions");
+const indent = require("./indent");
 
 exports.generateCode = function generateCode(ast) {
     const builtIns = Object.values(builtInFunctions).map(fn => fn.toString());
@@ -19,17 +20,13 @@ function generateCodeForTopLevelStatement(node) {
             .parameters
             .map(p => p.value)
             .join(", ") + ") {"; 
-        const body = indent(node.body.map(statement => {
-            return generateCodeForExecutableStatement(statement);
-        }).join("\n"));
+        const body = generateCodeForCodeBlock(node.body);
         return line1 + "\n" + body + "\n}";
     } else if (node.type === "proc_definition") {
         const line1 = "async function " + node.name.value + "(" + 
             node.parameters
             .map(p => p.value).join(", ") + ") {"; 
-        const body = indent(node.body.map(statement => {
-            return generateCodeForExecutableStatement(statement);
-        }).join("\n"));
+        const body = generateCodeForCodeBlock(node.body);
         return line1 + "\n" + body + "\n}";
     } else {
         throw new Error("Unknown AST Node type for top level statements: " + node.type);
@@ -50,9 +47,8 @@ function generateCodeForExecutableStatement(statement) {
     } else if (statement.type === "while_loop") {
         const condition = generateCodeForExpression(statement.condition);
         return "while (" + condition + ") {\n" +
-            indent(statement.body.map(statement => {
-                return generateCodeForExecutableStatement(statement);
-            }).join("\n")) + "\n}";
+            generateCodeForCodeBlock(statement.body) + 
+            "\n}";
     } else if (statement.type === "if_statement") {
         const condition = generateCodeForExpression(statement.condition);
         const alternate = statement.alternate ? generateCodeForIfAlternate(statement.alternate) : "";
@@ -114,11 +110,18 @@ function generateCodeForExpression(expression) {
         const subject = generateCodeForExpression(expression.subject);
         const index = generateCodeForExpression(expression.index);
         return `${subject}[${index}]`;
+    } else if (expression.type === "fun_expression") {
+        return "function (" + expression.parameters.map(p => p.value).join(", ") + ") {\n" +
+            generateCodeForCodeBlock(expression.body) +
+            "\n}";
     } else {
         throw new Error("Unsupported AST node type for expressions: " + expression.type);
     }
 }
 
-function indent(str) {
-    return str.split("\n").map(line => "    " + line).join("\n");
+function generateCodeForCodeBlock(codeBlock) {
+    return indent(codeBlock.statements.map(
+        statement => generateCodeForExecutableStatement(statement))
+    .join("\n"));
 }
+

@@ -1,5 +1,6 @@
 const fs = require("mz/fs");
 const { check } = require("../src/checker");
+const path = require("path");
 
 async function main() {
     const filename = process.argv[2];
@@ -7,8 +8,12 @@ async function main() {
         console.log("Please provide a file name.");
         return;
     }
+    const codeFilename = path.join(
+        path.dirname(filename), 
+        path.basename(filename, ".ast") + ".fun");
+    const code = (await fs.readFile(codeFilename)).toString();
     const ast = JSON.parse((await fs.readFile(filename)).toString());
-    const result = check(ast);
+    const result = check(ast, code);
     if (result.length === 0) {
         console.log("Ok");
         process.exit(0);
@@ -18,4 +23,4 @@ async function main() {
     }
 }
 
-main().catch(err => console.log(err.message));
+main().catch(err => console.log(err.stack));

@@ -6,139 +6,250 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "names",
-                        "text": "names",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "list_literal",
-                        "items": [
-                            {
-                                "type": "string_literal",
-                                "value": "Darren",
-                                "text": "\"Darren\"",
-                                "offset": 27,
-                                "lineBreaks": 0,
-                                "line": 2,
-                                "col": 14
-                            },
-                            {
-                                "type": "string_literal",
-                                "value": "Kwan",
-                                "text": "\"Kwan\"",
-                                "offset": 37,
-                                "lineBreaks": 0,
-                                "line": 2,
-                                "col": 24
-                            },
-                            {
-                                "type": "string_literal",
-                                "value": "James",
-                                "text": "\"James\"",
-                                "offset": 45,
-                                "lineBreaks": 0,
-                                "line": 2,
-                                "col": 32
-                            },
-                            {
-                                "type": "string_literal",
-                                "value": "Merrin",
-                                "text": "\"Merrin\"",
-                                "offset": 54,
-                                "lineBreaks": 0,
-                                "line": 2,
-                                "col": 41
-                            }
-                        ]
-                    }
-                },
-                {
-                    "type": "indexed_assignment",
-                    "subject": {
-                        "type": "var_reference",
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
                         "var_name": {
                             "type": "identifier",
                             "value": "names",
-                            "text": "names",
-                            "offset": 68,
-                            "lineBreaks": 0,
-                            "line": 3,
-                            "col": 5
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 9
+                            }
+                        },
+                        "value": {
+                            "type": "list_literal",
+                            "items": [
+                                {
+                                    "type": "string_literal",
+                                    "value": "Darren",
+                                    "start": {
+                                        "line": 2,
+                                        "col": 13
+                                    },
+                                    "end": {
+                                        "line": 2,
+                                        "col": 21
+                                    }
+                                },
+                                {
+                                    "type": "string_literal",
+                                    "value": "Kwan",
+                                    "start": {
+                                        "line": 2,
+                                        "col": 23
+                                    },
+                                    "end": {
+                                        "line": 2,
+                                        "col": 29
+                                    }
+                                },
+                                {
+                                    "type": "string_literal",
+                                    "value": "James",
+                                    "start": {
+                                        "line": 2,
+                                        "col": 31
+                                    },
+                                    "end": {
+                                        "line": 2,
+                                        "col": 38
+                                    }
+                                },
+                                {
+                                    "type": "string_literal",
+                                    "value": "Merrin",
+                                    "start": {
+                                        "line": 2,
+                                        "col": 40
+                                    },
+                                    "end": {
+                                        "line": 2,
+                                        "col": 48
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 2,
+                                "col": 12
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 49
+                            }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 49
                         }
                     },
-                    "index": {
-                        "type": "number_literal",
-                        "value": 3,
-                        "text": "3",
-                        "offset": 74,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 11
-                    },
-                    "value": {
-                        "type": "string_literal",
-                        "value": "JR",
-                        "text": "\"JR\"",
-                        "offset": 79,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 16
-                    }
-                },
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 88,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "indexed_access",
-                            "subject": {
-                                "type": "var_reference",
-                                "var_name": {
-                                    "type": "identifier",
-                                    "value": "names",
-                                    "text": "names",
-                                    "offset": 94,
-                                    "lineBreaks": 0,
-                                    "line": 4,
-                                    "col": 11
+                    {
+                        "type": "indexed_assignment",
+                        "subject": {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "names",
+                                "start": {
+                                    "line": 3,
+                                    "col": 4
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 9
                                 }
                             },
-                            "index": {
-                                "type": "number_literal",
-                                "value": 3,
-                                "text": "3",
-                                "offset": 100,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 17
+                            "start": {
+                                "line": 3,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 9
                             }
+                        },
+                        "index": {
+                            "type": "number_literal",
+                            "value": 3,
+                            "start": {
+                                "line": 3,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 11
+                            }
+                        },
+                        "value": {
+                            "type": "string_literal",
+                            "value": "JR",
+                            "start": {
+                                "line": 3,
+                                "col": 15
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 19
+                            }
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 3,
+                            "col": 19
                         }
-                    ]
+                    },
+                    {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "print",
+                            "start": {
+                                "line": 4,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 9
+                            }
+                        },
+                        "arguments": [
+                            {
+                                "type": "indexed_access",
+                                "subject": {
+                                    "type": "var_reference",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "names",
+                                        "start": {
+                                            "line": 4,
+                                            "col": 10
+                                        },
+                                        "end": {
+                                            "line": 4,
+                                            "col": 15
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 4,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 15
+                                    }
+                                },
+                                "index": {
+                                    "type": "number_literal",
+                                    "value": 3,
+                                    "start": {
+                                        "line": 4,
+                                        "col": 16
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 17
+                                    }
+                                },
+                                "start": {
+                                    "line": 4,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 18
+                                }
+                            }
+                        ],
+                        "start": {
+                            "line": 4,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 4,
+                            "col": 19
+                        }
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 5,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 5,
+                "col": 1
+            }
         }
     ]
 check: []
@@ -153,6 +264,24 @@ generate:
     main().catch(err => console.log(err.message));
 
     // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
 
     function split(string, separator) {
         return string.split(separator)

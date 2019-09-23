@@ -6,38 +6,74 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "string_literal",
-                            "value": "Hello, world!",
-                            "text": "\"Hello, world!\"",
-                            "offset": 24,
-                            "lineBreaks": 0,
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "print",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 9
+                            }
+                        },
+                        "arguments": [
+                            {
+                                "type": "string_literal",
+                                "value": "Hello, world!",
+                                "start": {
+                                    "line": 2,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "col": 25
+                                }
+                            }
+                        ],
+                        "start": {
                             "line": 2,
-                            "col": 11
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 26
                         }
-                    ]
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 3,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 3,
+                "col": 1
+            }
         }
     ]
 check: []
@@ -50,6 +86,24 @@ generate:
     main().catch(err => console.log(err.message));
 
     // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
 
     function split(string, separator) {
         return string.split(separator)

@@ -34,7 +34,7 @@ const lexer = moo.compile({
     },
     string_literal: {
         match: /"(?:[^\n\\"]|\\["\\ntbfr])*"/,
-        value: s => s.slice(1, -1)
+        value: s => JSON.parse(s)
     },
     number_literal: {
         match: /[0-9]+(?:\.[0-9]+)?/,

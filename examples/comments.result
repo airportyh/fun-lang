@@ -4,58 +4,100 @@ parse:
         {
             "type": "comment",
             "value": " Hello! This is a fun program",
-            "text": "# Hello! This is a fun program",
-            "offset": 0,
-            "lineBreaks": 0,
-            "line": 1,
-            "col": 1
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 1,
+                "col": 30
+            }
         },
         {
             "type": "proc_definition",
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 36,
-                "lineBreaks": 0,
-                "line": 2,
-                "col": 6
-            },
-            "parameters": [],
-            "body": [
-                {
-                    "type": "comment",
-                    "value": " This is the body of the main proc",
-                    "text": "# This is the body of the main proc",
-                    "offset": 49,
-                    "lineBreaks": 0,
-                    "line": 3,
+                "start": {
+                    "line": 2,
                     "col": 5
                 },
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 89,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "string_literal",
-                            "value": "Hello, world!",
-                            "text": "\"Hello, world!\"",
-                            "offset": 95,
-                            "lineBreaks": 0,
-                            "line": 4,
-                            "col": 11
-                        }
-                    ]
+                "end": {
+                    "line": 2,
+                    "col": 9
                 }
-            ]
+            },
+            "parameters": [],
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "comment",
+                        "value": " This is the body of the main proc",
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 3,
+                            "col": 39
+                        }
+                    },
+                    {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "print",
+                            "start": {
+                                "line": 4,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 9
+                            }
+                        },
+                        "arguments": [
+                            {
+                                "type": "string_literal",
+                                "value": "Hello, world!",
+                                "start": {
+                                    "line": 4,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 25
+                                }
+                            }
+                        ],
+                        "start": {
+                            "line": 4,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 4,
+                            "col": 26
+                        }
+                    }
+                ],
+                "start": {
+                    "line": 2,
+                    "col": 12
+                },
+                "end": {
+                    "line": 5,
+                    "col": 1
+                }
+            },
+            "start": {
+                "line": 2,
+                "col": 0
+            },
+            "end": {
+                "line": 5,
+                "col": 1
+            }
         }
     ]
 check: []
@@ -71,6 +113,24 @@ generate:
     main().catch(err => console.log(err.message));
 
     // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
 
     function split(string, separator) {
         return string.split(separator)

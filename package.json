@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "gen-parser": "nearleyc src/fun-lang.ne -o src/fun-lang.js"
+    "gen-parser": "nearleyc src/fun-lang.ne -o src/fun-lang.js; npm run check-parser-js",
+    "check-parser-js": "node src/fun-lang.js # check syntax of embedded JS by running the output file"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "diff": "^4.0.1",
     "js-yaml": "^3.13.1",
     "moo": "^0.5.0",

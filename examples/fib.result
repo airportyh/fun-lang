@@ -6,307 +6,574 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "i",
-                        "text": "i",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "number_literal",
-                        "value": 1,
-                        "text": "1",
-                        "offset": 22,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 9
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "n",
-                        "text": "n",
-                        "offset": 28,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "number_literal",
-                        "value": 50,
-                        "text": "50",
-                        "offset": 32,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 9
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "fib_i",
-                        "text": "fib_i",
-                        "offset": 39,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "number_literal",
-                        "value": 1,
-                        "text": "1",
-                        "offset": 47,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 13
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "fib_ii",
-                        "text": "fib_ii",
-                        "offset": 53,
-                        "lineBreaks": 0,
-                        "line": 5,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "number_literal",
-                        "value": 1,
-                        "text": "1",
-                        "offset": 62,
-                        "lineBreaks": 0,
-                        "line": 5,
-                        "col": 14
-                    }
-                },
-                {
-                    "type": "while_loop",
-                    "condition": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "lte",
-                            "value": "<=",
-                            "text": "<=",
-                            "offset": 76,
-                            "lineBreaks": 0,
-                            "line": 6,
-                            "col": 13
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "i",
-                                "text": "i",
-                                "offset": 74,
-                                "lineBreaks": 0,
-                                "line": 6,
-                                "col": 11
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "i",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 5
                             }
                         },
-                        "right": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "n",
-                                "text": "n",
-                                "offset": 79,
-                                "lineBreaks": 0,
-                                "line": 6,
-                                "col": 16
+                        "value": {
+                            "type": "number_literal",
+                            "value": 1,
+                            "start": {
+                                "line": 2,
+                                "col": 8
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 9
                             }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 9
                         }
                     },
-                    "body": [
-                        {
-                            "type": "call_expression",
-                            "fun_name": {
-                                "type": "identifier",
-                                "value": "print",
-                                "text": "print",
-                                "offset": 91,
-                                "lineBreaks": 0,
-                                "line": 7,
-                                "col": 9
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "n",
+                            "start": {
+                                "line": 3,
+                                "col": 4
                             },
-                            "arguments": [
-                                {
-                                    "type": "var_reference",
-                                    "var_name": {
-                                        "type": "identifier",
-                                        "value": "fib_i",
-                                        "text": "fib_i",
-                                        "offset": 97,
-                                        "lineBreaks": 0,
-                                        "line": 7,
-                                        "col": 15
-                                    }
-                                }
-                            ]
+                            "end": {
+                                "line": 3,
+                                "col": 5
+                            }
                         },
-                        {
-                            "type": "var_assignment",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "temp",
-                                "text": "temp",
-                                "offset": 112,
-                                "lineBreaks": 0,
-                                "line": 8,
-                                "col": 9
+                        "value": {
+                            "type": "number_literal",
+                            "value": 50,
+                            "start": {
+                                "line": 3,
+                                "col": 8
                             },
-                            "value": {
-                                "type": "binary_operation",
-                                "operator": {
-                                    "type": "plus",
-                                    "value": "+",
-                                    "text": "+",
-                                    "offset": 125,
-                                    "lineBreaks": 0,
-                                    "line": 8,
-                                    "col": 22
+                            "end": {
+                                "line": 3,
+                                "col": 10
+                            }
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 3,
+                            "col": 10
+                        }
+                    },
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "fib_i",
+                            "start": {
+                                "line": 4,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 9
+                            }
+                        },
+                        "value": {
+                            "type": "number_literal",
+                            "value": 1,
+                            "start": {
+                                "line": 4,
+                                "col": 12
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 13
+                            }
+                        },
+                        "start": {
+                            "line": 4,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 4,
+                            "col": 13
+                        }
+                    },
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "fib_ii",
+                            "start": {
+                                "line": 5,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 5,
+                                "col": 10
+                            }
+                        },
+                        "value": {
+                            "type": "number_literal",
+                            "value": 1,
+                            "start": {
+                                "line": 5,
+                                "col": 13
+                            },
+                            "end": {
+                                "line": 5,
+                                "col": 14
+                            }
+                        },
+                        "start": {
+                            "line": 5,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 5,
+                            "col": 14
+                        }
+                    },
+                    {
+                        "type": "while_loop",
+                        "condition": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "lte",
+                                "value": "<=",
+                                "text": "<=",
+                                "offset": 76,
+                                "lineBreaks": 0,
+                                "line": 6,
+                                "col": 13
+                            },
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "i",
+                                    "start": {
+                                        "line": 6,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 6,
+                                        "col": 11
+                                    }
                                 },
-                                "left": {
-                                    "type": "var_reference",
-                                    "var_name": {
-                                        "type": "identifier",
-                                        "value": "fib_i",
-                                        "text": "fib_i",
-                                        "offset": 119,
-                                        "lineBreaks": 0,
-                                        "line": 8,
+                                "start": {
+                                    "line": 6,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 11
+                                }
+                            },
+                            "right": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "n",
+                                    "start": {
+                                        "line": 6,
+                                        "col": 15
+                                    },
+                                    "end": {
+                                        "line": 6,
                                         "col": 16
                                     }
                                 },
-                                "right": {
-                                    "type": "var_reference",
+                                "start": {
+                                    "line": 6,
+                                    "col": 15
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 16
+                                }
+                            },
+                            "start": {
+                                "line": 6,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 6,
+                                "col": 16
+                            }
+                        },
+                        "body": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "print",
+                                        "start": {
+                                            "line": 7,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 7,
+                                            "col": 13
+                                        }
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "fib_i",
+                                                "start": {
+                                                    "line": 7,
+                                                    "col": 14
+                                                },
+                                                "end": {
+                                                    "line": 7,
+                                                    "col": 19
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 7,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 7,
+                                                "col": 19
+                                            }
+                                        }
+                                    ],
+                                    "start": {
+                                        "line": 7,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 7,
+                                        "col": 20
+                                    }
+                                },
+                                {
+                                    "type": "var_assignment",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "temp",
+                                        "start": {
+                                            "line": 8,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 8,
+                                            "col": 12
+                                        }
+                                    },
+                                    "value": {
+                                        "type": "binary_operation",
+                                        "operator": {
+                                            "type": "plus",
+                                            "value": "+",
+                                            "text": "+",
+                                            "offset": 125,
+                                            "lineBreaks": 0,
+                                            "line": 8,
+                                            "col": 22
+                                        },
+                                        "left": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "fib_i",
+                                                "start": {
+                                                    "line": 8,
+                                                    "col": 15
+                                                },
+                                                "end": {
+                                                    "line": 8,
+                                                    "col": 20
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 8,
+                                                "col": 15
+                                            },
+                                            "end": {
+                                                "line": 8,
+                                                "col": 20
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "fib_ii",
+                                                "start": {
+                                                    "line": 8,
+                                                    "col": 23
+                                                },
+                                                "end": {
+                                                    "line": 8,
+                                                    "col": 29
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 8,
+                                                "col": 23
+                                            },
+                                            "end": {
+                                                "line": 8,
+                                                "col": 29
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 8,
+                                            "col": 15
+                                        },
+                                        "end": {
+                                            "line": 8,
+                                            "col": 29
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 8,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 8,
+                                        "col": 29
+                                    }
+                                },
+                                {
+                                    "type": "var_assignment",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "fib_i",
+                                        "start": {
+                                            "line": 9,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 9,
+                                            "col": 13
+                                        }
+                                    },
+                                    "value": {
+                                        "type": "var_reference",
+                                        "var_name": {
+                                            "type": "identifier",
+                                            "value": "fib_ii",
+                                            "start": {
+                                                "line": 9,
+                                                "col": 16
+                                            },
+                                            "end": {
+                                                "line": 9,
+                                                "col": 22
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 9,
+                                            "col": 16
+                                        },
+                                        "end": {
+                                            "line": 9,
+                                            "col": 22
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 9,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 9,
+                                        "col": 22
+                                    }
+                                },
+                                {
+                                    "type": "var_assignment",
                                     "var_name": {
                                         "type": "identifier",
                                         "value": "fib_ii",
-                                        "text": "fib_ii",
-                                        "offset": 127,
-                                        "lineBreaks": 0,
-                                        "line": 8,
-                                        "col": 24
+                                        "start": {
+                                            "line": 10,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 10,
+                                            "col": 14
+                                        }
+                                    },
+                                    "value": {
+                                        "type": "var_reference",
+                                        "var_name": {
+                                            "type": "identifier",
+                                            "value": "temp",
+                                            "start": {
+                                                "line": 10,
+                                                "col": 17
+                                            },
+                                            "end": {
+                                                "line": 10,
+                                                "col": 21
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 10,
+                                            "col": 17
+                                        },
+                                        "end": {
+                                            "line": 10,
+                                            "col": 21
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 10,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 10,
+                                        "col": 21
                                     }
-                                }
-                            }
-                        },
-                        {
-                            "type": "var_assignment",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "fib_i",
-                                "text": "fib_i",
-                                "offset": 142,
-                                "lineBreaks": 0,
-                                "line": 9,
-                                "col": 9
-                            },
-                            "value": {
-                                "type": "var_reference",
-                                "var_name": {
-                                    "type": "identifier",
-                                    "value": "fib_ii",
-                                    "text": "fib_ii",
-                                    "offset": 150,
-                                    "lineBreaks": 0,
-                                    "line": 9,
-                                    "col": 17
-                                }
-                            }
-                        },
-                        {
-                            "type": "var_assignment",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "fib_ii",
-                                "text": "fib_ii",
-                                "offset": 165,
-                                "lineBreaks": 0,
-                                "line": 10,
-                                "col": 9
-                            },
-                            "value": {
-                                "type": "var_reference",
-                                "var_name": {
-                                    "type": "identifier",
-                                    "value": "temp",
-                                    "text": "temp",
-                                    "offset": 174,
-                                    "lineBreaks": 0,
-                                    "line": 10,
-                                    "col": 18
-                                }
-                            }
-                        },
-                        {
-                            "type": "var_assignment",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "i",
-                                "text": "i",
-                                "offset": 187,
-                                "lineBreaks": 0,
-                                "line": 11,
-                                "col": 9
-                            },
-                            "value": {
-                                "type": "binary_operation",
-                                "operator": {
-                                    "type": "plus",
-                                    "value": "+",
-                                    "text": "+",
-                                    "offset": 193,
-                                    "lineBreaks": 0,
-                                    "line": 11,
-                                    "col": 15
                                 },
-                                "left": {
-                                    "type": "var_reference",
+                                {
+                                    "type": "var_assignment",
                                     "var_name": {
                                         "type": "identifier",
                                         "value": "i",
-                                        "text": "i",
-                                        "offset": 191,
-                                        "lineBreaks": 0,
+                                        "start": {
+                                            "line": 11,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 11,
+                                            "col": 9
+                                        }
+                                    },
+                                    "value": {
+                                        "type": "binary_operation",
+                                        "operator": {
+                                            "type": "plus",
+                                            "value": "+",
+                                            "text": "+",
+                                            "offset": 193,
+                                            "lineBreaks": 0,
+                                            "line": 11,
+                                            "col": 15
+                                        },
+                                        "left": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "i",
+                                                "start": {
+                                                    "line": 11,
+                                                    "col": 12
+                                                },
+                                                "end": {
+                                                    "line": 11,
+                                                    "col": 13
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 11,
+                                                "col": 12
+                                            },
+                                            "end": {
+                                                "line": 11,
+                                                "col": 13
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "number_literal",
+                                            "value": 1,
+                                            "start": {
+                                                "line": 11,
+                                                "col": 16
+                                            },
+                                            "end": {
+                                                "line": 11,
+                                                "col": 17
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 11,
+                                            "col": 12
+                                        },
+                                        "end": {
+                                            "line": 11,
+                                            "col": 17
+                                        }
+                                    },
+                                    "start": {
                                         "line": 11,
-                                        "col": 13
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 11,
+                                        "col": 17
                                     }
-                                },
-                                "right": {
-                                    "type": "number_literal",
-                                    "value": 1,
-                                    "text": "1",
-                                    "offset": 195,
-                                    "lineBreaks": 0,
-                                    "line": 11,
-                                    "col": 17
                                 }
+                            ],
+                            "start": {
+                                "line": 6,
+                                "col": 17
+                            },
+                            "end": {
+                                "line": 12,
+                                "col": 5
                             }
+                        },
+                        "start": {
+                            "line": 6,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 12,
+                            "col": 5
                         }
-                    ]
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 13,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 13,
+                "col": 1
+            }
         }
     ]
 check: []
@@ -329,6 +596,24 @@ generate:
     main().catch(err => console.log(err.message));
 
     // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
 
     function split(string, separator) {
         return string.split(separator)

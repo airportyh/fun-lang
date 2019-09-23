@@ -6,168 +6,314 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "count",
-                        "text": "count",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "number_literal",
-                        "value": 1,
-                        "text": "1",
-                        "offset": 26,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 13
-                    }
-                },
-                {
-                    "type": "while_loop",
-                    "condition": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "lte",
-                            "value": "<=",
-                            "text": "<=",
-                            "offset": 44,
-                            "lineBreaks": 0,
-                            "line": 3,
-                            "col": 17
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "count",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 9
+                            }
                         },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "count",
-                                "text": "count",
-                                "offset": 38,
+                        "value": {
+                            "type": "number_literal",
+                            "value": 1,
+                            "start": {
+                                "line": 2,
+                                "col": 12
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 13
+                            }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 13
+                        }
+                    },
+                    {
+                        "type": "while_loop",
+                        "condition": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "lte",
+                                "value": "<=",
+                                "text": "<=",
+                                "offset": 44,
                                 "lineBreaks": 0,
                                 "line": 3,
-                                "col": 11
-                            }
-                        },
-                        "right": {
-                            "type": "number_literal",
-                            "value": 10,
-                            "text": "10",
-                            "offset": 47,
-                            "lineBreaks": 0,
-                            "line": 3,
-                            "col": 20
-                        }
-                    },
-                    "body": [
-                        {
-                            "type": "call_expression",
-                            "fun_name": {
-                                "type": "identifier",
-                                "value": "print",
-                                "text": "print",
-                                "offset": 60,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 9
+                                "col": 17
                             },
-                            "arguments": [
-                                {
-                                    "type": "var_reference",
-                                    "var_name": {
-                                        "type": "identifier",
-                                        "value": "count",
-                                        "text": "count",
-                                        "offset": 66,
-                                        "lineBreaks": 0,
-                                        "line": 4,
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "count",
+                                    "start": {
+                                        "line": 3,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 3,
                                         "col": 15
                                     }
-                                }
-                            ]
-                        },
-                        {
-                            "type": "var_assignment",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "count",
-                                "text": "count",
-                                "offset": 81,
-                                "lineBreaks": 0,
-                                "line": 5,
-                                "col": 9
-                            },
-                            "value": {
-                                "type": "binary_operation",
-                                "operator": {
-                                    "type": "plus",
-                                    "value": "+",
-                                    "text": "+",
-                                    "offset": 95,
-                                    "lineBreaks": 0,
-                                    "line": 5,
-                                    "col": 23
                                 },
-                                "left": {
-                                    "type": "var_reference",
+                                "start": {
+                                    "line": 3,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 15
+                                }
+                            },
+                            "right": {
+                                "type": "number_literal",
+                                "value": 10,
+                                "start": {
+                                    "line": 3,
+                                    "col": 19
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 21
+                                }
+                            },
+                            "start": {
+                                "line": 3,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 21
+                            }
+                        },
+                        "body": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "call_expression",
+                                    "fun_name": {
+                                        "type": "identifier",
+                                        "value": "print",
+                                        "start": {
+                                            "line": 4,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 4,
+                                            "col": 13
+                                        }
+                                    },
+                                    "arguments": [
+                                        {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "count",
+                                                "start": {
+                                                    "line": 4,
+                                                    "col": 14
+                                                },
+                                                "end": {
+                                                    "line": 4,
+                                                    "col": 19
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 4,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 4,
+                                                "col": 19
+                                            }
+                                        }
+                                    ],
+                                    "start": {
+                                        "line": 4,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 20
+                                    }
+                                },
+                                {
+                                    "type": "var_assignment",
                                     "var_name": {
                                         "type": "identifier",
                                         "value": "count",
-                                        "text": "count",
-                                        "offset": 89,
-                                        "lineBreaks": 0,
+                                        "start": {
+                                            "line": 5,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 5,
+                                            "col": 13
+                                        }
+                                    },
+                                    "value": {
+                                        "type": "binary_operation",
+                                        "operator": {
+                                            "type": "plus",
+                                            "value": "+",
+                                            "text": "+",
+                                            "offset": 95,
+                                            "lineBreaks": 0,
+                                            "line": 5,
+                                            "col": 23
+                                        },
+                                        "left": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "count",
+                                                "start": {
+                                                    "line": 5,
+                                                    "col": 16
+                                                },
+                                                "end": {
+                                                    "line": 5,
+                                                    "col": 21
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 5,
+                                                "col": 16
+                                            },
+                                            "end": {
+                                                "line": 5,
+                                                "col": 21
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "number_literal",
+                                            "value": 1,
+                                            "start": {
+                                                "line": 5,
+                                                "col": 24
+                                            },
+                                            "end": {
+                                                "line": 5,
+                                                "col": 25
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 5,
+                                            "col": 16
+                                        },
+                                        "end": {
+                                            "line": 5,
+                                            "col": 25
+                                        }
+                                    },
+                                    "start": {
                                         "line": 5,
-                                        "col": 17
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 5,
+                                        "col": 25
                                     }
+                                }
+                            ],
+                            "start": {
+                                "line": 3,
+                                "col": 22
+                            },
+                            "end": {
+                                "line": 6,
+                                "col": 5
+                            }
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 6,
+                            "col": 5
+                        }
+                    },
+                    {
+                        "type": "call_expression",
+                        "fun_name": {
+                            "type": "identifier",
+                            "value": "print",
+                            "start": {
+                                "line": 7,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 7,
+                                "col": 9
+                            }
+                        },
+                        "arguments": [
+                            {
+                                "type": "string_literal",
+                                "value": "done",
+                                "start": {
+                                    "line": 7,
+                                    "col": 10
                                 },
-                                "right": {
-                                    "type": "number_literal",
-                                    "value": 1,
-                                    "text": "1",
-                                    "offset": 97,
-                                    "lineBreaks": 0,
-                                    "line": 5,
-                                    "col": 25
+                                "end": {
+                                    "line": 7,
+                                    "col": 16
                                 }
                             }
-                        }
-                    ]
-                },
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 109,
-                        "lineBreaks": 0,
-                        "line": 7,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "string_literal",
-                            "value": "done",
-                            "text": "\"done\"",
-                            "offset": 115,
-                            "lineBreaks": 0,
+                        ],
+                        "start": {
                             "line": 7,
-                            "col": 11
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 7,
+                            "col": 17
                         }
-                    ]
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 8,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 8,
+                "col": 1
+            }
         }
     ]
 check: []
@@ -185,6 +331,24 @@ generate:
     main().catch(err => console.log(err.message));
 
     // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
 
     function split(string, separator) {
         return string.split(separator)

@@ -6,353 +6,573 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "main",
-                "text": "main",
-                "offset": 5,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 6
+                "start": {
+                    "line": 1,
+                    "col": 5
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "text",
-                        "text": "text",
-                        "offset": 18,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "text",
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 8
+                            }
+                        },
+                        "value": {
+                            "type": "string_literal",
+                            "value": "What is this thing called loved?",
+                            "start": {
+                                "line": 2,
+                                "col": 11
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 45
+                            }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 45
+                        }
                     },
-                    "value": {
-                        "type": "string_literal",
-                        "value": "What is this thing called loved?",
-                        "text": "\"What is this thing called loved?\"",
-                        "offset": 25,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 12
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "tally",
-                        "text": "tally",
-                        "offset": 64,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 5
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "tally",
+                            "start": {
+                                "line": 3,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 9
+                            }
+                        },
+                        "value": {
+                            "type": "dictionary_literal",
+                            "entries": [],
+                            "start": {
+                                "line": 3,
+                                "col": 12
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 14
+                            }
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 3,
+                            "col": 14
+                        }
                     },
-                    "value": {
-                        "type": "dictionary_literal",
-                        "entries": []
-                    }
-                },
-                {
-                    "type": "for_loop",
-                    "loop_variable": {
-                        "type": "identifier",
-                        "value": "char",
-                        "text": "char",
-                        "offset": 83,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 9
+                    {
+                        "type": "for_loop",
+                        "loop_variable": {
+                            "type": "identifier",
+                            "value": "char",
+                            "start": {
+                                "line": 4,
+                                "col": 8
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 12
+                            }
+                        },
+                        "iterable": {
+                            "type": "call_expression",
+                            "fun_name": {
+                                "type": "identifier",
+                                "value": "split",
+                                "start": {
+                                    "line": 4,
+                                    "col": 16
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 21
+                                }
+                            },
+                            "arguments": [
+                                {
+                                    "type": "var_reference",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "text",
+                                        "start": {
+                                            "line": 4,
+                                            "col": 22
+                                        },
+                                        "end": {
+                                            "line": 4,
+                                            "col": 26
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 4,
+                                        "col": 22
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 26
+                                    }
+                                },
+                                {
+                                    "type": "string_literal",
+                                    "value": "",
+                                    "start": {
+                                        "line": 4,
+                                        "col": 28
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 30
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 4,
+                                "col": 16
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 31
+                            }
+                        },
+                        "body": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "if_statement",
+                                    "condition": {
+                                        "type": "indexed_access",
+                                        "subject": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "tally",
+                                                "start": {
+                                                    "line": 5,
+                                                    "col": 11
+                                                },
+                                                "end": {
+                                                    "line": 5,
+                                                    "col": 16
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 5,
+                                                "col": 11
+                                            },
+                                            "end": {
+                                                "line": 5,
+                                                "col": 16
+                                            }
+                                        },
+                                        "index": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "char",
+                                                "start": {
+                                                    "line": 5,
+                                                    "col": 17
+                                                },
+                                                "end": {
+                                                    "line": 5,
+                                                    "col": 21
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 5,
+                                                "col": 17
+                                            },
+                                            "end": {
+                                                "line": 5,
+                                                "col": 21
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 5,
+                                            "col": 11
+                                        },
+                                        "end": {
+                                            "line": 5,
+                                            "col": 22
+                                        }
+                                    },
+                                    "consequent": {
+                                        "type": "code_block",
+                                        "statements": [
+                                            {
+                                                "type": "indexed_assignment",
+                                                "subject": {
+                                                    "type": "var_reference",
+                                                    "var_name": {
+                                                        "type": "identifier",
+                                                        "value": "tally",
+                                                        "start": {
+                                                            "line": 6,
+                                                            "col": 12
+                                                        },
+                                                        "end": {
+                                                            "line": 6,
+                                                            "col": 17
+                                                        }
+                                                    },
+                                                    "start": {
+                                                        "line": 6,
+                                                        "col": 12
+                                                    },
+                                                    "end": {
+                                                        "line": 6,
+                                                        "col": 17
+                                                    }
+                                                },
+                                                "index": {
+                                                    "type": "var_reference",
+                                                    "var_name": {
+                                                        "type": "identifier",
+                                                        "value": "char",
+                                                        "start": {
+                                                            "line": 6,
+                                                            "col": 18
+                                                        },
+                                                        "end": {
+                                                            "line": 6,
+                                                            "col": 22
+                                                        }
+                                                    },
+                                                    "start": {
+                                                        "line": 6,
+                                                        "col": 18
+                                                    },
+                                                    "end": {
+                                                        "line": 6,
+                                                        "col": 22
+                                                    }
+                                                },
+                                                "value": {
+                                                    "type": "binary_operation",
+                                                    "operator": {
+                                                        "type": "plus",
+                                                        "value": "+",
+                                                        "text": "+",
+                                                        "offset": 172,
+                                                        "lineBreaks": 0,
+                                                        "line": 6,
+                                                        "col": 39
+                                                    },
+                                                    "left": {
+                                                        "type": "indexed_access",
+                                                        "subject": {
+                                                            "type": "var_reference",
+                                                            "var_name": {
+                                                                "type": "identifier",
+                                                                "value": "tally",
+                                                                "start": {
+                                                                    "line": 6,
+                                                                    "col": 26
+                                                                },
+                                                                "end": {
+                                                                    "line": 6,
+                                                                    "col": 31
+                                                                }
+                                                            },
+                                                            "start": {
+                                                                "line": 6,
+                                                                "col": 26
+                                                            },
+                                                            "end": {
+                                                                "line": 6,
+                                                                "col": 31
+                                                            }
+                                                        },
+                                                        "index": {
+                                                            "type": "var_reference",
+                                                            "var_name": {
+                                                                "type": "identifier",
+                                                                "value": "char",
+                                                                "start": {
+                                                                    "line": 6,
+                                                                    "col": 32
+                                                                },
+                                                                "end": {
+                                                                    "line": 6,
+                                                                    "col": 36
+                                                                }
+                                                            },
+                                                            "start": {
+                                                                "line": 6,
+                                                                "col": 32
+                                                            },
+                                                            "end": {
+                                                                "line": 6,
+                                                                "col": 36
+                                                            }
+                                                        },
+                                                        "start": {
+                                                            "line": 6,
+                                                            "col": 26
+                                                        },
+                                                        "end": {
+                                                            "line": 6,
+                                                            "col": 37
+                                                        }
+                                                    },
+                                                    "right": {
+                                                        "type": "number_literal",
+                                                        "value": 1,
+                                                        "start": {
+                                                            "line": 6,
+                                                            "col": 40
+                                                        },
+                                                        "end": {
+                                                            "line": 6,
+                                                            "col": 41
+                                                        }
+                                                    },
+                                                    "start": {
+                                                        "line": 6,
+                                                        "col": 26
+                                                    },
+                                                    "end": {
+                                                        "line": 6,
+                                                        "col": 41
+                                                    }
+                                                },
+                                                "start": {
+                                                    "line": 6,
+                                                    "col": 12
+                                                },
+                                                "end": {
+                                                    "line": 6,
+                                                    "col": 41
+                                                }
+                                            }
+                                        ],
+                                        "start": {
+                                            "line": 5,
+                                            "col": 23
+                                        },
+                                        "end": {
+                                            "line": 7,
+                                            "col": 9
+                                        }
+                                    },
+                                    "alternate": {
+                                        "type": "code_block",
+                                        "statements": [
+                                            {
+                                                "type": "indexed_assignment",
+                                                "subject": {
+                                                    "type": "var_reference",
+                                                    "var_name": {
+                                                        "type": "identifier",
+                                                        "value": "tally",
+                                                        "start": {
+                                                            "line": 8,
+                                                            "col": 12
+                                                        },
+                                                        "end": {
+                                                            "line": 8,
+                                                            "col": 17
+                                                        }
+                                                    },
+                                                    "start": {
+                                                        "line": 8,
+                                                        "col": 12
+                                                    },
+                                                    "end": {
+                                                        "line": 8,
+                                                        "col": 17
+                                                    }
+                                                },
+                                                "index": {
+                                                    "type": "var_reference",
+                                                    "var_name": {
+                                                        "type": "identifier",
+                                                        "value": "char",
+                                                        "start": {
+                                                            "line": 8,
+                                                            "col": 18
+                                                        },
+                                                        "end": {
+                                                            "line": 8,
+                                                            "col": 22
+                                                        }
+                                                    },
+                                                    "start": {
+                                                        "line": 8,
+                                                        "col": 18
+                                                    },
+                                                    "end": {
+                                                        "line": 8,
+                                                        "col": 22
+                                                    }
+                                                },
+                                                "value": {
+                                                    "type": "number_literal",
+                                                    "value": 1,
+                                                    "start": {
+                                                        "line": 8,
+                                                        "col": 26
+                                                    },
+                                                    "end": {
+                                                        "line": 8,
+                                                        "col": 27
+                                                    }
+                                                },
+                                                "start": {
+                                                    "line": 8,
+                                                    "col": 12
+                                                },
+                                                "end": {
+                                                    "line": 8,
+                                                    "col": 27
+                                                }
+                                            }
+                                        ],
+                                        "start": {
+                                            "line": 7,
+                                            "col": 15
+                                        },
+                                        "end": {
+                                            "line": 9,
+                                            "col": 9
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 5,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 9,
+                                        "col": 9
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 4,
+                                "col": 32
+                            },
+                            "end": {
+                                "line": 10,
+                                "col": 5
+                            }
+                        },
+                        "start": {
+                            "line": 4,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 10,
+                            "col": 5
+                        }
                     },
-                    "iterable": {
+                    {
                         "type": "call_expression",
                         "fun_name": {
                             "type": "identifier",
-                            "value": "split",
-                            "text": "split",
-                            "offset": 91,
-                            "lineBreaks": 0,
-                            "line": 4,
-                            "col": 17
+                            "value": "print",
+                            "start": {
+                                "line": 11,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 11,
+                                "col": 9
+                            }
                         },
                         "arguments": [
                             {
                                 "type": "var_reference",
                                 "var_name": {
                                     "type": "identifier",
-                                    "value": "text",
-                                    "text": "text",
-                                    "offset": 97,
-                                    "lineBreaks": 0,
-                                    "line": 4,
-                                    "col": 23
-                                }
-                            },
-                            {
-                                "type": "string_literal",
-                                "value": "",
-                                "text": "\"\"",
-                                "offset": 103,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 29
-                            }
-                        ]
-                    },
-                    "body": [
-                        {
-                            "type": "if_statement",
-                            "condition": {
-                                "type": "indexed_access",
-                                "subject": {
-                                    "type": "var_reference",
-                                    "var_name": {
-                                        "type": "identifier",
-                                        "value": "tally",
-                                        "text": "tally",
-                                        "offset": 120,
-                                        "lineBreaks": 0,
-                                        "line": 5,
-                                        "col": 12
+                                    "value": "tally",
+                                    "start": {
+                                        "line": 11,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 11,
+                                        "col": 15
                                     }
                                 },
-                                "index": {
-                                    "type": "var_reference",
-                                    "var_name": {
-                                        "type": "identifier",
-                                        "value": "char",
-                                        "text": "char",
-                                        "offset": 126,
-                                        "lineBreaks": 0,
-                                        "line": 5,
-                                        "col": 18
-                                    }
+                                "start": {
+                                    "line": 11,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 11,
+                                    "col": 15
                                 }
-                            },
-                            "consequent": [
-                                {
-                                    "type": "indexed_assignment",
-                                    "subject": {
-                                        "type": "var_reference",
-                                        "var_name": {
-                                            "type": "identifier",
-                                            "value": "tally",
-                                            "text": "tally",
-                                            "offset": 146,
-                                            "lineBreaks": 0,
-                                            "line": 6,
-                                            "col": 13
-                                        }
-                                    },
-                                    "index": {
-                                        "type": "var_reference",
-                                        "var_name": {
-                                            "type": "identifier",
-                                            "value": "char",
-                                            "text": "char",
-                                            "offset": 152,
-                                            "lineBreaks": 0,
-                                            "line": 6,
-                                            "col": 19
-                                        }
-                                    },
-                                    "value": {
-                                        "type": "binary_operation",
-                                        "operator": {
-                                            "type": "plus",
-                                            "value": "+",
-                                            "text": "+",
-                                            "offset": 172,
-                                            "lineBreaks": 0,
-                                            "line": 6,
-                                            "col": 39
-                                        },
-                                        "left": {
-                                            "type": "indexed_access",
-                                            "subject": {
-                                                "type": "var_reference",
-                                                "var_name": {
-                                                    "type": "identifier",
-                                                    "value": "tally",
-                                                    "text": "tally",
-                                                    "offset": 160,
-                                                    "lineBreaks": 0,
-                                                    "line": 6,
-                                                    "col": 27
-                                                }
-                                            },
-                                            "index": {
-                                                "type": "var_reference",
-                                                "var_name": {
-                                                    "type": "identifier",
-                                                    "value": "char",
-                                                    "text": "char",
-                                                    "offset": 166,
-                                                    "lineBreaks": 0,
-                                                    "line": 6,
-                                                    "col": 33
-                                                }
-                                            }
-                                        },
-                                        "right": {
-                                            "type": "number_literal",
-                                            "value": 1,
-                                            "text": "1",
-                                            "offset": 174,
-                                            "lineBreaks": 0,
-                                            "line": 6,
-                                            "col": 41
-                                        }
-                                    }
-                                }
-                            ],
-                            "alternate": [
-                                {
-                                    "type": "indexed_assignment",
-                                    "subject": {
-                                        "type": "var_reference",
-                                        "var_name": {
-                                            "type": "identifier",
-                                            "value": "tally",
-                                            "text": "tally",
-                                            "offset": 205,
-                                            "lineBreaks": 0,
-                                            "line": 8,
-                                            "col": 13
-                                        }
-                                    },
-                                    "index": {
-                                        "type": "var_reference",
-                                        "var_name": {
-                                            "type": "identifier",
-                                            "value": "char",
-                                            "text": "char",
-                                            "offset": 211,
-                                            "lineBreaks": 0,
-                                            "line": 8,
-                                            "col": 19
-                                        }
-                                    },
-                                    "value": {
-                                        "type": "number_literal",
-                                        "value": 1,
-                                        "text": "1",
-                                        "offset": 219,
-                                        "lineBreaks": 0,
-                                        "line": 8,
-                                        "col": 27
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "call_expression",
-                    "fun_name": {
-                        "type": "identifier",
-                        "value": "print",
-                        "text": "print",
-                        "offset": 241,
-                        "lineBreaks": 0,
-                        "line": 11,
-                        "col": 5
-                    },
-                    "arguments": [
-                        {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "tally",
-                                "text": "tally",
-                                "offset": 247,
-                                "lineBreaks": 0,
-                                "line": 11,
-                                "col": 11
                             }
+                        ],
+                        "start": {
+                            "line": 11,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 11,
+                            "col": 16
                         }
-                    ]
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 12,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 12,
+                "col": 1
+            }
         }
     ]
 check: []
 generate:
-  js: |-
-    async function main() {
-        var text = "What is this thing called loved?";
-        var tally = {  };
-        for (let char of split(text, "")) {
-            if (tally[char]) {
-                tally[char] = tally[char] + 1
-            } else {
-                tally[char] = 1
-            }
-        }
-        print(tally);
-    }
-
-    main().catch(err => console.log(err.message));
-
-    // Built-in Functions:
-
-    function split(string, separator) {
-        return string.split(separator)
-    }
-
-    function print(...args) {
-        console.log(...args);
-    }
-
-    function pop(array) {
-        return array.pop();
-    }
-
-    function push(array, item) {
-        return array.push(item);
-    }
-
-    function concat(one, other) {
-        return one.concat(other);
-    }
-
-    function map(fn, arr) {
-        return arr.map(fn);
-    }
-
-    function filter(fn, arr) {
-        return arr.filter(fn);
-    }
-
-    function reduce(fn, initValue, arr) {
-        return arr.reduce(fn, initValue);
-    }
-
-    function sqrt(num) {
-        return Math.sqrt(num);
-    }
-
-    function sqr(num) {
-        return num * num;
-    }
-
-    function join(array, separator) {
-        return array.join(separator);
-    }
-exec:
-  stdout: |
-    { W: 1,
-      h: 3,
-      a: 2,
-      t: 3,
-      ' ': 5,
-      i: 3,
-      s: 2,
-      n: 1,
-      g: 1,
-      c: 1,
-      l: 3,
-      e: 2,
-      d: 2,
-      o: 1,
-      v: 1,
-      '?': 1 }
-  stderr: ''
+  error: |-
+    TypeError: statement.body.map is not a function
+        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:62:35)
+        at codeBlock.statements.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:124:22)
+        at Array.map (<anonymous>)
+        at generateCodeForCodeBlock (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:123:40)
+        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:29:22)
+        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:7:16)
+        at Array.map (<anonymous>)
+        at generateCode (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:6:24)
+        at run (/Users/airportyh/Home/Playground/fun-lang/src/runner.js:19:28)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:12:34)

@@ -6,185 +6,335 @@ parse:
             "name": {
                 "type": "identifier",
                 "value": "total",
-                "text": "total",
-                "offset": 4,
-                "lineBreaks": 0,
-                "line": 1,
-                "col": 5
+                "start": {
+                    "line": 1,
+                    "col": 4
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
             },
             "parameters": [
                 {
                     "type": "identifier",
                     "value": "a",
-                    "text": "a",
-                    "offset": 10,
-                    "lineBreaks": 0,
-                    "line": 1,
-                    "col": 11
+                    "start": {
+                        "line": 1,
+                        "col": 10
+                    },
+                    "end": {
+                        "line": 1,
+                        "col": 11
+                    }
                 },
                 {
                     "type": "identifier",
                     "value": "b",
-                    "text": "b",
-                    "offset": 13,
-                    "lineBreaks": 0,
-                    "line": 1,
-                    "col": 14
+                    "start": {
+                        "line": 1,
+                        "col": 13
+                    },
+                    "end": {
+                        "line": 1,
+                        "col": 14
+                    }
                 },
                 {
                     "type": "identifier",
                     "value": "c",
-                    "text": "c",
-                    "offset": 16,
-                    "lineBreaks": 0,
-                    "line": 1,
-                    "col": 17
+                    "start": {
+                        "line": 1,
+                        "col": 16
+                    },
+                    "end": {
+                        "line": 1,
+                        "col": 17
+                    }
                 }
             ],
-            "body": [
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "sum",
-                        "text": "sum",
-                        "offset": 25,
-                        "lineBreaks": 0,
-                        "line": 2,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "var_reference",
-                        "var_name": {
-                            "type": "identifier",
-                            "value": "a",
-                            "text": "a",
-                            "offset": 31,
-                            "lineBreaks": 0,
-                            "line": 2,
-                            "col": 11
-                        }
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "sum",
-                        "text": "sum",
-                        "offset": 37,
-                        "lineBreaks": 0,
-                        "line": 3,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "plus",
-                            "value": "+",
-                            "text": "+",
-                            "offset": 47,
-                            "lineBreaks": 0,
-                            "line": 3,
-                            "col": 15
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "sum",
-                                "text": "sum",
-                                "offset": 43,
-                                "lineBreaks": 0,
-                                "line": 3,
-                                "col": 11
-                            }
-                        },
-                        "right": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "b",
-                                "text": "b",
-                                "offset": 49,
-                                "lineBreaks": 0,
-                                "line": 3,
-                                "col": 17
-                            }
-                        }
-                    }
-                },
-                {
-                    "type": "var_assignment",
-                    "var_name": {
-                        "type": "identifier",
-                        "value": "sum",
-                        "text": "sum",
-                        "offset": 55,
-                        "lineBreaks": 0,
-                        "line": 4,
-                        "col": 5
-                    },
-                    "value": {
-                        "type": "binary_operation",
-                        "operator": {
-                            "type": "plus",
-                            "value": "+",
-                            "text": "+",
-                            "offset": 65,
-                            "lineBreaks": 0,
-                            "line": 4,
-                            "col": 15
-                        },
-                        "left": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "sum",
-                                "text": "sum",
-                                "offset": 61,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 11
-                            }
-                        },
-                        "right": {
-                            "type": "var_reference",
-                            "var_name": {
-                                "type": "identifier",
-                                "value": "c",
-                                "text": "c",
-                                "offset": 67,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 17
-                            }
-                        }
-                    }
-                },
-                {
-                    "type": "return_statement",
-                    "value": {
-                        "type": "var_reference",
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "var_assignment",
                         "var_name": {
                             "type": "identifier",
                             "value": "sum",
-                            "text": "sum",
-                            "offset": 80,
-                            "lineBreaks": 0,
+                            "start": {
+                                "line": 2,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 7
+                            }
+                        },
+                        "value": {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "a",
+                                "start": {
+                                    "line": 2,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "col": 11
+                                }
+                            },
+                            "start": {
+                                "line": 2,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 11
+                            }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 2,
+                            "col": 11
+                        }
+                    },
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "sum",
+                            "start": {
+                                "line": 3,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 7
+                            }
+                        },
+                        "value": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "plus",
+                                "value": "+",
+                                "text": "+",
+                                "offset": 47,
+                                "lineBreaks": 0,
+                                "line": 3,
+                                "col": 15
+                            },
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "sum",
+                                    "start": {
+                                        "line": 3,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 3,
+                                        "col": 13
+                                    }
+                                },
+                                "start": {
+                                    "line": 3,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 13
+                                }
+                            },
+                            "right": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "b",
+                                    "start": {
+                                        "line": 3,
+                                        "col": 16
+                                    },
+                                    "end": {
+                                        "line": 3,
+                                        "col": 17
+                                    }
+                                },
+                                "start": {
+                                    "line": 3,
+                                    "col": 16
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 17
+                                }
+                            },
+                            "start": {
+                                "line": 3,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 3,
+                                "col": 17
+                            }
+                        },
+                        "start": {
+                            "line": 3,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 3,
+                            "col": 17
+                        }
+                    },
+                    {
+                        "type": "var_assignment",
+                        "var_name": {
+                            "type": "identifier",
+                            "value": "sum",
+                            "start": {
+                                "line": 4,
+                                "col": 4
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 7
+                            }
+                        },
+                        "value": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "plus",
+                                "value": "+",
+                                "text": "+",
+                                "offset": 65,
+                                "lineBreaks": 0,
+                                "line": 4,
+                                "col": 15
+                            },
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "sum",
+                                    "start": {
+                                        "line": 4,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 13
+                                    }
+                                },
+                                "start": {
+                                    "line": 4,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 13
+                                }
+                            },
+                            "right": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "c",
+                                    "start": {
+                                        "line": 4,
+                                        "col": 16
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 17
+                                    }
+                                },
+                                "start": {
+                                    "line": 4,
+                                    "col": 16
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 17
+                                }
+                            },
+                            "start": {
+                                "line": 4,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 17
+                            }
+                        },
+                        "start": {
+                            "line": 4,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 4,
+                            "col": 17
+                        }
+                    },
+                    {
+                        "type": "return_statement",
+                        "value": {
+                            "type": "var_reference",
+                            "var_name": {
+                                "type": "identifier",
+                                "value": "sum",
+                                "start": {
+                                    "line": 5,
+                                    "col": 11
+                                },
+                                "end": {
+                                    "line": 5,
+                                    "col": 14
+                                }
+                            },
+                            "start": {
+                                "line": 5,
+                                "col": 11
+                            },
+                            "end": {
+                                "line": 5,
+                                "col": 14
+                            }
+                        },
+                        "start": {
                             "line": 5,
-                            "col": 12
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 5,
+                            "col": 14
                         }
                     }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 19
+                },
+                "end": {
+                    "line": 6,
+                    "col": 1
                 }
-            ]
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 6,
+                "col": 1
+            }
         }
     ]
 check:
-  - >-
-    Re-assignment of variable "sum" on line 3 column 5. This is disallowed in
-    funs. First assignment of "sum" found on line 2 column 5.
-  - >-
-    Re-assignment of variable "sum" on line 4 column 5. This is disallowed in
-    funs. First assignment of "sum" found on line 2 column 5.
+  - "\e[35m1\e[39m  fun total(a, b, c) [\n\e[35m2\e[39m      sum = a\n\e[35m3\e[39m      \e[30m\e[41msum = sum + b\e[49m\e[39m\n       \e[31m↑\e[39m\nRe-assignment of variable \"sum\". This is disallowed in funs. \nFirst assignment of \"sum\" found here:\n\n\e[35m1\e[39m  fun total(a, b, c) [\n\e[35m2\e[39m      \e[30m\e[41msum = a\e[49m\e[39m\n       \e[31m↑\e[39m"
+  - "\e[35m2\e[39m      sum = a\n\e[35m3\e[39m      sum = sum + b\n\e[35m4\e[39m      \e[30m\e[41msum = sum + c\e[49m\e[39m\n       \e[31m↑\e[39m\nRe-assignment of variable \"sum\". This is disallowed in funs. \nFirst assignment of \"sum\" found here:\n\n\e[35m1\e[39m  fun total(a, b, c) [\n\e[35m2\e[39m      \e[30m\e[41msum = a\e[49m\e[39m\n       \e[31m↑\e[39m"
 generate: null

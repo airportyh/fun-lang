@@ -1,0 +1,237 @@
+parse:
+  ast: |-
+    [
+        {
+            "type": "fun_definition",
+            "name": {
+                "type": "identifier",
+                "value": "thing",
+                "start": {
+                    "line": 1,
+                    "col": 4
+                },
+                "end": {
+                    "line": 1,
+                    "col": 9
+                }
+            },
+            "parameters": [],
+            "body": {
+                "type": "code_block",
+                "statements": [
+                    {
+                        "type": "while_loop",
+                        "condition": {
+                            "type": "binary_operation",
+                            "operator": {
+                                "type": "lt",
+                                "value": "<",
+                                "text": "<",
+                                "offset": 26,
+                                "lineBreaks": 0,
+                                "line": 2,
+                                "col": 13
+                            },
+                            "left": {
+                                "type": "var_reference",
+                                "var_name": {
+                                    "type": "identifier",
+                                    "value": "n",
+                                    "start": {
+                                        "line": 2,
+                                        "col": 10
+                                    },
+                                    "end": {
+                                        "line": 2,
+                                        "col": 11
+                                    }
+                                },
+                                "start": {
+                                    "line": 2,
+                                    "col": 10
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "col": 11
+                                }
+                            },
+                            "right": {
+                                "type": "number_literal",
+                                "value": 10,
+                                "start": {
+                                    "line": 2,
+                                    "col": 14
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "col": 16
+                                }
+                            },
+                            "start": {
+                                "line": 2,
+                                "col": 10
+                            },
+                            "end": {
+                                "line": 2,
+                                "col": 16
+                            }
+                        },
+                        "body": {
+                            "type": "code_block",
+                            "statements": [
+                                {
+                                    "type": "var_assignment",
+                                    "var_name": {
+                                        "type": "identifier",
+                                        "value": "n",
+                                        "start": {
+                                            "line": 3,
+                                            "col": 8
+                                        },
+                                        "end": {
+                                            "line": 3,
+                                            "col": 9
+                                        }
+                                    },
+                                    "value": {
+                                        "type": "binary_operation",
+                                        "operator": {
+                                            "type": "plus",
+                                            "value": "+",
+                                            "text": "+",
+                                            "offset": 47,
+                                            "lineBreaks": 0,
+                                            "line": 3,
+                                            "col": 15
+                                        },
+                                        "left": {
+                                            "type": "var_reference",
+                                            "var_name": {
+                                                "type": "identifier",
+                                                "value": "n",
+                                                "start": {
+                                                    "line": 3,
+                                                    "col": 12
+                                                },
+                                                "end": {
+                                                    "line": 3,
+                                                    "col": 13
+                                                }
+                                            },
+                                            "start": {
+                                                "line": 3,
+                                                "col": 12
+                                            },
+                                            "end": {
+                                                "line": 3,
+                                                "col": 13
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "number_literal",
+                                            "value": 1,
+                                            "start": {
+                                                "line": 3,
+                                                "col": 16
+                                            },
+                                            "end": {
+                                                "line": 3,
+                                                "col": 17
+                                            }
+                                        },
+                                        "start": {
+                                            "line": 3,
+                                            "col": 12
+                                        },
+                                        "end": {
+                                            "line": 3,
+                                            "col": 17
+                                        }
+                                    },
+                                    "start": {
+                                        "line": 3,
+                                        "col": 8
+                                    },
+                                    "end": {
+                                        "line": 3,
+                                        "col": 17
+                                    }
+                                }
+                            ],
+                            "start": {
+                                "line": 2,
+                                "col": 17
+                            },
+                            "end": {
+                                "line": 4,
+                                "col": 5
+                            }
+                        },
+                        "start": {
+                            "line": 2,
+                            "col": 4
+                        },
+                        "end": {
+                            "line": 4,
+                            "col": 5
+                        }
+                    }
+                ],
+                "start": {
+                    "line": 1,
+                    "col": 12
+                },
+                "end": {
+                    "line": 5,
+                    "col": 1
+                }
+            },
+            "start": {
+                "line": 1,
+                "col": 0
+            },
+            "end": {
+                "line": 5,
+                "col": 1
+            }
+        },
+        {
+            "type": "proc_definition",
+            "name": {
+                "type": "identifier",
+                "value": "main",
+                "start": {
+                    "line": 7,
+                    "col": 5
+                },
+                "end": {
+                    "line": 7,
+                    "col": 9
+                }
+            },
+            "parameters": [],
+            "body": {
+                "type": "code_block",
+                "statements": [],
+                "start": {
+                    "line": 7,
+                    "col": 12
+                },
+                "end": {
+                    "line": 9,
+                    "col": 1
+                }
+            },
+            "start": {
+                "line": 7,
+                "col": 0
+            },
+            "end": {
+                "line": 9,
+                "col": 1
+            }
+        }
+    ]
+check:
+  - "\e[35m1\e[39m  fun thing() [\n\e[35m2\e[39m      \e[30m\e[41mwhile n < 10 [\e[49m\e[39m\n\e[35m3\e[39m  \e[30m\e[41m        n = n + 1\e[49m\e[39m\n\e[35m4\e[39m  \e[30m\e[41m    ]\e[49m\e[39m\n       \e[31m↑\e[39m\nWhile loop used in a fun. This is disallowed in funs."
+generate: null
