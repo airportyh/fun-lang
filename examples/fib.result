@@ -166,11 +166,14 @@ parse:
                             "operator": {
                                 "type": "lte",
                                 "value": "<=",
-                                "text": "<=",
-                                "offset": 76,
-                                "lineBreaks": 0,
-                                "line": 6,
-                                "col": 13
+                                "start": {
+                                    "line": 6,
+                                    "col": 12
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 14
+                                }
                             },
                             "left": {
                                 "type": "var_reference",
@@ -297,11 +300,14 @@ parse:
                                         "operator": {
                                             "type": "plus",
                                             "value": "+",
-                                            "text": "+",
-                                            "offset": 125,
-                                            "lineBreaks": 0,
-                                            "line": 8,
-                                            "col": 22
+                                            "start": {
+                                                "line": 8,
+                                                "col": 21
+                                            },
+                                            "end": {
+                                                "line": 8,
+                                                "col": 22
+                                            }
                                         },
                                         "left": {
                                             "type": "var_reference",
@@ -478,11 +484,14 @@ parse:
                                         "operator": {
                                             "type": "plus",
                                             "value": "+",
-                                            "text": "+",
-                                            "offset": 193,
-                                            "lineBreaks": 0,
-                                            "line": 11,
-                                            "col": 15
+                                            "start": {
+                                                "line": 11,
+                                                "col": 14
+                                            },
+                                            "end": {
+                                                "line": 11,
+                                                "col": 15
+                                            }
                                         },
                                         "left": {
                                             "type": "var_reference",

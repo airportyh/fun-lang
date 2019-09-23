@@ -90,11 +90,14 @@ parse:
                                     "operator": {
                                         "type": "plus",
                                         "value": "+",
-                                        "text": "+",
-                                        "offset": 60,
-                                        "lineBreaks": 0,
-                                        "line": 2,
-                                        "col": 30
+                                        "start": {
+                                            "line": 2,
+                                            "col": 29
+                                        },
+                                        "end": {
+                                            "line": 2,
+                                            "col": 30
+                                        }
                                     },
                                     "left": {
                                         "type": "call_expression",
@@ -116,11 +119,14 @@ parse:
                                                 "operator": {
                                                     "type": "minus",
                                                     "value": "-",
-                                                    "text": "-",
-                                                    "offset": 54,
-                                                    "lineBreaks": 0,
-                                                    "line": 2,
-                                                    "col": 24
+                                                    "start": {
+                                                        "line": 2,
+                                                        "col": 23
+                                                    },
+                                                    "end": {
+                                                        "line": 2,
+                                                        "col": 24
+                                                    }
                                                 },
                                                 "left": {
                                                     "type": "var_reference",
@@ -207,11 +213,14 @@ parse:
                                                 "operator": {
                                                     "type": "minus",
                                                     "value": "-",
-                                                    "text": "-",
-                                                    "offset": 69,
-                                                    "lineBreaks": 0,
-                                                    "line": 2,
-                                                    "col": 39
+                                                    "start": {
+                                                        "line": 2,
+                                                        "col": 38
+                                                    },
+                                                    "end": {
+                                                        "line": 2,
+                                                        "col": 39
+                                                    }
                                                 },
                                                 "left": {
                                                     "type": "var_reference",

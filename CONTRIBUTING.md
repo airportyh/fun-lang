@@ -101,41 +101,21 @@ In JSON format, it is:
     "type": "var_assignment",
     "var_name": {
         "type": "identifier",
-        "value": "answer",
-        "text": "answer",
-        "offset": 18,
-        "lineBreaks": 0,
-        "line": 2,
-        "col": 5
+        "value": "answer"
     },
     "value": {
         "type": "binary_operation",
         "operator": {
             "type": "multiply",
-            "value": "*",
-            "text": "*",
-            "offset": 29,
-            "lineBreaks": 0,
-            "line": 2,
-            "col": 16
+            "value": "*"
         },
         "left": {
             "type": "number_literal",
-            "value": 6,
-            "text": "6",
-            "offset": 27,
-            "lineBreaks": 0,
-            "line": 2,
-            "col": 14
+            "value": 6
         },
         "right": {
             "type": "number_literal",
-            "value": 7,
-            "text": "7",
-            "offset": 31,
-            "lineBreaks": 0,
-            "line": 2,
-            "col": 18
+            "value": 7
         }
     }
 }
@@ -150,13 +130,89 @@ For example, a `var_assignment` has the properties:
 * `var_name` - the name of the variable being assigned to
 * `value` - the value that is being assigned to the variable
 
-Additionally, you can also see that the leaf nodes of the AST tree
+### Line Number Information
+
+The JSON AST example above has been simplified to not include
+file location information. 
+In reality, the Fun parser includes file location with every
+AST node. So the AST for that example actually look like:
+
+```
+{
+    "type": "var_assignment",
+    "var_name": {
+        "type": "identifier",
+        "value": "answer",
+        "start": {
+            "line": 2,
+            "col": 4
+        },
+        "end": {
+            "line": 2,
+            "col": 10
+        }
+    },
+    "value": {
+        "type": "binary_operation",
+        "operator": {
+            "type": "multiply",
+            "value": "*",
+            "start": {
+                "line": 2,
+                "col": 15
+            },
+            "end": {
+                "line": 2,
+                "col": 16
+            }
+        },
+        "left": {
+            "type": "number_literal",
+            "value": 6,
+            "start": {
+                "line": 2,
+                "col": 13
+            },
+            "end": {
+                "line": 2,
+                "col": 14
+            }
+        },
+        "right": {
+            "type": "number_literal",
+            "value": 7,
+            "start": {
+                "line": 2,
+                "col": 17
+            },
+            "end": {
+                "line": 2,
+                "col": 18
+            }
+        },
+        "start": {
+            "line": 2,
+            "col": 13
+        },
+        "end": {
+            "line": 2,
+            "col": 18
+        }
+    },
+    "start": {
+        "line": 2,
+        "col": 4
+    },
+    "end": {
+        "line": 2,
+        "col": 18
+    }
+}
+```
+
+As you can see, the leaf nodes of the AST tree
 contains additional line number information about where within the
-source file the source code for the node came from:
-
-* `line` - the line number where the node originated
-* `col` - the column number where the node originated
-
+source file the source code for the node came from.
 This information allows the checker and the generator and potentially
 other tools to output line number information with their error messages.
 

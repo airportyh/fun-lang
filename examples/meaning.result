@@ -38,11 +38,14 @@ parse:
                             "operator": {
                                 "type": "multiply",
                                 "value": "*",
-                                "text": "*",
-                                "offset": 29,
-                                "lineBreaks": 0,
-                                "line": 2,
-                                "col": 16
+                                "start": {
+                                    "line": 2,
+                                    "col": 15
+                                },
+                                "end": {
+                                    "line": 2,
+                                    "col": 16
+                                }
                             },
                             "left": {
                                 "type": "number_literal",

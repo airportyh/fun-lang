@@ -121,11 +121,14 @@ parse:
                             "operator": {
                                 "type": "plus",
                                 "value": "+",
-                                "text": "+",
-                                "offset": 47,
-                                "lineBreaks": 0,
-                                "line": 3,
-                                "col": 15
+                                "start": {
+                                    "line": 3,
+                                    "col": 14
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 15
+                                }
                             },
                             "left": {
                                 "type": "var_reference",
@@ -210,11 +213,14 @@ parse:
                             "operator": {
                                 "type": "plus",
                                 "value": "+",
-                                "text": "+",
-                                "offset": 65,
-                                "lineBreaks": 0,
-                                "line": 4,
-                                "col": 15
+                                "start": {
+                                    "line": 4,
+                                    "col": 14
+                                },
+                                "end": {
+                                    "line": 4,
+                                    "col": 15
+                                }
                             },
                             "left": {
                                 "type": "var_reference",

@@ -272,10 +272,10 @@ comparison_expression
         %}
 
 comparison_operator
-    -> ">"   {% id %}
-    |  ">="  {% id %}
-    |  "<"   {% id %}
-    |  "<="  {% id %}
+    -> ">"   {% convertTokenId %}
+    |  ">="  {% convertTokenId %}
+    |  "<"   {% convertTokenId %}
+    |  "<="  {% convertTokenId %}
 
 additive_expression
     -> multiplicative_expression    {% id %}
@@ -283,7 +283,7 @@ additive_expression
         {%
             d => ({
                 type: "binary_operation",
-                operator: d[2],
+                operator: convertToken(d[2]),
                 left: d[0],
                 right: d[4],
                 start: d[0].start,
@@ -297,7 +297,7 @@ multiplicative_expression
         {%
             d => ({
                 type: "binary_operation",
-                operator: d[2],
+                operator: convertToken(d[2]),
                 left: d[0],
                 right: d[4],
                 start: d[0].start,

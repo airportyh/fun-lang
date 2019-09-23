@@ -420,6 +420,4 @@ exec:
         at ChildProcess.exithandler (child_process.js:291:12)
         at ChildProcess.emit (events.js:182:13)
         at maybeClose (internal/child_process.js:961:16)
-        at Socket.stream.socket.on (internal/child_process.js:380:11)
-        at Socket.emit (events.js:182:13)
-        at Pipe._handle.close [as _onclose] (net.js:596:12)
+        at Process.ChildProcess._handle.onexit (internal/child_process.js:248:5)

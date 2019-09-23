@@ -61,11 +61,14 @@ parse:
                             "operator": {
                                 "type": "lte",
                                 "value": "<=",
-                                "text": "<=",
-                                "offset": 44,
-                                "lineBreaks": 0,
-                                "line": 3,
-                                "col": 17
+                                "start": {
+                                    "line": 3,
+                                    "col": 16
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 18
+                                }
                             },
                             "left": {
                                 "type": "var_reference",
@@ -181,11 +184,14 @@ parse:
                                         "operator": {
                                             "type": "plus",
                                             "value": "+",
-                                            "text": "+",
-                                            "offset": 95,
-                                            "lineBreaks": 0,
-                                            "line": 5,
-                                            "col": 23
+                                            "start": {
+                                                "line": 5,
+                                                "col": 22
+                                            },
+                                            "end": {
+                                                "line": 5,
+                                                "col": 23
+                                            }
                                         },
                                         "left": {
                                             "type": "var_reference",

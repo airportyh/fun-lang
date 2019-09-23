@@ -58,11 +58,14 @@ parse:
                                             "operator": {
                                                 "type": "multiply",
                                                 "value": "*",
-                                                "text": "*",
-                                                "offset": 48,
-                                                "lineBreaks": 0,
-                                                "line": 3,
-                                                "col": 18
+                                                "start": {
+                                                    "line": 3,
+                                                    "col": 17
+                                                },
+                                                "end": {
+                                                    "line": 3,
+                                                    "col": 18
+                                                }
                                             },
                                             "left": {
                                                 "type": "var_reference",

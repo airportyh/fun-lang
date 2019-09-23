@@ -61,11 +61,14 @@ parse:
                             "operator": {
                                 "type": "gt",
                                 "value": ">",
-                                "text": ">",
-                                "offset": 38,
-                                "lineBreaks": 0,
-                                "line": 3,
-                                "col": 12
+                                "start": {
+                                    "line": 3,
+                                    "col": 11
+                                },
+                                "end": {
+                                    "line": 3,
+                                    "col": 12
+                                }
                             },
                             "left": {
                                 "type": "var_reference",
@@ -177,11 +180,14 @@ parse:
                             "operator": {
                                 "type": "gt",
                                 "value": ">",
-                                "text": ">",
-                                "offset": 95,
-                                "lineBreaks": 0,
-                                "line": 6,
-                                "col": 12
+                                "start": {
+                                    "line": 6,
+                                    "col": 11
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 12
+                                }
                             },
                             "left": {
                                 "type": "var_reference",
@@ -343,11 +349,14 @@ parse:
                             "operator": {
                                 "type": "gt",
                                 "value": ">",
-                                "text": ">",
-                                "offset": 191,
-                                "lineBreaks": 0,
-                                "line": 11,
-                                "col": 12
+                                "start": {
+                                    "line": 11,
+                                    "col": 11
+                                },
+                                "end": {
+                                    "line": 11,
+                                    "col": 12
+                                }
                             },
                             "left": {
                                 "type": "var_reference",
@@ -450,11 +459,14 @@ parse:
                                 "operator": {
                                     "type": "gt",
                                     "value": ">",
-                                    "text": ">",
-                                    "offset": 249,
-                                    "lineBreaks": 0,
-                                    "line": 13,
-                                    "col": 19
+                                    "start": {
+                                        "line": 13,
+                                        "col": 18
+                                    },
+                                    "end": {
+                                        "line": 13,
+                                        "col": 19
+                                    }
                                 },
                                 "left": {
                                     "type": "var_reference",
