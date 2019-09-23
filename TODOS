@@ -1,22 +1,24 @@
 ## TODOS
 
+* check for purity in nested fun expressions
+* check for purity in nested code blocks in general (if statements)
+* make checker support loops and if statements
+* mandatory return statements in funs?
+* check that main proc exists
+* generalize format of checker errors, and extract formating to outside of checker
+* maybe have 2 pass traversal in checker to catalog the user defined callables first
 * improve runtime errors
 * write user manual
 * documentation on the examples' test results format
 * embed examples and docs in the grammar file?
-* reduce the size of token nodes in AST
-* extract code_block into a grammar symbol
-* anonymous funs
 * currying
 * function composition
-* make checker support loops and if statements
 * function to get length of an array or dictionary
 * allow for loop to loop through dictionary
 * parenthesis
 * plus equals
 * check for undefined and unused variables
 * check for wrong number of arguments in function calls
-* mandatory return statements in funs?
 * regex
 * multi-line allowance
 * runtime diagnostics
@@ -32,6 +34,9 @@
 
 ## Done
 
+* extract code_block into a grammar symbol (x)
+* anonymous funs (x)
+* reduce the size of token nodes in AST (x)
 * ensure pure functions don't call non-pure ones (x)
 * add code context display to checker errors and generator errors (x)
 * add line number/range info in all nodes (x)
