@@ -12,7 +12,7 @@ exports.run = async function run(code) {
     let ast;
     try {
         ast = parse(code);
-        result.parse = { ast: JSON.stringify(ast, null, "    ") };
+        result.parse = { ast: ast };
         result.check = check(ast, code);
         if (result.check.length === 0) {
             try {

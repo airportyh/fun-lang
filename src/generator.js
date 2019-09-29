@@ -53,7 +53,7 @@ function generateCodeForExecutableStatement(statement) {
         const condition = generateCodeForExpression(statement.condition);
         const alternate = statement.alternate ? generateCodeForIfAlternate(statement.alternate) : "";
         return "if (" + condition + ") {\n" +
-            indent(statement.consequent.map(statement => {
+            indent(statement.consequent.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
             }).join("\n")) + "\n}" + alternate;
     } else if (statement.type === "for_loop") {
@@ -77,7 +77,7 @@ function generateCodeForIfAlternate(alternate) {
         return " else " + generateCodeForExecutableStatement(alternate);
     } else {
         return " else {\n" + 
-            indent(alternate.map(statement => {
+            indent(alternate.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
             }).join("\n")) + "\n}";
     }

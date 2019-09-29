@@ -63,6 +63,8 @@ function checkFun(fun, userCallables, sourceCode) {
                 generateCodeContext(statement, sourceCode) + "\n" +
                 "While loop used in a fun. This is disallowed in funs."
             );
+        } else {
+            throw new Error("Unimplemented statement type: " + statement.type);
         }
     }
     return results;
@@ -101,6 +103,9 @@ function checkExpression(expression, userCallables, sourceCode) {
                 );
             }
         }
+        for (let argument of expression.arguments) {
+            results.push(...checkExpression(argument, userCallables, sourceCode));
+        }
     } else if (expression.type === "binary_expression") {
         results.push(...checkExpression(expression.left, userCallables, sourceCode));
         results.push(...checkExpression(expression.right, userCallables, sourceCode));
@@ -115,6 +120,8 @@ function checkExpression(expression, userCallables, sourceCode) {
     } else if (expression.type === "indexed_access") {
         results.push(...checkExpression(expression.subject, userCallables, sourceCode));
         results.push(...checkExpression(expression.index, userCallables, sourceCode));
+    } else if (expression.type === "fun_expression") {
+        results.push(...checkFun(expression, userCallables, sourceCode));
     }
     return results;
 }

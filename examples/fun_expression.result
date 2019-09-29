@@ -50,28 +50,39 @@ parse:
                                         }
                                     }
                                 ],
-                                "body": [
-                                    {
-                                        "type": "return_statement",
-                                        "value": {
-                                            "type": "binary_operation",
-                                            "operator": {
-                                                "type": "multiply",
-                                                "value": "*",
-                                                "start": {
-                                                    "line": 3,
-                                                    "col": 17
+                                "body": {
+                                    "type": "code_block",
+                                    "statements": [
+                                        {
+                                            "type": "return_statement",
+                                            "value": {
+                                                "type": "binary_operation",
+                                                "operator": {
+                                                    "type": "multiply",
+                                                    "value": "*",
+                                                    "start": {
+                                                        "line": 3,
+                                                        "col": 17
+                                                    },
+                                                    "end": {
+                                                        "line": 3,
+                                                        "col": 18
+                                                    }
                                                 },
-                                                "end": {
-                                                    "line": 3,
-                                                    "col": 18
-                                                }
-                                            },
-                                            "left": {
-                                                "type": "var_reference",
-                                                "var_name": {
-                                                    "type": "identifier",
-                                                    "value": "n",
+                                                "left": {
+                                                    "type": "var_reference",
+                                                    "var_name": {
+                                                        "type": "identifier",
+                                                        "value": "n",
+                                                        "start": {
+                                                            "line": 3,
+                                                            "col": 15
+                                                        },
+                                                        "end": {
+                                                            "line": 3,
+                                                            "col": 16
+                                                        }
+                                                    },
                                                     "start": {
                                                         "line": 3,
                                                         "col": 15
@@ -81,21 +92,21 @@ parse:
                                                         "col": 16
                                                     }
                                                 },
+                                                "right": {
+                                                    "type": "number_literal",
+                                                    "value": 2,
+                                                    "start": {
+                                                        "line": 3,
+                                                        "col": 19
+                                                    },
+                                                    "end": {
+                                                        "line": 3,
+                                                        "col": 20
+                                                    }
+                                                },
                                                 "start": {
                                                     "line": 3,
                                                     "col": 15
-                                                },
-                                                "end": {
-                                                    "line": 3,
-                                                    "col": 16
-                                                }
-                                            },
-                                            "right": {
-                                                "type": "number_literal",
-                                                "value": 2,
-                                                "start": {
-                                                    "line": 3,
-                                                    "col": 19
                                                 },
                                                 "end": {
                                                     "line": 3,
@@ -104,23 +115,23 @@ parse:
                                             },
                                             "start": {
                                                 "line": 3,
-                                                "col": 15
+                                                "col": 8
                                             },
                                             "end": {
                                                 "line": 3,
                                                 "col": 20
                                             }
-                                        },
-                                        "start": {
-                                            "line": 3,
-                                            "col": 8
-                                        },
-                                        "end": {
-                                            "line": 3,
-                                            "col": 20
                                         }
+                                    ],
+                                    "start": {
+                                        "line": 2,
+                                        "col": 15
+                                    },
+                                    "end": {
+                                        "line": 4,
+                                        "col": 5
                                     }
-                                ],
+                                },
                                 "start": {
                                     "line": 2,
                                     "col": 8
@@ -199,15 +210,78 @@ parse:
     ]
 check: []
 generate:
-  error: |-
-    TypeError: Cannot read property 'map' of undefined
-        at generateCodeForCodeBlock (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:123:40)
-        at generateCodeForExpression (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:115:13)
-        at statement.fun_name.value.(.statement.arguments.map.arg (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:45:44)
-        at Array.map (<anonymous>)
-        at generateCodeForExecutableStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:45:33)
-        at codeBlock.statements.map.statement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:124:22)
-        at Array.map (<anonymous>)
-        at generateCodeForCodeBlock (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:123:40)
-        at generateCodeForTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:29:22)
-        at ast.map.node (/Users/airportyh/Home/Playground/fun-lang/src/generator.js:7:16)
+  js: |-
+    async function main() {
+        map(function (n) {
+            return n * 2;
+        }, range(10));
+    }
+
+    main().catch(err => console.log(err.message));
+
+    // Built-in Functions:
+
+    function range(...args) {
+        let start, end;
+        if (args.length === 1) {
+            start = 0
+            end = args[0];
+        } else if (args.length === 2) {
+            start = args[0];
+            end = args[1];
+        } else {
+            throw new Error("Wrong number of arguments");
+        }
+        const ret = [];
+        for (let i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
+
+    function split(string, separator) {
+        return string.split(separator)
+    }
+
+    function print(...args) {
+        console.log(...args);
+    }
+
+    function pop(array) {
+        return array.pop();
+    }
+
+    function push(array, item) {
+        return array.push(item);
+    }
+
+    function concat(one, other) {
+        return one.concat(other);
+    }
+
+    function map(fn, arr) {
+        return arr.map(fn);
+    }
+
+    function filter(fn, arr) {
+        return arr.filter(fn);
+    }
+
+    function reduce(fn, initValue, arr) {
+        return arr.reduce(fn, initValue);
+    }
+
+    function sqrt(num) {
+        return Math.sqrt(num);
+    }
+
+    function sqr(num) {
+        return num * num;
+    }
+
+    function join(array, separator) {
+        return array.join(separator);
+    }
+exec:
+  stdout: ''
+  stderr: ''

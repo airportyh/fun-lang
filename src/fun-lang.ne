@@ -39,11 +39,7 @@ function convertTokenId(data) {
 input -> top_level_statements {% id %}
 
 top_level_statements
-    -> _ "\n" top_level_statements
-        {%
-            d => d[2]
-        %}
-    |  top_level_statement
+    ->  top_level_statement
         {%
             d => [d[0]]
         %}
@@ -53,6 +49,15 @@ top_level_statements
                 d[0],
                 ...d[4]
             ]
+        %}
+    # below 2 sub-rules handle blank lines
+    |  _ "\n" top_level_statements
+        {%
+            d => d[2]
+        %}
+    |  _
+        {%
+            d => []
         %}
 
 top_level_statement
@@ -349,7 +354,7 @@ list_items
 
 dictionary_literal
     -> "{" dictionary_entries "}"
-        {% 
+        {%
             d => ({
                 type: "dictionary_literal",
                 entries: d[1],
@@ -376,14 +381,14 @@ dictionary_entry
         %}
 
 fun_expression
-    -> "fun" _ "(" _ parameter_list _ ")" _ "[" _ "\n" executable_statements "]"
+    -> "fun" _ "(" _ parameter_list _ ")" _ code_block
         {%
             d => ({
                 type: "fun_expression",
                 parameters: d[4],
-                body: d[11],
+                body: d[8],
                 start: tokenStart(d[0]),
-                end: tokenEnd(d[12])
+                end: d[8].end
             })
         %}
 

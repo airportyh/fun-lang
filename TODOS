@@ -1,6 +1,5 @@
 ## TODOS
 
-* check for purity in nested fun expressions
 * check for purity in nested code blocks in general (if statements)
 * make checker support loops and if statements
 * mandatory return statements in funs?
@@ -34,6 +33,7 @@
 
 ## Done
 
+* check for purity in nested fun expressions (x)
 * extract code_block into a grammar symbol (x)
 * anonymous funs (x)
 * reduce the size of token nodes in AST (x)

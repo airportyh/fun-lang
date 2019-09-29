@@ -1,0 +1,10 @@
+parse:
+  error: |-
+    Error: Unimplemented statement type: if_statement
+        at checkFun (/Users/airportyh/Home/Playground/fun-lang/src/checker.js:67:19)
+        at checkTopLevelStatement (/Users/airportyh/Home/Playground/fun-lang/src/checker.js:17:16)
+        at check (/Users/airportyh/Home/Playground/fun-lang/src/checker.js:9:24)
+        at run (/Users/airportyh/Home/Playground/fun-lang/src/runner.js:16:24)
+        at main (/Users/airportyh/Home/Playground/fun-lang/scripts/test-examples.js:12:34)
+check: null
+generate: null
