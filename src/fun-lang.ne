@@ -122,14 +122,25 @@ executable_statements
         %}
 
 executable_statement
-   -> var_assignment       {% id %}
-   |  return_statement     {% id %}
-   |  call_expression      {% id %}
+   -> return_statement     {% id %}
+   |  var_assignment       {% id %}
+   |  call_statement       {% id %}
    |  line_comment         {% id %}
    |  indexed_assignment   {% id %}
    |  while_loop           {% id %}
    |  if_statement         {% id %}
    |  for_loop             {% id %}
+
+return_statement
+   -> "return" __ expression
+       {%
+           d => ({
+               type: "return_statement",
+               value: d[2],
+               start: tokenStart(d[0]),
+               end: d[2].end
+           })
+       %}
 
 var_assignment
     -> identifier _ "=" _ expression
@@ -140,6 +151,20 @@ var_assignment
                 value: d[4],
                 start: d[0].start,
                 end: d[4].end
+            })
+        %}
+
+call_statement -> call_expression  {% id %}
+
+call_expression
+    -> identifier _ "(" argument_list ")"
+        {%
+            d => ({
+                type: "call_expression",
+                fun_name: d[0],
+                arguments: d[3],
+                start: d[0].start,
+                end: tokenEnd(d[4])
             })
         %}
 
@@ -226,29 +251,6 @@ for_loop
                 body: d[8],
                 start: tokenStart(d[0]),
                 end: d[8].end
-            })
-        %}
-
-return_statement
-    -> "return" __ expression
-        {%
-            d => ({
-                type: "return_statement",
-                value: d[2],
-                start: tokenStart(d[0]),
-                end: d[2].end
-            })
-        %}
-
-call_expression
-    -> identifier _ "(" argument_list ")"
-        {%
-            d => ({
-                type: "call_expression",
-                fun_name: d[0],
-                arguments: d[3],
-                start: d[0].start,
-                end: tokenEnd(d[4])
             })
         %}
 

@@ -1,5 +1,6 @@
 ## TODOS
 
+* complete jest-based test suite and document it
 * check for purity in nested code blocks in general (if statements)
 * make checker support loops and if statements
 * mandatory return statements in funs?

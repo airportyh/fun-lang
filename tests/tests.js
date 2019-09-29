@@ -1,5 +1,6 @@
 const { run } = require("../src/runner");
 const stringMatching = expect.stringMatching;
+const arrayContaining = expect.arrayContaining;
 
 test("top-level line comments", async () => {
 const program = `
@@ -59,22 +60,75 @@ proc main() [
         .toEqual("Hello, Ding!\n");
 });
 
-test("fun var assignment", async () => {
+test("fun return statement", async () => {
 const program = `
-fun distance(x1, y1, x2, y2) [
-    delta1 = x1 - x2
-    delta2 = y1 - y2
-    return sqrt(sqr(delta1) + sqr(delta2))
+fun sum(x, y) [
+    return x + y
 ]
 
 proc main() [
-    d = distance(0, 0, 3, 4)
-    print("The distance is " + d)
+    print(sum(2, 5))
 ]
 `;
     const result = await run(program);
     expect(result.exec.stdout)
-        .toEqual("The distance is 5\n");
+        .toEqual("7\n");
+});
+
+test("fun var assignment", async () => {
+const program = `
+fun difference(x, y) [
+    diff = x - y
+    return diff
+]
+
+proc main() [
+    print(difference(5, 2))
+]
+`;
+    const result = await run(program);
+    expect(result.exec.stdout)
+        .toEqual("3\n");
+});
+
+test("fun call statement (not allowed)", async () => {
+const program = `
+fun hello() [
+    print("Hello")
+]
+
+proc main() [
+    hello()
+]
+`;
+    const result = await run(program);
+    expect(result.check)
+        .toEqual(
+            arrayContaining([
+                stringMatching(
+                    /Call statement on it's own line found\./
+                )
+            ])
+        );
+});
+
+test("fun line comment", async () => {
+const program = `
+fun hello() [
+    # I am a comment
+    return "Hello"
+]
+
+proc main() [
+    print(hello())
+]
+`;
+    const result = await run(program);
+    console.log(result);
+    expect(result.generate.js)
+        .toEqual(
+            stringMatching(/\/\/ I am a comment/)
+        );
 });
 
 test("proc parameters", async () => {

@@ -13,23 +13,29 @@ exports.run = async function run(code) {
     try {
         ast = parse(code);
         result.parse = { ast: ast };
-        result.check = check(ast, code);
-        if (result.check.length === 0) {
-            try {
-                const js = generateCode(ast);
-                result.generate = { js: js };
+        try {
+            result.check = check(ast, code);
+            if (result.check.length === 0) {
                 try {
-                    const [stdout, stderr] = await child_process.exec(`node -e '${js}'`);
-                    result.exec = {
-                        stdout: stdout.toString(),
-                        stderr: stderr.toString()
-                    };
+                    const js = generateCode(ast);
+                    result.generate = { js: js };
+                    try {
+                        const [stdout, stderr] = await child_process.exec(`node -e '${js}'`);
+                        result.exec = {
+                            stdout: stdout.toString(),
+                            stderr: stderr.toString()
+                        };
+                    } catch (e) {
+                        result.exec = { error: e.stack };
+                    }
                 } catch (e) {
-                    result.exec = { error: e.stack };
+                    result.generate = { error: e.stack };
                 }
-            } catch (e) {
-                result.generate = { error: e.stack };
             }
+        } catch (e) {
+            result.check = {
+                error: e.stack
+            };
         }
     } catch (e) {
         result.parse = { error: e.stack };
