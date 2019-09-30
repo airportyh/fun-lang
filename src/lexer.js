@@ -3,13 +3,6 @@ const moo = require("moo");
 const lexer = moo.compile({
     ws: /[ \t]+/,
     nl: { match: "\n", lineBreaks: true },
-    fun: "fun",
-    proc: "proc",
-    while: "while",
-    for: "for",
-    else: "else",
-    in: "in",
-    if: "if",
     lte: "<=",
     lt: "<",
     gte: ">=",
@@ -22,7 +15,6 @@ const lexer = moo.compile({
     lbrace: "{",
     rbrace: "}",
     assignment: "=",
-    return: "return",
     plus: "+",
     minus: "-",
     multiply: "*",
@@ -40,7 +32,19 @@ const lexer = moo.compile({
         match: /[0-9]+(?:\.[0-9]+)?/,
         value: s => Number(s)
     },
-    identifier: /[a-z_][a-z_0-9]*/
+    identifier: {
+        match: /[a-z_][a-z_0-9]*/,
+        type: moo.keywords({
+            fun: "fun",
+            proc: "proc",
+            while: "while",
+            for: "for",
+            else: "else",
+            in: "in",
+            if: "if",
+            return: "return"
+        })
+    }
 });
 
 module.exports = lexer;

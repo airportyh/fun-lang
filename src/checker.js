@@ -32,12 +32,12 @@ function checkFun(fun, userCallables, sourceCode) {
             const line = statement.start.line;
             if (var_name in vars) {
                 results.push(
-                    generateCodeContext(statement, sourceCode) + "\n" + 
-                    "Re-assignment of variable " + 
+                    generateCodeContext(statement, sourceCode) + "\n" +
+                    "Re-assignment of variable " +
                     '"' + var_name + '"' + ". This is disallowed in funs. \n" +
                     "First assignment of " +
                     '"' + var_name + '"' +
-                    " found here:\n\n" + 
+                    " found here:\n\n" +
                     generateCodeContext(vars[var_name], sourceCode)
                 );
             } else {
@@ -46,7 +46,7 @@ function checkFun(fun, userCallables, sourceCode) {
             results.push(...checkExpression(statement.value, userCallables, sourceCode));
         } else if (statement.type === "indexed_assignment") {
             results.push(
-                generateCodeContext(statement, sourceCode) + 
+                generateCodeContext(statement, sourceCode) +
                 "\nIndexed assignment found. " +
                 "This is disallowed in funs."
             );
@@ -63,6 +63,8 @@ function checkFun(fun, userCallables, sourceCode) {
                 generateCodeContext(statement, sourceCode) + "\n" +
                 "While loop used in a fun. This is disallowed in funs."
             );
+        } else if (statement.type === "comment") {
+            // do nothing
         } else {
             throw new Error("Unimplemented statement type: " + statement.type);
         }
@@ -136,7 +138,7 @@ function generateCodeContext(statement, sourceCode) {
     const endLineIdx = statement.end.line;
     const gutterWidth = String(endLineIdx + 1).length;
 
-    const codeContext = 
+    const codeContext =
         sourceLines.slice(startLineIdx, endLineIdx)
         .map((line, idx) => {
             const lineNo = idx + startLineIdx + 1;

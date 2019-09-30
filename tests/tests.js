@@ -124,11 +124,30 @@ proc main() [
 ]
 `;
     const result = await run(program);
-    console.log(result);
     expect(result.generate.js)
         .toEqual(
             stringMatching(/\/\/ I am a comment/)
         );
+});
+
+test("fun index assignment (disallowed)", async () => {
+const program = `
+fun hello(input) [
+    input[0] = 1
+]
+
+proc main() [
+    print(hello([1, 2, 3]))
+]
+`;
+    const result = await run(program);
+    expect(result.check)
+        .toEqual(
+            arrayContaining(
+                [stringMatching(/Indexed assignment found\./)]
+            )
+        );
+
 });
 
 test("proc parameters", async () => {
