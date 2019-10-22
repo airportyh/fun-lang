@@ -1,8 +1,8 @@
 ## TODOS
 
+* make checker support loops and if statements
 * complete jest-based test suite and document it
 * check for purity in nested code blocks in general (if statements)
-* make checker support loops and if statements
 * mandatory return statements in funs?
 * check that main proc exists
 * generalize format of checker errors, and extract formating to outside of checker
@@ -34,6 +34,7 @@
 
 ## Done
 
+* fix Jest code coverage (done)
 * check for purity in nested fun expressions (x)
 * extract code_block into a grammar symbol (x)
 * anonymous funs (x)

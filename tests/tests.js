@@ -1,4 +1,4 @@
-const { run } = require("../src/runner");
+const { run, test } = require("./support");
 const stringMatching = expect.stringMatching;
 const arrayContaining = expect.arrayContaining;
 
@@ -45,110 +45,7 @@ proc main() [
         .toEqual("Hello\n");
 });
 
-test("fun parameters", async () => {
-const program = `
-fun hello(subject) [
-  return "Hello, " + subject + "!"
-]
 
-proc main() [
-  print(hello("Ding"))
-]
-`;
-    const result = await run(program);
-    expect(result.exec.stdout)
-        .toEqual("Hello, Ding!\n");
-});
-
-test("fun return statement", async () => {
-const program = `
-fun sum(x, y) [
-    return x + y
-]
-
-proc main() [
-    print(sum(2, 5))
-]
-`;
-    const result = await run(program);
-    expect(result.exec.stdout)
-        .toEqual("7\n");
-});
-
-test("fun var assignment", async () => {
-const program = `
-fun difference(x, y) [
-    diff = x - y
-    return diff
-]
-
-proc main() [
-    print(difference(5, 2))
-]
-`;
-    const result = await run(program);
-    expect(result.exec.stdout)
-        .toEqual("3\n");
-});
-
-test("fun call statement (not allowed)", async () => {
-const program = `
-fun hello() [
-    print("Hello")
-]
-
-proc main() [
-    hello()
-]
-`;
-    const result = await run(program);
-    expect(result.check)
-        .toEqual(
-            arrayContaining([
-                stringMatching(
-                    /Call statement on it's own line found\./
-                )
-            ])
-        );
-});
-
-test("fun line comment", async () => {
-const program = `
-fun hello() [
-    # I am a comment
-    return "Hello"
-]
-
-proc main() [
-    print(hello())
-]
-`;
-    const result = await run(program);
-    expect(result.generate.js)
-        .toEqual(
-            stringMatching(/\/\/ I am a comment/)
-        );
-});
-
-test("fun index assignment (disallowed)", async () => {
-const program = `
-fun hello(input) [
-    input[0] = 1
-]
-
-proc main() [
-    print(hello([1, 2, 3]))
-]
-`;
-    const result = await run(program);
-    expect(result.check)
-        .toEqual(
-            arrayContaining(
-                [stringMatching(/Indexed assignment found\./)]
-            )
-        );
-
-});
 
 test("proc parameters", async () => {
 const program = `
@@ -163,4 +60,19 @@ proc main() [
     const result = await run(program);
     expect(result.exec.stdout)
         .toEqual("Hello, Maxim!\n");
+});
+
+test("proc parameters (more than 1)", async () => {
+const program = `
+proc say_result(a, b) [
+    print(a + b)
+]
+
+proc main() [
+    say_result(1, 2)
+]
+`;
+    const result = await run(program);
+    expect(result.exec.stdout)
+        .toEqual("3\n");
 });

@@ -1,4 +1,5 @@
-exports.range = function range(...args) {
+exports.range = {
+    code: `function range(...args) {
     let start, end;
     if (args.length === 1) {
         start = 0
@@ -14,56 +15,83 @@ exports.range = function range(...args) {
         ret.push(i);
     }
     return ret;
+}`,
+    pure: true
 };
-exports.range.pure = true;
 
-exports.split = function split(string, separator) {
+exports.split = {
+    code: `function split(string, separator) {
     return string.split(separator)
+}`,
+    pure: true
 };
 
-exports.print = function print(...args) {
+exports.print = {
+    code: `function print(...args) {
     console.log(...args);
+}`,
+    pure: false
 };
 
-exports.pop = function pop(array) {
+exports.pop = {
+    code: `function pop(array) {
     return array.pop();
+}`,
+    pure: true
 };
 
-exports.push = function push(array, item) {
+exports.push = {
+    code: `function push(array, item) {
     return array.push(item);
+}`,
+    pure: false
 };
 
-exports.concat = function concat(one, other) {
+exports.concat = {
+    code: `function concat(one, other) {
     return one.concat(other);
+}`,
+    pure: true
 };
-exports.concat.pure = true;
 
-exports.map = function map(fn, arr) {
+exports.map = {
+    code: `function map(fn, arr) {
     return arr.map(fn);
+}`,
+    pure: true
 };
-exports.map.pure = true;
 
-exports.filter = function filter(fn, arr) {
+exports.filter = {
+    code: `function filter(fn, arr) {
     return arr.filter(fn);
+}`,
+    pure: true
 };
-exports.filter.pure = true;
 
-exports.reduce = function reduce(fn, initValue, arr) {
+exports.reduce = {
+    code: `function reduce(fn, initValue, arr) {
     return arr.reduce(fn, initValue);
+}`,
+    pure: true
 };
-exports.reduce.pure = true;
 
-exports.sqrt = function sqrt(num) {
+exports.sqrt = {
+    code: `function sqrt(num) {
     return Math.sqrt(num);
+}`,
+    pure: true
 };
-exports.sqrt.pure = true;
 
-exports.sqr = function sqr(num) {
+exports.sqr = {
+    code: `function sqr(num) {
     return num * num;
+}`,
+    pure: true
 };
-exports.sqr.pure = true;
 
-exports.join = function join(array, separator) {
+exports.join = {
+    code: `function join(array, separator) {
     return array.join(separator);
-}
-exports.join.pure = true;
+}`,
+    pure: true
+};

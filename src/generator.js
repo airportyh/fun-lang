@@ -2,13 +2,15 @@ const builtInFunctions = require("./built-in-functions");
 const indent = require("./indent");
 
 exports.generateCode = function generateCode(ast) {
-    const builtIns = Object.values(builtInFunctions).map(fn => fn.toString());
+    const builtIns = Object.values(builtInFunctions).map(fn => fn.code);
+
     const jsCode = ast.map(node => {
         return generateCodeForTopLevelStatement(node);
     })
     .concat(["main().catch(err => console.log(err.message));"])
     .concat(["// Built-in Functions:"])
-    .concat(builtIns).join("\n\n");
+    .concat(builtIns)
+    .join("\n\n");
     return jsCode;
 }
 
@@ -19,13 +21,13 @@ function generateCodeForTopLevelStatement(node) {
         const line1 = "function " + node.name.value + "(" + node
             .parameters
             .map(p => p.value)
-            .join(", ") + ") {"; 
+            .join(", ") + ") {";
         const body = generateCodeForCodeBlock(node.body);
         return line1 + "\n" + body + "\n}";
     } else if (node.type === "proc_definition") {
-        const line1 = "async function " + node.name.value + "(" + 
+        const line1 = "async function " + node.name.value + "(" +
             node.parameters
-            .map(p => p.value).join(", ") + ") {"; 
+            .map(p => p.value).join(", ") + ") {";
         const body = generateCodeForCodeBlock(node.body);
         return line1 + "\n" + body + "\n}";
     } else {
@@ -41,13 +43,13 @@ function generateCodeForExecutableStatement(statement) {
     } else if (statement.type === "var_assignment") {
         return "var " + statement.var_name.value + " = " + generateCodeForExpression(statement.value) + ";";
     } else if (statement.type === "call_expression") {
-        return statement.fun_name.value + "(" + 
+        return statement.fun_name.value + "(" +
             statement.arguments.map(arg => generateCodeForExpression(arg))
                 .join(", ") + ");";
     } else if (statement.type === "while_loop") {
         const condition = generateCodeForExpression(statement.condition);
         return "while (" + condition + ") {\n" +
-            generateCodeForCodeBlock(statement.body) + 
+            generateCodeForCodeBlock(statement.body) +
             "\n}";
     } else if (statement.type === "if_statement") {
         const condition = generateCodeForExpression(statement.condition);
@@ -76,7 +78,7 @@ function generateCodeForIfAlternate(alternate) {
     if (alternate.type === "if_statement") {
         return " else " + generateCodeForExecutableStatement(alternate);
     } else {
-        return " else {\n" + 
+        return " else {\n" +
             indent(alternate.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
             }).join("\n")) + "\n}";
@@ -124,4 +126,3 @@ function generateCodeForCodeBlock(codeBlock) {
         statement => generateCodeForExecutableStatement(statement))
     .join("\n"));
 }
-

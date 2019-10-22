@@ -14,18 +14,17 @@ exports.check = function check(ast, sourceCode) {
 function checkTopLevelStatement(statement, userCallables, sourceCode) {
     if (statement.type === "fun_definition") {
         userCallables[statement.name.value] = statement;
-        return checkFun(statement, userCallables, sourceCode);
+        return checkFun(statement, userCallables, sourceCode, {});
     } else if (statement.type === "proc_definition") {
         userCallables[statement.name.value] = statement;
-        return checkProc(statement, userCallables, sourceCode);
+        return checkProc(statement, userCallables, sourceCode, {});
     } else {
         return [];
     }
 }
 
-function checkFun(fun, userCallables, sourceCode) {
+function checkFun(fun, userCallables, sourceCode, vars) {
     const results = [];
-    const vars = {};
     for (let statement of fun.body.statements) {
         if (statement.type === "var_assignment") {
             const var_name = statement.var_name.value;
@@ -43,7 +42,7 @@ function checkFun(fun, userCallables, sourceCode) {
             } else {
                 vars[var_name] = statement;
             }
-            results.push(...checkExpression(statement.value, userCallables, sourceCode));
+            results.push(...checkExpression(statement.value, userCallables, sourceCode, vars));
         } else if (statement.type === "indexed_assignment") {
             results.push(
                 generateCodeContext(statement, sourceCode) +
@@ -57,7 +56,7 @@ function checkFun(fun, userCallables, sourceCode) {
                 "This is disallowed in funs because it implies what is called has a side-effect."
             );
         } else if (statement.type === "return_statement") {
-            results.push(...checkExpression(statement.value, userCallables, sourceCode));
+            results.push(...checkExpression(statement.value, userCallables, sourceCode, vars));
         } else if (statement.type === "while_loop") {
             results.push(
                 generateCodeContext(statement, sourceCode) + "\n" +
@@ -65,6 +64,17 @@ function checkFun(fun, userCallables, sourceCode) {
             );
         } else if (statement.type === "comment") {
             // do nothing
+        } else if (statement.type === "if_statement") {
+            for (let childStatement of statement.consequent.statements) {
+                results.push(
+                    ...checkExpression(childStatement, userCallables, sourceCode, vars)
+                );
+            }
+        } else if (statement.type === "for_loop") {
+            results.push(
+                generateCodeContext(statement, sourceCode) + "\n" +
+                "For loop used in a fun. This is disallowed in funs."
+            );
         } else {
             throw new Error("Unimplemented statement type: " + statement.type);
         }
@@ -72,7 +82,9 @@ function checkFun(fun, userCallables, sourceCode) {
     return results;
 }
 
-function checkExpression(expression, userCallables, sourceCode) {
+
+
+function checkExpression(expression, userCallables, sourceCode, vars) {
     const results = [];
     if (expression.type === "call_expression") {
         const callableName = expression.fun_name.value;
@@ -106,24 +118,41 @@ function checkExpression(expression, userCallables, sourceCode) {
             }
         }
         for (let argument of expression.arguments) {
-            results.push(...checkExpression(argument, userCallables, sourceCode));
+            results.push(...checkExpression(argument, userCallables, sourceCode, vars));
         }
     } else if (expression.type === "binary_expression") {
-        results.push(...checkExpression(expression.left, userCallables, sourceCode));
-        results.push(...checkExpression(expression.right, userCallables, sourceCode));
+        results.push(...checkExpression(expression.left, userCallables, sourceCode, vars));
+        results.push(...checkExpression(expression.right, userCallables, sourceCode, vars));
     } else if (expression.type === "list_literal") {
         for (let item of expression.items) {
-            results.push(...checkExpression(item, userCallables, sourceCode));
+            results.push(...checkExpression(item, userCallables, sourceCode, vars));
         }
     } else if (expression.type === "dictionary_literal") {
         for (let entry of expression.entries) {
-            results.push(...checkExpression(entry[1], userCallables, sourceCode));
+            results.push(...checkExpression(entry[1], userCallables, sourceCode, vars));
         }
     } else if (expression.type === "indexed_access") {
-        results.push(...checkExpression(expression.subject, userCallables, sourceCode));
-        results.push(...checkExpression(expression.index, userCallables, sourceCode));
+        results.push(...checkExpression(expression.subject, userCallables, sourceCode, vars));
+        results.push(...checkExpression(expression.index, userCallables, sourceCode, vars));
     } else if (expression.type === "fun_expression") {
-        results.push(...checkFun(expression, userCallables, sourceCode));
+        results.push(...checkFun(expression, userCallables, sourceCode, vars));
+    } else if (expression.type === "var_assignment") {
+        const var_name = expression.var_name.value;
+        const line = expression.start.line;
+        if (var_name in vars) {
+            results.push(
+                generateCodeContext(expression, sourceCode) + "\n" +
+                "Re-assignment of variable " +
+                '"' + var_name + '"' + ". This is disallowed in funs. \n" +
+                "First assignment of " +
+                '"' + var_name + '"' +
+                " found here:\n\n" +
+                generateCodeContext(vars[var_name], sourceCode)
+            );
+        } else {
+            vars[var_name] = statement;
+        }
+        results.push(...checkExpression(expression.value, userCallables, sourceCode, vars));
     }
     return results;
 }

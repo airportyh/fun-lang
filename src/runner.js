@@ -20,7 +20,8 @@ exports.run = async function run(code) {
                     const js = generateCode(ast);
                     result.generate = { js: js };
                     try {
-                        const [stdout, stderr] = await child_process.exec(`node -e '${js}'`);
+                        const command = `node -e '${js}'`;
+                        const [stdout, stderr] = await child_process.exec(command);
                         result.exec = {
                             stdout: stdout.toString(),
                             stderr: stderr.toString()
