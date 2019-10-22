@@ -71,6 +71,7 @@ exports.test = function test(testName, testFunc) {
             }
         } catch (e) {
             const result = {
+                code: globalCode,
                 ...globalResult,
                 parse: JSON.stringify(globalResult.parse, null, "  ")
             };
@@ -83,8 +84,10 @@ exports.test = function test(testName, testFunc) {
 // This global variable is used to secretly store the result of the last execution
 // of the run function.
 let globalResult;
+let globalCode;
 
 exports.run = async function run(code) {
+    globalCode = code;
     globalResult = await realRun(code);
     return globalResult;
 };

@@ -1,3 +1,21 @@
+code: |
+
+  fun door(age) [
+      message = "You may come in."
+      if age >= 21 [
+          # Do nothing
+      ] else if age >= 18 [
+          message = "Wait a couple years."
+      ] else [
+          message = "Stay out."
+      ]
+      return message
+  ]
+  proc main() [
+      print(door(22))
+      print(door(19))
+      print(door(10))
+  ]
 parse: |-
   {
     "ast": [
