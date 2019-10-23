@@ -53,4 +53,6 @@ do quite so much `console.log` debugging.
 
 If the test case subsequently passes, the result file will then be removed.
 The code that supports the creation and deletion of the result files can
-be found in `support.js`.
+be found in `support.js`. In order to take advantage of this diagnostics
+feature, you need to import the `run` and `test` functions from `support.js`
+at the top of each of the test files.
