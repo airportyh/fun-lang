@@ -208,9 +208,10 @@ test("checker works for nested statements within if statement", async () => {
 // variables in this case
 const program = `
 fun door(age) [
-    message = "You may come in."
+    message = ""
     if age >= 21 [
         # Do nothing
+        message = "You may come in."
     ] else if age >= 18 [
         message = "Wait a couple years."
     ] else [
@@ -225,7 +226,7 @@ proc main() [
 ]
 `;
     const result = await run(program);
-    expect(result.check.length).toEqual(2);
+    expect(result.check.length).toEqual(3);
 });
 
 test("fun for loops", async () => {
