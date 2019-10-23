@@ -9,8 +9,8 @@ interest:
 * [src](src) - contains the core source code of the Fun Programming Language
 * [scripts](scripts) - contains command line utilities for running
 and diagnosing Fun programs
-* [examples](examples) - contains some code examples as well as the results of testing
-these code examples using the `scripts/test-examples.js` script
+* [examples](examples) - contains some code examples
+* [tests](tests) - contains the test suite for the Fun Programming Language
 
 ## Architecture
 
