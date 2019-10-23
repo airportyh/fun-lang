@@ -9,7 +9,7 @@ interest:
 * [src](src) - contains the core source code of the Fun Programming Language
 * [scripts](scripts) - contains command line utilities for running
 and diagnosing Fun programs
-* [examples](examples) - contains some code examples as well as the results of testing 
+* [examples](examples) - contains some code examples as well as the results of testing
 these code examples using the `scripts/test-examples.js` script
 
 ## Architecture
@@ -133,7 +133,7 @@ For example, a `var_assignment` has the properties:
 ### Line Number Information
 
 The JSON AST example above has been simplified to not include
-file location information. 
+file location information.
 In reality, the Fun parser includes file location with every
 AST node. So the AST for that example actually look like:
 
@@ -229,5 +229,6 @@ and try them out:
 
 * [src directory](src)
 * [scripts directory](scripts)
+* [tests directory](tests)
 * [examples directory](examples)
 * This [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) covers how to create a programming language using JavaScript. Much of the tools and techniques used in those videos are used in this project.
