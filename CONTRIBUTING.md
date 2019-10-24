@@ -210,7 +210,7 @@ AST node. So the AST for that example actually look like:
 }
 ```
 
-As you can see, the leaf nodes of the AST tree
+As you can see, the node of the AST tree
 contains additional line number information about where within the
 source file the source code for the node came from.
 This information allows the checker and the generator and potentially
