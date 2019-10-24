@@ -5,6 +5,15 @@ The tests are written using the [Jest](https://jestjs.io/) test framework.
 Care has been taken to write the tests in an self-documenting way and also
 the test suite gives you good diagnostic information when there are failures.
 
+To run the test suite, assuming you've done an `npm install` and `npm run gen-parser`
+already:
+
+```
+npm test
+```
+
+or to invoke Jest directly: `jest` or `npx jest`.
+
 ## An Example Test Case
 
 A file containing tests is a file in the `tests` folder that ends in `tests.js`.
