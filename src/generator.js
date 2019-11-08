@@ -95,7 +95,7 @@ function generateCodeForExpression(expression) {
             .map(generateCodeForExpression).join(", ") + "]";
     } else if (expression.type === "dictionary_literal") {
         return "{ " + expression.entries.map(entry => {
-            return entry[0] + ": " + generateCodeForExpression(entry[1]);
+            return entry[0].value + ": " + generateCodeForExpression(entry[1]);
         }).join(", ") + " }";
     } else if (expression.type === "binary_operation") {
         const left = generateCodeForExpression(expression.left);
