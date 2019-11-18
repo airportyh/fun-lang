@@ -28,7 +28,6 @@ function indentByLevel(level) {
 }
 
 function checkFun(fun, userCallables, sourceCode, vars, level) {
-    console.log(indentByLevel(level) + "checkFun", fun);
     const results = [];
     for (let statement of fun.body.statements) {
         results.push(...checkFunBodyStatement(
@@ -80,7 +79,6 @@ function checkFunBodyStatement(statement, fun, userCallables, sourceCode, vars, 
     } else if (statement.type === "comment") {
         // do nothing
     } else if (statement.type === "if_statement") {
-        console.log("checkFun if_statement");
         for (let childStatement of statement.consequent.statements) {
             results.push(
                 ...checkExpression(
@@ -105,7 +103,6 @@ function checkFunBodyStatement(statement, fun, userCallables, sourceCode, vars, 
 }
 
 function checkExpression(expression, userCallables, sourceCode, vars, level) {
-    console.log(indentByLevel(level) + "checkExpression", expression);
     const results = [];
     if (expression.type === "call_expression") {
         const callableName = expression.fun_name.value;

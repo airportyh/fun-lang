@@ -61,7 +61,7 @@ function generateCodeForExecutableStatement(statement) {
     } else if (statement.type === "for_loop") {
         const iterable = generateCodeForExpression(statement.iterable);
         return "for (let " + statement.loop_variable.value + " of " + iterable + ") {\n" +
-            indent(statement.body.map(statement => {
+            indent(statement.body.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
             }).join("\n")) + "\n}";
     } else if (statement.type === "indexed_assignment") {
