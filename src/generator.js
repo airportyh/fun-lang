@@ -1,35 +1,95 @@
 const builtInFunctions = require("./built-in-functions");
 const indent = require("./indent");
+const path = require("path");
 
-exports.generateCode = function generateCode(ast) {
+const runtimeCode = `// Runtime functions
+const $history = [];
+let $stack = [];
+
+function $pushFrame(variables, line) {
+    $history.push({ line, stack: $stack });
+    const newFrame = {};
+    for (let varName in variables) {
+        newFrame[varName] = variables[varName];
+    }
+    $stack = [...$stack, newFrame];
+}
+
+function $popFrame(line) {
+    $history.push({ line, stack: $stack });
+    $stack = $stack.slice(0, $stack.length - 1);
+}
+
+function $setVariable(varName, value, line) {
+    $history.push({ line, stack: $stack });
+    const frame = $stack[$stack.length - 1];
+    const newFrame = { ...frame, [varName]: value };
+    $stack = [...$stack.slice(0, $stack.length - 1), newFrame];
+}
+
+function $getVariable(varName) {
+    return $stack[$stack.length - 1][varName];
+}
+
+function $saveHistory(filePath) {
+    require("fs").writeFile(
+        filePath,
+        JSON.stringify($history, null, "\t"),
+        () => undefined
+    );
+}`;
+
+exports.generateCode = function generateCode(ast, options) {
     const builtIns = Object.values(builtInFunctions).map(fn => fn.code);
 
-    const jsCode = ast.map(node => {
-        return generateCodeForTopLevelStatement(node);
-    })
-    .concat(["main().catch(err => console.log(err.message));"])
+    const jsCode =
+    [runtimeCode]
+    .concat(
+        ast.map(node => {
+            return generateCodeForTopLevelStatement(node);
+        })
+    )
+    .concat([`main().catch(err => console.log(err.message))`
+        + (options.historyFilePath ?
+            `.finally(() => $saveHistory("${options.historyFilePath}"));` :
+            "")])
     .concat(["// Built-in Functions:"])
     .concat(builtIns)
     .join("\n\n");
     return jsCode;
 }
 
+// Node is either fun_definition or proc_definition
+function generateFunction(node) {
+    const isAsync = node.type === "proc_definition";
+    const firstLine = node.body.start.line;
+    const lastLine = node.body.end.line;
+    const parameters = node
+        .parameters
+        .map(p => p.value)
+        .join(", ");
+    const line1 = (isAsync ? "async " : "") +
+        "function " + node.name.value + "(" + parameters + ") {";
+    const body = generateCodeForCodeBlock(node.body);
+    return [
+        line1,
+        indent(`$pushFrame({ ${parameters} }, ${firstLine});`),
+        indent(`try {`),
+        indent(body),
+        indent(`} finally {`),
+        indent(indent(`$popFrame(${lastLine});`)),
+        indent(`}`),
+        "}"
+    ].join("\n");
+}
+
 function generateCodeForTopLevelStatement(node) {
     if (node.type === "comment") {
         return "//" + node.value;
     } else if (node.type === "fun_definition") {
-        const line1 = "function " + node.name.value + "(" + node
-            .parameters
-            .map(p => p.value)
-            .join(", ") + ") {";
-        const body = generateCodeForCodeBlock(node.body);
-        return line1 + "\n" + body + "\n}";
+        return generateFunction(node);
     } else if (node.type === "proc_definition") {
-        const line1 = "async function " + node.name.value + "(" +
-            node.parameters
-            .map(p => p.value).join(", ") + ") {";
-        const body = generateCodeForCodeBlock(node.body);
-        return line1 + "\n" + body + "\n}";
+        return generateFunction(node);
     } else {
         throw new Error("Unknown AST Node type for top level statements: " + node.type);
     }
@@ -41,7 +101,11 @@ function generateCodeForExecutableStatement(statement) {
     } else if (statement.type === "return_statement") {
         return "return " + generateCodeForExpression(statement.value) + ";";
     } else if (statement.type === "var_assignment") {
-        return "var " + statement.var_name.value + " = " + generateCodeForExpression(statement.value) + ";";
+        // return "var " + statement.var_name.value + " = " + generateCodeForExpression(statement.value) + ";";
+        const varName = statement.var_name.value;
+        const value = generateCodeForExpression(statement.value);
+        const line = statement.start.line;
+        return `$setVariable("${varName}", ${value}, ${line});`;
     } else if (statement.type === "call_expression") {
         return statement.fun_name.value + "(" +
             statement.arguments.map(arg => generateCodeForExpression(arg))
@@ -85,6 +149,18 @@ function generateCodeForIfAlternate(alternate) {
     }
 }
 
+const operatorMap = {
+    ">": ">",
+    ">=": ">=",
+    "<": "<",
+    "<=": "<=",
+    "==": "===",
+    "+": "+",
+    "-": "-",
+    "*": "*",
+    "/": "/"
+};
+
 function generateCodeForExpression(expression) {
     if (expression.type === "string_literal") {
         return JSON.stringify(expression.value);
@@ -100,9 +176,10 @@ function generateCodeForExpression(expression) {
     } else if (expression.type === "binary_operation") {
         const left = generateCodeForExpression(expression.left);
         const right = generateCodeForExpression(expression.right);
-        return left + " " + expression.operator.value + " " + right;
+        return left + " " + operatorMap[expression.operator.value] + " " + right;
     } else if (expression.type === "var_reference") {
-        return expression.var_name.value;
+        return `$getVariable("${expression.var_name.value}")`;
+        // return expression.var_name.value;
     } else if (expression.type === "call_expression") {
         return expression.fun_name.value + "(" +
             expression.arguments.map(generateCodeForExpression)

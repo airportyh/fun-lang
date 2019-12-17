@@ -1,15 +1,20 @@
 const { run } = require("../src/runner");
 const fs = require("mz/fs");
+const path = require("path");
 const indent = require("../src/indent");
 
 async function main() {
-    const filename = process.argv[2];
-    if (!filename) {
+    const filePath = process.argv[2];
+    if (!filePath) {
         console.log("Please provide a file name.");
         return;
     }
-    const code = (await fs.readFile(filename)).toString();
-    const result = await run(code);
+    const historyFilePath = path.join(
+        path.dirname(filePath),
+        path.basename(filePath, ".fun") + ".history"
+    );
+    const code = (await fs.readFile(filePath)).toString();
+    const result = await run(code, { historyFilePath: historyFilePath });
     if (result.parse.error) {
         console.error("Parser Error: " + result.parse.error);
     } else if (result.check.length > 0) {

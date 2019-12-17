@@ -3,7 +3,7 @@ const { parse } = require("./parser");
 const { check } = require("./checker");
 const { generateCode } = require("./generator");
 
-exports.run = async function run(code) {
+exports.run = async function run(code, options) {
     const result = {
         parse: null,
         check: null,
@@ -17,7 +17,7 @@ exports.run = async function run(code) {
             result.check = check(ast, code);
             if (result.check.length === 0) {
                 try {
-                    const js = generateCode(ast);
+                    const js = generateCode(ast, options);
                     result.generate = { js: js };
                     try {
                         const command = `node -e '${js}'`;
