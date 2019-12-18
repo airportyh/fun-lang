@@ -59,8 +59,6 @@ To learn more, read:
 
 ## Todos
 
-## TODOS
-
 * complete jest-based test suite and document it
 * check for purity in nested code blocks in general (if statements)
 * mandatory return statements in funs?
@@ -87,12 +85,12 @@ To learn more, read:
     * write_file
 * back-in-time debugger
 
-## Later
+### Later
 
 * type annotations and compile-time type checking
 * source maps
 
-## Done
+### Done
 
 * [Time Traveling Debugger](https://github.com/airportyh/fun-lang/tree/time-travel-debugger)
 * make checker support loops and if statements (done)
