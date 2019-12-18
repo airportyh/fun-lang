@@ -8,7 +8,7 @@ let $stack = [];
 
 function $pushFrame(funName, variables, line) {
     $history.push({ line, stack: $stack });
-    const newFrame = { funName, variables };
+    const newFrame = { funName, parameters: variables, variables };
     $stack = [...$stack, newFrame];
 }
 
@@ -21,7 +21,7 @@ function $setVariable(varName, value, line) {
     $history.push({ line, stack: $stack });
     const frame = $stack[$stack.length - 1];
     const newFrame = {
-        funName: frame.funName,
+        ...frame,
         variables: { ...frame.variables, [varName]: value }
     };
     $stack = [...$stack.slice(0, $stack.length - 1), newFrame];
@@ -113,8 +113,9 @@ function generateCodeForExecutableStatement(statement) {
         return "//" + statement.value;
     } else if (statement.type === "return_statement") {
         return [
-            `$recordLine(${statement.start.line});`,
-            `return ${generateCodeForExpression(statement.value)};`
+            `var $retval = ${generateCodeForExpression(statement.value)};`,
+            `$setVariable("<ret val>", $retval, ${statement.start.line});`,
+            `return $retval;`
         ].join("\n");
         return "return " + generateCodeForExpression(statement.value) + ";";
     } else if (statement.type === "var_assignment") {

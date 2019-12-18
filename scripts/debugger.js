@@ -47,10 +47,9 @@ async function main() {
 
     const history = JSON.parse((await fs.readFile(historyFilePath)).toString());
     let currentHistoryIdx = 0;
+
     renderProgramCounter();
-
     renderStackFrame(dividerColumn + 1);
-
     updateHistoryDisplay();
 
     // ========// UI/Stateful Helper functions ==============
@@ -73,7 +72,11 @@ async function main() {
     }
 
     function eraseFrame(frame, column, lineOffset) {
-        printAt(column, lineOffset, ''.padEnd(frame.funName.length, ' '));
+        const paramList = Object.keys(frame.parameters)
+            .map(key => `${key}=${frame.parameters[key]}`)
+            .join(", ");
+        const funDisplay = `${frame.funName}(${paramList})`;
+        printAt(column, lineOffset, ''.padEnd(funDisplay.length, ' '));
         lineOffset++;
         for (let varName in frame.variables) {
             const line = `  ${varName} = ${frame.variables[varName]}`;
@@ -94,7 +97,11 @@ async function main() {
     }
 
     function renderFrame(frame, column, lineOffset) {
-        printAt(column, lineOffset, frame.funName);
+        const paramList = Object.keys(frame.parameters)
+            .map(key => `${key}=${frame.parameters[key]}`)
+            .join(", ");
+        const funDisplay = `${frame.funName}(${paramList})`;
+        printAt(column, lineOffset, funDisplay);
         lineOffset++;
         for (let varName in frame.variables) {
             printAt(column, lineOffset, `  ${varName} = ${frame.variables[varName]}`);

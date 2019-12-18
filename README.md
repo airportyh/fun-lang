@@ -59,8 +59,6 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* add retval display
-* add call parameters to stack frame
 * heap rendering
 * add $recordLine for the rest of the expression types in the code generator
 * support for list and dictionary operations
@@ -82,3 +80,5 @@ performance with baseline
 * write the debugger / adding tracking clauses for non-setting operations maybe (done)
 * render visual for stack frame (done)
 * step x of y display (done)
+* add call parameters to stack frame (done)
+* add retval display (done)
