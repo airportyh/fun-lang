@@ -6,12 +6,9 @@ const runtimeCode = `// Runtime functions
 const $history = [];
 let $stack = [];
 
-function $pushFrame(variables, line) {
+function $pushFrame(funName, variables, line) {
     $history.push({ line, stack: $stack });
-    const newFrame = {};
-    for (let varName in variables) {
-        newFrame[varName] = variables[varName];
-    }
+    const newFrame = { funName, variables };
     $stack = [...$stack, newFrame];
 }
 
@@ -23,18 +20,25 @@ function $popFrame(line) {
 function $setVariable(varName, value, line) {
     $history.push({ line, stack: $stack });
     const frame = $stack[$stack.length - 1];
-    const newFrame = { ...frame, [varName]: value };
+    const newFrame = {
+        funName: frame.funName,
+        variables: { ...frame.variables, [varName]: value }
+    };
     $stack = [...$stack.slice(0, $stack.length - 1), newFrame];
 }
 
+function $recordLine(line) {
+    $history.push({ line, stack: $stack });
+}
+
 function $getVariable(varName) {
-    return $stack[$stack.length - 1][varName];
+    return $stack[$stack.length - 1].variables[varName];
 }
 
 function $saveHistory(filePath) {
     require("fs").writeFile(
         filePath,
-        JSON.stringify($history, null, "\t"),
+        JSON.stringify($history, null, "	"),
         () => undefined
     );
 }`;
@@ -64,16 +68,17 @@ function generateFunction(node) {
     const isAsync = node.type === "proc_definition";
     const firstLine = node.body.start.line;
     const lastLine = node.body.end.line;
+    const funName = node.name.value;
     const parameters = node
         .parameters
         .map(p => p.value)
         .join(", ");
     const line1 = (isAsync ? "async " : "") +
-        "function " + node.name.value + "(" + parameters + ") {";
+        "function " + funName + "(" + parameters + ") {";
     const body = generateCodeForCodeBlock(node.body);
     return [
         line1,
-        indent(`$pushFrame({ ${parameters} }, ${firstLine});`),
+        indent(`$pushFrame("${funName}", { ${parameters} }, ${firstLine});`),
         indent(`try {`),
         indent(body),
         indent(`} finally {`),
@@ -95,10 +100,22 @@ function generateCodeForTopLevelStatement(node) {
     }
 }
 
+function generateCallExpression(expression) {
+    const line = expression.start.line;
+    const funcCall = expression.fun_name.value + "(" +
+        expression.arguments.map(arg => generateCodeForExpression(arg))
+            .join(", ") + ")";
+    return `($recordLine(${line}), ${funcCall})`;
+}
+
 function generateCodeForExecutableStatement(statement) {
     if (statement.type === "comment") {
         return "//" + statement.value;
     } else if (statement.type === "return_statement") {
+        return [
+            `$recordLine(${statement.start.line});`,
+            `return ${generateCodeForExpression(statement.value)};`
+        ].join("\n");
         return "return " + generateCodeForExpression(statement.value) + ";";
     } else if (statement.type === "var_assignment") {
         // return "var " + statement.var_name.value + " = " + generateCodeForExpression(statement.value) + ";";
@@ -107,9 +124,7 @@ function generateCodeForExecutableStatement(statement) {
         const line = statement.start.line;
         return `$setVariable("${varName}", ${value}, ${line});`;
     } else if (statement.type === "call_expression") {
-        return statement.fun_name.value + "(" +
-            statement.arguments.map(arg => generateCodeForExpression(arg))
-                .join(", ") + ");";
+        return generateCallExpression(statement) + ";";
     } else if (statement.type === "while_loop") {
         const condition = generateCodeForExpression(statement.condition);
         return "while (" + condition + ") {\n" +
@@ -117,11 +132,17 @@ function generateCodeForExecutableStatement(statement) {
             "\n}";
     } else if (statement.type === "if_statement") {
         const condition = generateCodeForExpression(statement.condition);
-        const alternate = statement.alternate ? generateCodeForIfAlternate(statement.alternate) : "";
-        return "if (" + condition + ") {\n" +
+        const alternate = statement.alternate ?
+            generateCodeForIfAlternate(statement.alternate) : "";
+        return [
+            `$recordLine(${statement.condition.start.line});`,
+            `if (${condition}) {`,
             indent(statement.consequent.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
-            }).join("\n")) + "\n}" + alternate;
+            }).join("\n")),
+            "}",
+            alternate
+        ].join("\n");
     } else if (statement.type === "for_loop") {
         const iterable = generateCodeForExpression(statement.iterable);
         return "for (let " + statement.loop_variable.value + " of " + iterable + ") {\n" +
@@ -181,10 +202,7 @@ function generateCodeForExpression(expression) {
         return `$getVariable("${expression.var_name.value}")`;
         // return expression.var_name.value;
     } else if (expression.type === "call_expression") {
-        return expression.fun_name.value + "(" +
-            expression.arguments.map(generateCodeForExpression)
-                .join(", ")
-        + ")";
+        return generateCallExpression(expression);
     } else if (expression.type === "indexed_access") {
         const subject = generateCodeForExpression(expression.subject);
         const index = generateCodeForExpression(expression.index);

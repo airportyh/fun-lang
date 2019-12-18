@@ -3,7 +3,7 @@
 Fun is programming language that supports both the functional and the
 imperative styles of programming. It distinguishes these two styles
 by allowing the programmer to choose between them explicitly: you can
-either write *funs* - which are [pure](https://en.wikipedia.org/wiki/Pure_function), 
+either write *funs* - which are [pure](https://en.wikipedia.org/wiki/Pure_function),
 or *procs* - which are impure. You may also combine
 funs and procs as you see fit.
 
@@ -56,3 +56,28 @@ To learn more, read:
 
 * [The Fun User Manual](USER_MANUAL.md)
 * [The Fun Developer Manual](CONTRIBUTING.md)
+
+## Todo (Time Travel Debugger)
+
+* step x of y display
+* add retval display
+* add call parameters to stack frame
+* heap rendering
+* add $recordLine for the rest of the expression types in the code generator
+* support for list and dictionary operations
+* put start and end info into sub-expressions too to allow highlighting sub-expressions that are
+being evaluated
+* separate $recordLine from the state modification runtime functions?
+* optimize: instead of erase then print, erase only the required parts
+* colors!!
+* answering questions such as:
+   * what statement last modified this value?
+   * what values did this variable take on?
+   * did this condition ever occur?
+   * did this function ever get called?
+   * how many times did this function get called?
+   * how many times did this function get called with this parameter (or these parameters)?
+* be able to switch generator between debug mode and normal mode, so that I can compare
+performance with baseline
+* write the debugger / adding tracking clauses for non-setting operations maybe (done)
+* render visual for stack frame (done)
