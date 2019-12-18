@@ -51,7 +51,16 @@ async function main() {
 
     renderStackFrame(dividerColumn + 1);
 
+    updateHistoryDisplay();
+
     // ========// UI/Stateful Helper functions ==============
+
+    function updateHistoryDisplay() {
+        const lastStepDisplay = `Step ${history.length} of ${history.length}`;
+        const display = `Step ${currentHistoryIdx + 1} of ${history.length}`.padEnd(lastStepDisplay.length, ' ');
+        printAt(1, windowHeight, display);
+        park();
+    }
 
     function eraseStackFrame() {
         const column = dividerColumn + 1;
@@ -104,6 +113,7 @@ async function main() {
         currentHistoryIdx++;
         renderProgramCounter();
         renderStackFrame();
+        updateHistoryDisplay();
     }
 
     function stepBackward() {
@@ -116,6 +126,7 @@ async function main() {
         currentHistoryIdx--;
         renderProgramCounter();
         renderStackFrame();
+        updateHistoryDisplay();
     }
 
     function eraseProgramCounter() {
