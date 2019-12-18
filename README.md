@@ -59,9 +59,11 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
+* switch to yaml or make a JSON that can do refs so we can maintain references in the saved
+history file (pre-req for lists and dictionaries)
+* support for list and dictionary operations
 * heap rendering
 * add $recordLine for the rest of the expression types in the code generator
-* support for list and dictionary operations
 * display content of the console
 * put start and end info into sub-expressions too to allow highlighting sub-expressions that are
 being evaluated
