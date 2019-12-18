@@ -59,6 +59,7 @@ To learn more, read:
 
 ## Todos
 
+* [Time Traveling Debugger](https://github.com/airportyh/fun-lang/tree/time-travel-debugger)
 * complete jest-based test suite and document it
 * check for purity in nested code blocks in general (if statements)
 * mandatory return statements in funs?
@@ -92,7 +93,6 @@ To learn more, read:
 
 ### Done
 
-* [Time Traveling Debugger](https://github.com/airportyh/fun-lang/tree/time-travel-debugger)
 * make checker support loops and if statements (done)
 * fix Jest code coverage (done)
 * check for purity in nested fun expressions (x)
