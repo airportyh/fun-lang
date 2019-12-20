@@ -59,8 +59,7 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* switch to yaml or make a JSON that can do refs so we can maintain references in the saved
-history file (pre-req for lists and dictionaries)
+* optimize history file size by using more structure sharing or maybe compression mechanisms
 * support for list and dictionary operations
 * heap rendering
 * add $recordLine for the rest of the expression types in the code generator
@@ -79,6 +78,7 @@ being evaluated
    * how many times did this function get called with this parameter (or these parameters)?
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* use jsonr to persist history (done)
 * write the debugger / adding tracking clauses for non-setting operations maybe (done)
 * render visual for stack frame (done)
 * step x of y display (done)

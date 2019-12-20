@@ -3,6 +3,7 @@ const indent = require("./indent");
 const path = require("path");
 
 const runtimeCode = `// Runtime functions
+const jsonr = require("@airportyh/jsonr");
 const $history = [];
 let $stack = [];
 
@@ -38,7 +39,7 @@ function $getVariable(varName) {
 function $saveHistory(filePath) {
     require("fs").writeFile(
         filePath,
-        JSON.stringify($history, null, "	"),
+        jsonr.stringify($history, "	"),
         () => undefined
     );
 }`;
