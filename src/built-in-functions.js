@@ -41,8 +41,14 @@ exports.pop = {
 };
 
 exports.push = {
-    code: `function push(array, item) {
-    return array.push(item);
+    code: `function push(arrayId, item) {
+    const array = $heap[arrayId];
+    const newArray = [...array, item];
+    $heap = {
+        ...$heap,
+        [arrayId]: newArray
+    };
+    return newArray.length;
 }`,
     pure: false
 };

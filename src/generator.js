@@ -6,20 +6,22 @@ const runtimeCode = `// Runtime functions
 const jsonr = require("@airportyh/jsonr");
 const $history = [];
 let $stack = [];
+let $nextHeapId = 1;
+let $heap = {};
 
 function $pushFrame(funName, variables, line) {
-    $history.push({ line, stack: $stack });
+    $recordLine(line);
     const newFrame = { funName, parameters: variables, variables };
     $stack = [...$stack, newFrame];
 }
 
 function $popFrame(line) {
-    $history.push({ line, stack: $stack });
+    $recordLine(line);
     $stack = $stack.slice(0, $stack.length - 1);
 }
 
 function $setVariable(varName, value, line) {
-    $history.push({ line, stack: $stack });
+    $recordLine(line);
     const frame = $stack[$stack.length - 1];
     const newFrame = {
         ...frame,
@@ -28,12 +30,45 @@ function $setVariable(varName, value, line) {
     $stack = [...$stack.slice(0, $stack.length - 1), newFrame];
 }
 
+function $heapAllocate(value) {
+    const id = $nextHeapId;
+    $nextHeapId++;
+    $heap = {
+        ...$heap,
+        [id]: value
+    };
+    return id;
+}
+
 function $recordLine(line) {
-    $history.push({ line, stack: $stack });
+    $history.push({ line, stack: $stack, heap: $heap });
 }
 
 function $getVariable(varName) {
     return $stack[$stack.length - 1].variables[varName];
+}
+
+function $get(id, index) {
+    const object = $heap[id];
+    return object[index];
+}
+
+function $set(id, index, value) {
+    const object = $heap[id];
+    let newObject;
+    if (Array.isArray(object)) {
+        newObject = object.slice();
+        newObject[index] = value;
+    } else {
+        newObject = {
+            ...$heap[id],
+            [index]: value
+        };
+    }
+    $heap = {
+        ...$heap,
+        [id]: newObject
+    };
 }
 
 function $saveHistory(filePath) {
@@ -146,16 +181,22 @@ function generateCodeForExecutableStatement(statement) {
             alternate
         ].join("\n");
     } else if (statement.type === "for_loop") {
-        const iterable = generateCodeForExpression(statement.iterable);
-        return "for (let " + statement.loop_variable.value + " of " + iterable + ") {\n" +
+        const loopVar = statement.loop_variable.value;
+        const loopTopLine = statement.loop_variable.start.line;
+        const iterable = `$heap[${generateCodeForExpression(statement.iterable)}]`;
+        return [
+            `for (let ${loopVar} of ${iterable}) {`,
+            indent(`$setVariable("${loopVar}", ${loopVar}, ${loopTopLine});`),
             indent(statement.body.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
-            }).join("\n")) + "\n}";
+            }).join("\n")),
+            "}"
+        ].join("\n");
     } else if (statement.type === "indexed_assignment") {
         const subject = generateCodeForExpression(statement.subject);
         const index = generateCodeForExpression(statement.index);
         const value = generateCodeForExpression(statement.value);
-        return `${subject}[${index}] = ${value}`;
+        return `$set(${subject}, ${index}, ${value});`;
     } else {
         throw new Error("Unknown AST node type for executable statements: " + statement.type);
     }
@@ -190,8 +231,9 @@ function generateCodeForExpression(expression) {
     } else if (expression.type === "number_literal") {
         return String(expression.value);
     } else if (expression.type === "list_literal") {
-        return "[" + expression.items
+        const arrayLiteral = "[" + expression.items
             .map(generateCodeForExpression).join(", ") + "]";
+        return `$heapAllocate(${arrayLiteral})`;
     } else if (expression.type === "dictionary_literal") {
         return "{ " + expression.entries.map(entry => {
             return entry[0].value + ": " + generateCodeForExpression(entry[1]);
@@ -208,7 +250,7 @@ function generateCodeForExpression(expression) {
     } else if (expression.type === "indexed_access") {
         const subject = generateCodeForExpression(expression.subject);
         const index = generateCodeForExpression(expression.index);
-        return `${subject}[${index}]`;
+        return `$get(${subject}, ${index})`;
     } else if (expression.type === "fun_expression") {
         return "function (" + expression.parameters.map(p => p.value).join(", ") + ") {\n" +
             generateCodeForCodeBlock(expression.body) +

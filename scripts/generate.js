@@ -20,4 +20,4 @@ async function main() {
     console.log(`Wrote ${outputFilePath}.`);
 }
 
-main().catch(err => console.log(err.message));
+main().catch(err => console.log(err.stack));

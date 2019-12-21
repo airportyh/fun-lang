@@ -59,9 +59,18 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* optimize history file size by using more structure sharing or maybe compression mechanisms
-* support for list and dictionary operations
+* support for dictionary
+* support for list
+    * pop
+    * map
+    * filter
+    * reduce
+    * join
+    * concat
+    * split
+    * range
 * heap rendering
+* optimize history file size by using more structure sharing or maybe compression mechanisms
 * add $recordLine for the rest of the expression types in the code generator
 * display content of the console
 * put start and end info into sub-expressions too to allow highlighting sub-expressions that are
