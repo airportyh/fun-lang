@@ -59,7 +59,6 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* support for dictionary
 * support for list
     * pop
     * map
@@ -69,6 +68,7 @@ To learn more, read:
     * concat
     * split
     * range
+* print to work for arrays and dicts
 * heap rendering
 * optimize history file size by using more structure sharing or maybe compression mechanisms
 * add $recordLine for the rest of the expression types in the code generator
@@ -87,6 +87,7 @@ being evaluated
    * how many times did this function get called with this parameter (or these parameters)?
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* support for dictionary (done)
 * use jsonr to persist history (done)
 * write the debugger / adding tracking clauses for non-setting operations maybe (done)
 * render visual for stack frame (done)

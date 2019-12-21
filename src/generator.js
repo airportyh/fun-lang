@@ -48,6 +48,10 @@ function $getVariable(varName) {
     return $stack[$stack.length - 1].variables[varName];
 }
 
+function $heapAccess(id) {
+    return $heap[id];
+}
+
 function $get(id, index) {
     const object = $heap[id];
     return object[index];
@@ -183,9 +187,8 @@ function generateCodeForExecutableStatement(statement) {
     } else if (statement.type === "for_loop") {
         const loopVar = statement.loop_variable.value;
         const loopTopLine = statement.loop_variable.start.line;
-        const iterable = `$heap[${generateCodeForExpression(statement.iterable)}]`;
         return [
-            `for (let ${loopVar} of ${iterable}) {`,
+            `for (let ${loopVar} of $heapAccess(${generateCodeForExpression(statement.iterable)})) {`,
             indent(`$setVariable("${loopVar}", ${loopVar}, ${loopTopLine});`),
             indent(statement.body.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
@@ -235,9 +238,10 @@ function generateCodeForExpression(expression) {
             .map(generateCodeForExpression).join(", ") + "]";
         return `$heapAllocate(${arrayLiteral})`;
     } else if (expression.type === "dictionary_literal") {
-        return "{ " + expression.entries.map(entry => {
+        const dictLiteral = "{ " + expression.entries.map(entry => {
             return entry[0].value + ": " + generateCodeForExpression(entry[1]);
         }).join(", ") + " }";
+        return `$heapAllocate(${dictLiteral})`;
     } else if (expression.type === "binary_operation") {
         const left = generateCodeForExpression(expression.left);
         const right = generateCodeForExpression(expression.right);

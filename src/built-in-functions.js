@@ -21,7 +21,7 @@ exports.range = {
 
 exports.split = {
     code: `function split(string, separator) {
-    return string.split(separator)
+    return $heapAllocate(string.split(separator));
 }`,
     pure: true
 };
