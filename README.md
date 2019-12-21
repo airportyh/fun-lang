@@ -59,23 +59,14 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* support for list
-    * pop
-    * map
-    * filter
-    * reduce
-    * join
-    * concat
-    * split
-    * range
-* print to work for arrays and dicts
 * heap rendering
+* separate $recordLine from the state modification runtime functions?
+* print to work for arrays and dicts
 * optimize history file size by using more structure sharing or maybe compression mechanisms
 * add $recordLine for the rest of the expression types in the code generator
 * display content of the console
 * put start and end info into sub-expressions too to allow highlighting sub-expressions that are
 being evaluated
-* separate $recordLine from the state modification runtime functions?
 * optimize: instead of erase then print, erase only the required parts
 * colors!!
 * answering questions such as:
@@ -85,8 +76,18 @@ being evaluated
    * did this function ever get called?
    * how many times did this function get called?
    * how many times did this function get called with this parameter (or these parameters)?
+* stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* support for list (done)
+    * pop
+    * map
+    * filter
+    * reduce
+    * join
+    * concat
+    * split
+    * range
 * support for dictionary (done)
 * use jsonr to persist history (done)
 * write the debugger / adding tracking clauses for non-setting operations maybe (done)

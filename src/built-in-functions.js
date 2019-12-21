@@ -14,7 +14,7 @@ exports.range = {
     for (let i = start; i < end; i++) {
         ret.push(i);
     }
-    return ret;
+    return $heapAllocate(ret);
 }`,
     pure: true
 };
@@ -34,8 +34,8 @@ exports.print = {
 };
 
 exports.pop = {
-    code: `function pop(array) {
-    return array.pop();
+    code: `function pop(arrayId) {
+    return $heapAllocate($heap[arrayId].pop());
 }`,
     pure: true
 };
@@ -54,28 +54,33 @@ exports.push = {
 };
 
 exports.concat = {
-    code: `function concat(one, other) {
-    return one.concat(other);
+    code: `function concat(oneId, otherId) {
+    const one = $heap[oneId];
+    const other = $heap[otherId];
+    return $heapAllocate(one.concat(other));
 }`,
     pure: true
 };
 
 exports.map = {
-    code: `function map(fn, arr) {
-    return arr.map(fn);
+    code: `function map(fn, arrayId) {
+    const arr = $heap[arrayId];
+    return $heapAllocate(arr.map(fn));
 }`,
     pure: true
 };
 
 exports.filter = {
-    code: `function filter(fn, arr) {
-    return arr.filter(fn);
+    code: `function filter(fn, arrayId) {
+    const arr = $heap[arrayId];
+    return $heapAllocate(arr.filter(fn));
 }`,
     pure: true
 };
 
 exports.reduce = {
-    code: `function reduce(fn, initValue, arr) {
+    code: `function reduce(fn, initValue, arrayId) {
+    const arr = $heap[arrayId];
     return arr.reduce(fn, initValue);
 }`,
     pure: true
@@ -96,7 +101,8 @@ exports.sqr = {
 };
 
 exports.join = {
-    code: `function join(array, separator) {
+    code: `function join(arrayId, separator) {
+    const array = $heap[arrayId];
     return array.join(separator);
 }`,
     pure: true
