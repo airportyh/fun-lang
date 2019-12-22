@@ -1,5 +1,5 @@
 proc main() [
-    text = "What is this thing called loved?"
+    text = "What is this thing called love?"
     tally = {}
     for char in split(text, "") [
         if tally[char] [

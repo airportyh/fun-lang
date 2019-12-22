@@ -5,6 +5,7 @@ const jsonr = require("@airportyh/jsonr");
 async function main() {
     const [windowWidth, windowHeight] = process.stdout.getWindowSize();
     const topOffset = 1;
+    const stackFrameWidth = 40;
     clearScreen();
     process.stdin.setRawMode(true);
     process.stdin.on('data', (data) => {
@@ -36,6 +37,7 @@ async function main() {
         line.length > longestWidth ? line.length : longestWidth, 0);
     const dividerColumn = codeWidth + maxLineNumberLength + 5;
     drawDivider(dividerColumn);
+    drawDivider(dividerColumn + stackFrameWidth);
 
     const historyFilePath = path.join(
         path.dirname(filePath),
@@ -72,11 +74,11 @@ async function main() {
         const paramList = Object.keys(frame.parameters)
             .map(key => `${key}=${frame.parameters[key]}`)
             .join(", ");
-        const funDisplay = `${frame.funName}(${paramList})`;
+        const funDisplay = `${frame.funName}(${paramList})`.substring(0, stackFrameWidth - 1);
         printAt(column, lineOffset, ''.padEnd(funDisplay.length, ' '));
         lineOffset++;
         for (let varName in frame.variables) {
-            const line = `  ${varName} = ${frame.variables[varName]}`;
+            const line = `  ${varName} = ${frame.variables[varName]}`.substring(0, stackFrameWidth - 1);;
             printAt(column, lineOffset, ''.padEnd(line.length, ' '));
             lineOffset++;
         }
@@ -109,11 +111,11 @@ async function main() {
         const paramList = Object.keys(frame.parameters)
             .map(key => `${key}=${displayValue(frame.parameters[key])}`)
             .join(", ");
-        const funDisplay = `${frame.funName}(${paramList})`;
+        const funDisplay = `${frame.funName}(${paramList})`.substring(0, stackFrameWidth - 1);
         printAt(column, lineOffset, funDisplay);
         lineOffset++;
         for (let varName in frame.variables) {
-            printAt(column, lineOffset, `  ${varName} = ${displayValue(frame.variables[varName])}`);
+            printAt(column, lineOffset, `  ${varName} = ${displayValue(frame.variables[varName])}`.substring(0, stackFrameWidth - 1));
             lineOffset++;
         }
         return lineOffset;
@@ -130,6 +132,7 @@ async function main() {
         renderProgramCounter();
         renderStackFrame();
         updateHistoryDisplay();
+        renderHeap();
     }
 
     function stepBackward() {
@@ -143,6 +146,7 @@ async function main() {
         renderProgramCounter();
         renderStackFrame();
         updateHistoryDisplay();
+        renderHeap();
     }
 
     function eraseProgramCounter() {
@@ -156,6 +160,55 @@ async function main() {
         const line = histEntry.line;
         printAt(1, line + topOffset - 1, "→");
         park();
+    }
+
+    function renderHeap() {
+        const column = dividerColumn + stackFrameWidth + 1;
+        const histEntry = history[currentHistoryIdx];
+        const heap = histEntry.heap;
+        let offsetTop = 1;
+        for (let key in heap) {
+            const object = heap[key];
+            if (Array.isArray(object)) {
+                printAt(column, offsetTop++, "&" + key + "┌" + Array(object.length).join("─┬") + "─┐");
+                printAt(column, offsetTop++, "  │" + object.join("│") + "│");
+                printAt(column, offsetTop++, "  └" + Array(object.length).join("─┴") + "─┘");
+            } else {
+                // dictionary
+                const entries = [];
+                for (let key in object) {
+                    entries.push([displayValue(key), displayValue(object[key])]);
+                }
+                const column1Width = entries.reduce((width, entry) =>
+                    entry[0].length > width ? entry[0].length : width, 1);
+                const column2Width = entries.reduce((width, entry) =>
+                    entry[1].length > width ? entry[1].length : width, 1);
+                const line1 = "&" + key + "┌" + Array(column1Width + 1).join("─") + "┬" + Array(column2Width).join("─") + "─┐";
+                const lineLast = "  └" + Array(column1Width + 1).join("─") + "┴" + Array(column2Width).join("─") + "─┘";
+                printAt(column, offsetTop++, line1.padEnd(windowWidth - column, " "));
+                for (let i = 0; i < entries.length; i++) {
+                    const entry = entries[i];
+                    printAt(column, offsetTop++,
+                        ("  │" + entry[0].padEnd(column1Width, " ") + "│" + entry[1].padEnd(column2Width, " ") + "│")
+                        .padEnd(windowWidth - column, " ")
+                    );
+                    if (i < entries.length - 1) {
+                        printAt(column, offsetTop++,
+                            ("  ├" + "".padEnd(column1Width, "─") + "┼" + "".padEnd(column2Width, "─") + "┤")
+                            .padEnd(windowWidth - column, " ")
+                        );
+                    } else {
+                        printAt(column, offsetTop++, lineLast.padEnd(windowWidth - column, " "));
+                    }
+                }
+                if (entries.length === 0) {
+                    printAt(column, offsetTop++, lineLast.padEnd(windowWidth - column, " "));
+                }
+            }
+        }
+        while (offsetTop < windowHeight) {
+            printAt(column, offsetTop++, "".padEnd(windowWidth - column, " "));
+        }
     }
 
     function park() {
