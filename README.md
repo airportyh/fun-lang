@@ -59,7 +59,8 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* heap rendering
+* debugger rendering - consider building a more sophisticated layout framework to solve some space problems
+* debugger rendering - consider building a UI framework to handle panels, scrolling, updating, erasing past content, etc
 * separate $recordLine from the state modification runtime functions?
 * print to work for arrays and dicts
 * optimize history file size by using more structure sharing or maybe compression mechanisms
@@ -79,6 +80,7 @@ being evaluated
 * stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* heap rendering (done)
 * support for list (done)
     * pop
     * map
