@@ -1,5 +1,6 @@
 const fs = require("mz/fs");
 const path = require("path");
+const jsonr = require("@airportyh/jsonr");
 
 async function main() {
     const [windowWidth, windowHeight] = process.stdout.getWindowSize();
@@ -13,10 +14,6 @@ async function main() {
             console.log("Goodbye!");
             process.exit(0);
         }
-        // printAt(1, 18, String(data.length));
-        // for (let i = 0; i < data.length; i++) {
-        //     printAt(1, 19 + i, String(data[i]).padEnd(10, ' '));
-        // }
         if (isUpArrow(data)) {
             stepBackward();
         } else if (isDownArrow(data)) {
@@ -45,7 +42,7 @@ async function main() {
         path.basename(filePath, ".fun") + ".history"
     );
 
-    const history = JSON.parse((await fs.readFile(historyFilePath)).toString());
+    const history = jsonr.parse((await fs.readFile(historyFilePath)).toString());
     let currentHistoryIdx = 0;
 
     renderProgramCounter();
@@ -96,15 +93,27 @@ async function main() {
         }
     }
 
+    function displayValue(value) {
+        if (typeof value === "string") {
+            return quote(value);
+        } else {
+            return String(value);
+        }
+    }
+
+    function quote(str) {
+        return '"' + str.replace(/\"/g, '\\"') + '"';
+    }
+
     function renderFrame(frame, column, lineOffset) {
         const paramList = Object.keys(frame.parameters)
-            .map(key => `${key}=${frame.parameters[key]}`)
+            .map(key => `${key}=${displayValue(frame.parameters[key])}`)
             .join(", ");
         const funDisplay = `${frame.funName}(${paramList})`;
         printAt(column, lineOffset, funDisplay);
         lineOffset++;
         for (let varName in frame.variables) {
-            printAt(column, lineOffset, `  ${varName} = ${frame.variables[varName]}`);
+            printAt(column, lineOffset, `  ${varName} = ${displayValue(frame.variables[varName])}`);
             lineOffset++;
         }
         return lineOffset;

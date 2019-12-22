@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@airportyh/jsonr": "^1.0.5",
+    "@airportyh/jsonr": "^1.0.6",
     "colors": "^1.4.0",
     "diff": "^4.0.1",
     "js-yaml": "^3.13.1",
