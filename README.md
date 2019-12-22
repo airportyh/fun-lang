@@ -60,7 +60,7 @@ To learn more, read:
 ## Todo (Time Travel Debugger)
 
 * debugger rendering - consider building a more sophisticated layout framework to solve some space problems
-* debugger rendering - consider building a UI framework to handle panels, scrolling, updating, erasing past content, etc
+* debugger rendering - consider building a UI framework to handle panels, scrolling, updating, erasing past content, overflows, etc
 * separate $recordLine from the state modification runtime functions?
 * print to work for arrays and dicts
 * optimize history file size by using more structure sharing or maybe compression mechanisms
