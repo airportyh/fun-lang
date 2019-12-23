@@ -10,18 +10,15 @@ let $nextHeapId = 1;
 let $heap = {};
 
 function $pushFrame(funName, variables, line) {
-    $recordLine(line);
     const newFrame = { funName, parameters: variables, variables };
     $stack = [...$stack, newFrame];
 }
 
 function $popFrame(line) {
-    $recordLine(line);
     $stack = $stack.slice(0, $stack.length - 1);
 }
 
 function $setVariable(varName, value, line) {
-    $recordLine(line);
     const frame = $stack[$stack.length - 1];
     const newFrame = {
         ...frame,
@@ -40,7 +37,7 @@ function $heapAllocate(value) {
     return id;
 }
 
-function $recordLine(line) {
+function $save(line) {
     $history.push({ line, stack: $stack, heap: $heap });
 }
 
@@ -103,6 +100,105 @@ exports.generateCode = function generateCode(ast, options) {
     return jsCode;
 }
 
+function generateCodeForTopLevelStatement(node) {
+    if (node.type === "comment") {
+        return "//" + node.value;
+    } else if (node.type === "fun_definition") {
+        return generateFunction(node);
+    } else if (node.type === "proc_definition") {
+        return generateFunction(node);
+    } else {
+        throw new Error("Unknown AST Node type for top level statements: " + node.type);
+    }
+}
+
+function generateCodeForExecutableStatement(statement) {
+    if (statement.type === "comment") {
+        return "//" + statement.value;
+    } else if (statement.type === "return_statement") {
+        return [
+            `$save(${statement.start.line});`,
+            `var $retval = ${generateCodeForExpression(statement.value)};`,
+            `$setVariable("<ret val>", $retval, ${statement.start.line});`,
+            `return $retval;`
+        ].join("\n");
+        return "return " + generateCodeForExpression(statement.value) + ";";
+    } else if (statement.type === "var_assignment") {
+        // return "var " + statement.var_name.value + " = " + generateCodeForExpression(statement.value) + ";";
+        const varName = statement.var_name.value;
+        const value = generateCodeForExpression(statement.value);
+        const line = statement.start.line;
+        return [
+            `$save(${statement.start.line});`,
+            `$setVariable("${varName}", ${value}, ${line});`
+        ].join("\n");
+    } else if (statement.type === "call_expression") {
+        return generateCallExpression(statement) + ";";
+    } else if (statement.type === "while_loop") {
+        const condition = generateCodeForExpression(statement.condition);
+        return [
+            `$save(${statement.start.line});`,
+            `while (${condition}) {`,
+            `${generateCodeForCodeBlock(statement.body)}`,
+            `}`
+        ].join("\n");
+    } else if (statement.type === "if_statement") {
+        const condition = generateCodeForExpression(statement.condition);
+        const alternate = statement.alternate ?
+            generateCodeForIfAlternate(statement.alternate) : "";
+        return [
+            `$save(${statement.start.line});`,
+            `if (${condition}) {`,
+            indent(statement.consequent.statements.map(statement => {
+                return generateCodeForExecutableStatement(statement);
+            }).join("\n")),
+            "}",
+            alternate
+        ].join("\n");
+    } else if (statement.type === "for_loop") {
+        const loopVar = statement.loop_variable.value;
+        const loopTopLine = statement.loop_variable.start.line;
+        return [
+            `$save(${statement.start.line});`,
+            `for (let ${loopVar} of $heapAccess(${generateCodeForExpression(statement.iterable)})) {`,
+            indent(`$setVariable("${loopVar}", ${loopVar}, ${loopTopLine});`),
+            indent(statement.body.statements.map(statement => {
+                return generateCodeForExecutableStatement(statement);
+            }).join("\n")),
+            "}"
+        ].join("\n");
+    } else if (statement.type === "indexed_assignment") {
+        const subject = generateCodeForExpression(statement.subject);
+        const index = generateCodeForExpression(statement.index);
+        const value = generateCodeForExpression(statement.value);
+        return [
+            `$save(${statement.start.line});`,
+            `$set(${subject}, ${index}, ${value});`
+        ].join("\n");
+    } else {
+        throw new Error("Unknown AST node type for executable statements: " + statement.type);
+    }
+}
+
+function generateCallExpression(expression) {
+    const line = expression.start.line;
+    const funcCall = expression.fun_name.value + "(" +
+        expression.arguments.map(arg => generateCodeForExpression(arg))
+            .join(", ") + ")";
+    return `($save(${line}), ${funcCall})`;
+}
+
+function generateCodeForIfAlternate(alternate) {
+    if (alternate.type === "if_statement") {
+        return "else " + generateCodeForExecutableStatement(alternate);
+    } else {
+        return "else {\n" +
+            indent(alternate.statements.map(statement => {
+                return generateCodeForExecutableStatement(statement);
+            }).join("\n")) + "\n}";
+    }
+}
+
 // Node is either fun_definition or proc_definition
 function generateFunction(node) {
     const isAsync = node.type === "proc_definition";
@@ -126,94 +222,6 @@ function generateFunction(node) {
         indent(`}`),
         "}"
     ].join("\n");
-}
-
-function generateCodeForTopLevelStatement(node) {
-    if (node.type === "comment") {
-        return "//" + node.value;
-    } else if (node.type === "fun_definition") {
-        return generateFunction(node);
-    } else if (node.type === "proc_definition") {
-        return generateFunction(node);
-    } else {
-        throw new Error("Unknown AST Node type for top level statements: " + node.type);
-    }
-}
-
-function generateCallExpression(expression) {
-    const line = expression.start.line;
-    const funcCall = expression.fun_name.value + "(" +
-        expression.arguments.map(arg => generateCodeForExpression(arg))
-            .join(", ") + ")";
-    return `($recordLine(${line}), ${funcCall})`;
-}
-
-function generateCodeForExecutableStatement(statement) {
-    if (statement.type === "comment") {
-        return "//" + statement.value;
-    } else if (statement.type === "return_statement") {
-        return [
-            `var $retval = ${generateCodeForExpression(statement.value)};`,
-            `$setVariable("<ret val>", $retval, ${statement.start.line});`,
-            `return $retval;`
-        ].join("\n");
-        return "return " + generateCodeForExpression(statement.value) + ";";
-    } else if (statement.type === "var_assignment") {
-        // return "var " + statement.var_name.value + " = " + generateCodeForExpression(statement.value) + ";";
-        const varName = statement.var_name.value;
-        const value = generateCodeForExpression(statement.value);
-        const line = statement.start.line;
-        return `$setVariable("${varName}", ${value}, ${line});`;
-    } else if (statement.type === "call_expression") {
-        return generateCallExpression(statement) + ";";
-    } else if (statement.type === "while_loop") {
-        const condition = generateCodeForExpression(statement.condition);
-        return "while (" + condition + ") {\n" +
-            generateCodeForCodeBlock(statement.body) +
-            "\n}";
-    } else if (statement.type === "if_statement") {
-        const condition = generateCodeForExpression(statement.condition);
-        const alternate = statement.alternate ?
-            generateCodeForIfAlternate(statement.alternate) : "";
-        return [
-            `$recordLine(${statement.condition.start.line});`,
-            `if (${condition}) {`,
-            indent(statement.consequent.statements.map(statement => {
-                return generateCodeForExecutableStatement(statement);
-            }).join("\n")),
-            "}",
-            alternate
-        ].join("\n");
-    } else if (statement.type === "for_loop") {
-        const loopVar = statement.loop_variable.value;
-        const loopTopLine = statement.loop_variable.start.line;
-        return [
-            `for (let ${loopVar} of $heapAccess(${generateCodeForExpression(statement.iterable)})) {`,
-            indent(`$setVariable("${loopVar}", ${loopVar}, ${loopTopLine});`),
-            indent(statement.body.statements.map(statement => {
-                return generateCodeForExecutableStatement(statement);
-            }).join("\n")),
-            "}"
-        ].join("\n");
-    } else if (statement.type === "indexed_assignment") {
-        const subject = generateCodeForExpression(statement.subject);
-        const index = generateCodeForExpression(statement.index);
-        const value = generateCodeForExpression(statement.value);
-        return `$set(${subject}, ${index}, ${value});`;
-    } else {
-        throw new Error("Unknown AST node type for executable statements: " + statement.type);
-    }
-}
-
-function generateCodeForIfAlternate(alternate) {
-    if (alternate.type === "if_statement") {
-        return " else " + generateCodeForExecutableStatement(alternate);
-    } else {
-        return " else {\n" +
-            indent(alternate.statements.map(statement => {
-                return generateCodeForExecutableStatement(statement);
-            }).join("\n")) + "\n}";
-    }
 }
 
 const operatorMap = {

@@ -12,7 +12,6 @@ async function main() {
         if (String(data) === 'q') {
             process.stdin.setRawMode(false);
             clearScreen();
-            console.log("Goodbye!");
             process.exit(0);
         }
         if (isUpArrow(data)) {
