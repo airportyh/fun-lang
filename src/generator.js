@@ -211,18 +211,18 @@ function generateFunction(node) {
     const isAsync = node.type === "proc_definition";
     const firstLine = node.body.start.line;
     const lastLine = node.body.end.line;
-    const funName = node.name.value;
+    const funName = node.name && node.name.value || null;
     const parameters = node
         .parameters
         .map(p => p.value)
         .join(", ");
     const line1 = (isAsync ? "async " : "") +
-        "function " + funName + "(" + parameters + ") {";
+        "function " + (funName || "") + "(" + parameters + ") {";
     const body = generateCodeForCodeBlock(node.body);
     return [
         line1,
         indent(`var $immediateReturnValue;`),
-        indent(`$pushFrame("${funName}", { ${parameters} });`),
+        indent(`$pushFrame("${funName || '<anonymous>'}", { ${parameters} });`),
         indent(`try {`),
         indent(body),
         indent(`} finally {`),
@@ -275,9 +275,7 @@ function generateCodeForExpression(expression) {
         const index = generateCodeForExpression(expression.index);
         return `$get(${subject}, ${index})`;
     } else if (expression.type === "fun_expression") {
-        return "function (" + expression.parameters.map(p => p.value).join(", ") + ") {\n" +
-            generateCodeForCodeBlock(expression.body) +
-            "\n}";
+        return generateFunction(expression);
     } else {
         throw new Error("Unsupported AST node type for expressions: " + expression.type);
     }
