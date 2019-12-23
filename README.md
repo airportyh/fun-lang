@@ -59,16 +59,14 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
+* fix array display for more then one length contents
+* make more test programs to test how well debugger works
 * debugger rendering - consider building a more sophisticated layout framework to solve some space problems
 * debugger rendering - consider building a UI framework to handle panels, scrolling, updating, erasing past content, overflows, etc
-* separate $recordLine from the state modification runtime functions?
-* print to work for arrays and dicts
 * optimize history file size by using more structure sharing or maybe compression mechanisms
-* add $recordLine for the rest of the expression types in the code generator
 * display content of the console
 * put start and end info into sub-expressions too to allow highlighting sub-expressions that are
 being evaluated
-* optimize: instead of erase then print, erase only the required parts
 * colors!!
 * answering questions such as:
    * what statement last modified this value?
@@ -80,6 +78,8 @@ being evaluated
 * stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* for executable statements that are just a function call, don't pause again after the function evaluates(done)
+* separate $recordLine from the state modification runtime functions? (done)
 * heap rendering (done)
 * support for list (done)
     * pop

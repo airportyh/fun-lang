@@ -9,12 +9,12 @@ let $stack = [];
 let $nextHeapId = 1;
 let $heap = {};
 
-function $pushFrame(funName, variables, line) {
+function $pushFrame(funName, variables) {
     const newFrame = { funName, parameters: variables, variables };
     $stack = [...$stack, newFrame];
 }
 
-function $popFrame(line) {
+function $popFrame() {
     $stack = $stack.slice(0, $stack.length - 1);
 }
 
@@ -133,7 +133,10 @@ function generateCodeForExecutableStatement(statement) {
             `$setVariable("${varName}", ${value}, ${line});`
         ].join("\n");
     } else if (statement.type === "call_expression") {
-        return generateCallExpression(statement) + ";";
+        return [
+            `$save(${statement.start.line});`,
+            generateCallExpression(statement) + ";"
+        ].join("\n");
     } else if (statement.type === "while_loop") {
         const condition = generateCodeForExpression(statement.condition);
         return [
@@ -180,12 +183,16 @@ function generateCodeForExecutableStatement(statement) {
     }
 }
 
-function generateCallExpression(expression) {
+function generateCallExpression(expression, pauseAfter) {
     const line = expression.start.line;
     const funcCall = expression.fun_name.value + "(" +
         expression.arguments.map(arg => generateCodeForExpression(arg))
             .join(", ") + ")";
-    return `($save(${line}), ${funcCall})`;
+    if (pauseAfter) {
+        return `($immediateReturnValue = ${funcCall}, $save(${line}), $immediateReturnValue)`;
+    } else {
+        return funcCall;
+    }
 }
 
 function generateCodeForIfAlternate(alternate) {
@@ -214,11 +221,15 @@ function generateFunction(node) {
     const body = generateCodeForCodeBlock(node.body);
     return [
         line1,
-        indent(`$pushFrame("${funName}", { ${parameters} }, ${firstLine});`),
+        indent(`var $immediateReturnValue;`),
+        indent(`$pushFrame("${funName}", { ${parameters} });`),
         indent(`try {`),
         indent(body),
         indent(`} finally {`),
-        indent(indent(`$popFrame(${lastLine});`)),
+        indent(indent([
+            `$save(${lastLine});`,
+            `$popFrame();`
+        ].join("\n"))),
         indent(`}`),
         "}"
     ].join("\n");
@@ -258,7 +269,7 @@ function generateCodeForExpression(expression) {
         return `$getVariable("${expression.var_name.value}")`;
         // return expression.var_name.value;
     } else if (expression.type === "call_expression") {
-        return generateCallExpression(expression);
+        return generateCallExpression(expression, true);
     } else if (expression.type === "indexed_access") {
         const subject = generateCodeForExpression(expression.subject);
         const index = generateCodeForExpression(expression.index);
