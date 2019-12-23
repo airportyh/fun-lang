@@ -35,6 +35,7 @@ async function main() {
 
     const codeWidth = codeLines.reduce((longestWidth, line) =>
         line.length > longestWidth ? line.length : longestWidth, 0);
+
     const dividerColumn = codeWidth + maxLineNumberLength + 5;
     drawDivider(dividerColumn);
     drawDivider(dividerColumn + stackFrameWidth);
@@ -60,41 +61,6 @@ async function main() {
         park();
     }
 
-    function eraseStackFrame() {
-        const column = dividerColumn + 1;
-        const histEntry = history[currentHistoryIdx];
-        const stack = histEntry.stack;
-        let lineOffset = 1;
-        for (let i = stack.length - 1; i >= 0; i--) {
-            lineOffset = eraseFrame(stack[i], column, lineOffset);
-        }
-    }
-
-    function eraseFrame(frame, column, lineOffset) {
-        const paramList = Object.keys(frame.parameters)
-            .map(key => `${key}=${frame.parameters[key]}`)
-            .join(", ");
-        const funDisplay = `${frame.funName}(${paramList})`.substring(0, stackFrameWidth - 1);
-        printAt(column, lineOffset, ''.padEnd(funDisplay.length, ' '));
-        lineOffset++;
-        for (let varName in frame.variables) {
-            const line = `  ${varName} = ${frame.variables[varName]}`.substring(0, stackFrameWidth - 1);;
-            printAt(column, lineOffset, ''.padEnd(line.length, ' '));
-            lineOffset++;
-        }
-        return lineOffset;
-    }
-
-    function renderStackFrame() {
-        const column = dividerColumn + 1;
-        const histEntry = history[currentHistoryIdx];
-        const stack = histEntry.stack;
-        let lineOffset = 1;
-        for (let i = stack.length - 1; i >= 0; i--) {
-            lineOffset = renderFrame(stack[i], column, lineOffset);
-        }
-    }
-
     function displayValue(value) {
         if (typeof value === "string") {
             return quote(value);
@@ -107,18 +73,26 @@ async function main() {
         return '"' + str.replace(/\"/g, '\\"') + '"';
     }
 
-    function renderFrame(frame, column, lineOffset) {
+    function renderStackFrame() {
+        const column = dividerColumn + 1;
+        const histEntry = history[currentHistoryIdx];
+        const stack = histEntry.stack;
+        const lines = [];
+        for (let i = stack.length - 1; i >= 0; i--) {
+            renderFrame(stack[i], column, lines);
+        }
+        renderText(column, 1, stackFrameWidth - 1, windowHeight, lines);
+    }
+
+    function renderFrame(frame, column, lines) {
         const paramList = Object.keys(frame.parameters)
             .map(key => `${key}=${displayValue(frame.parameters[key])}`)
             .join(", ");
         const funDisplay = `${frame.funName}(${paramList})`.substring(0, stackFrameWidth - 1);
-        printAt(column, lineOffset, funDisplay);
-        lineOffset++;
+        lines.push(funDisplay);
         for (let varName in frame.variables) {
-            printAt(column, lineOffset, `  ${varName} = ${displayValue(frame.variables[varName])}`.substring(0, stackFrameWidth - 1));
-            lineOffset++;
+            lines.push(`  ${varName} = ${displayValue(frame.variables[varName])}`);
         }
-        return lineOffset;
     }
 
     function stepForward() {
@@ -127,7 +101,6 @@ async function main() {
         }
 
         eraseProgramCounter();
-        eraseStackFrame();
         currentHistoryIdx++;
         renderProgramCounter();
         renderStackFrame();
@@ -141,7 +114,6 @@ async function main() {
         }
 
         eraseProgramCounter();
-        eraseStackFrame();
         currentHistoryIdx--;
         renderProgramCounter();
         renderStackFrame();
@@ -167,12 +139,13 @@ async function main() {
         const histEntry = history[currentHistoryIdx];
         const heap = histEntry.heap;
         let offsetTop = 1;
+        let lines = [];
         for (let key in heap) {
             const object = heap[key];
             if (Array.isArray(object)) {
-                printAt(column, offsetTop++, "&" + key + "┌" + Array(object.length).join("─┬") + "─┐");
-                printAt(column, offsetTop++, "  │" + object.join("│") + "│");
-                printAt(column, offsetTop++, "  └" + Array(object.length).join("─┴") + "─┘");
+                lines.push("&" + key + "┌" + Array(object.length).join("─┬") + "─┐");
+                lines.push("  │" + object.join("│") + "│");
+                lines.push("  └" + Array(object.length).join("─┴") + "─┘");
             } else {
                 // dictionary
                 const entries = [];
@@ -185,30 +158,23 @@ async function main() {
                     entry[1].length > width ? entry[1].length : width, 1);
                 const line1 = "&" + key + "┌" + Array(column1Width + 1).join("─") + "┬" + Array(column2Width).join("─") + "─┐";
                 const lineLast = "  └" + Array(column1Width + 1).join("─") + "┴" + Array(column2Width).join("─") + "─┘";
-                printAt(column, offsetTop++, line1.padEnd(windowWidth - column, " "));
+                lines.push(line1);
                 for (let i = 0; i < entries.length; i++) {
                     const entry = entries[i];
-                    printAt(column, offsetTop++,
-                        ("  │" + entry[0].padEnd(column1Width, " ") + "│" + entry[1].padEnd(column2Width, " ") + "│")
-                        .padEnd(windowWidth - column, " ")
-                    );
+                    lines.push("  │" + entry[0].padEnd(column1Width, " ") + "│" + entry[1].padEnd(column2Width, " ") + "│");
+
                     if (i < entries.length - 1) {
-                        printAt(column, offsetTop++,
-                            ("  ├" + "".padEnd(column1Width, "─") + "┼" + "".padEnd(column2Width, "─") + "┤")
-                            .padEnd(windowWidth - column, " ")
-                        );
+                        lines.push("  ├" + "".padEnd(column1Width, "─") + "┼" + "".padEnd(column2Width, "─") + "┤");
                     } else {
-                        printAt(column, offsetTop++, lineLast.padEnd(windowWidth - column, " "));
+                        lines.push(lineLast);
                     }
                 }
                 if (entries.length === 0) {
-                    printAt(column, offsetTop++, lineLast.padEnd(windowWidth - column, " "));
+                    lines.push(lineLast);
                 }
             }
         }
-        while (offsetTop < windowHeight) {
-            printAt(column, offsetTop++, "".padEnd(windowWidth - column, " "));
-        }
+        renderText(column, 1, windowWidth - column + 1, windowHeight, lines);
     }
 
     function park() {
@@ -235,6 +201,13 @@ async function main() {
 main().catch((e) => console.log(e.stack));
 
 // ============= Helper functions ================
+
+function renderText(x, y, width, height, textLines) {
+    for (let i = 0; i < height; i++) {
+        const line = textLines[i] || "";
+        printAt(x, y + i, line.substring(0, width).padEnd(width, " "));
+    }
+}
 
 function clearScreen() {
     process.stdout.write(encode('[0m'));
