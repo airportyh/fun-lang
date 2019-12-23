@@ -139,53 +139,68 @@ async function main() {
         const heap = histEntry.heap;
         let offsetTop = 1;
         let lines = [];
-        for (let key in heap) {
-            const object = heap[key];
+        for (let id in heap) {
+            const object = heap[id];
             if (Array.isArray(object)) {
-                const displayItems = object.map(displayValue);
-                lines.push(
-                    key + "┌" +
-                    displayItems.map(item => "".padEnd(item.length, "─")).join("┬") +
-                    "┐");
-                if (displayItems.length > 0) {
-                    lines.push(
-                        "".padEnd(key.length, " ") +
-                        "│" + displayItems.join("│") + "│");
-                }
-                lines.push(
-                    "".padEnd(key.length, " ") +
-                    "└" + displayItems.map(item => "".padEnd(item.length, "─")).join("┴") +
-                     "┘");
-
+                renderArray(id, object, lines);
             } else {
-                // dictionary
-                const entries = [];
-                for (let key in object) {
-                    entries.push([displayValue(key), displayValue(object[key])]);
-                }
-                const column1Width = entries.reduce((width, entry) =>
-                    entry[0].length > width ? entry[0].length : width, 1);
-                const column2Width = entries.reduce((width, entry) =>
-                    entry[1].length > width ? entry[1].length : width, 1);
-                const line1 = "&" + key + "┌" + Array(column1Width + 1).join("─") + "┬" + Array(column2Width).join("─") + "─┐";
-                const lineLast = "  └" + Array(column1Width + 1).join("─") + "┴" + Array(column2Width).join("─") + "─┘";
-                lines.push(line1);
-                for (let i = 0; i < entries.length; i++) {
-                    const entry = entries[i];
-                    lines.push("  │" + entry[0].padEnd(column1Width, " ") + "│" + entry[1].padEnd(column2Width, " ") + "│");
-
-                    if (i < entries.length - 1) {
-                        lines.push("  ├" + "".padEnd(column1Width, "─") + "┼" + "".padEnd(column2Width, "─") + "┤");
-                    } else {
-                        lines.push(lineLast);
-                    }
-                }
-                if (entries.length === 0) {
-                    lines.push(lineLast);
-                }
+                renderDictionary(id, object, lines);
             }
         }
         renderText(column, 1, windowWidth - column + 1, windowHeight, lines);
+    }
+
+    function renderArray(id, array, lines) {
+        const displayItems = array.map(displayValue);
+        lines.push(
+            id + "┌" +
+            displayItems.map(item => "".padEnd(item.length, "─")).join("┬") +
+            "┐");
+        if (displayItems.length > 0) {
+            lines.push(
+                "".padEnd(id.length, " ") +
+                "│" + displayItems.join("│") + "│");
+        }
+        lines.push(
+            "".padEnd(id.length, " ") +
+            "└" + displayItems.map(item => "".padEnd(item.length, "─")).join("┴") +
+             "┘");
+    }
+
+    function renderDictionary(id, dict, lines) {
+        const entries = [];
+        for (let key in dict) {
+            entries.push([displayValue(key), displayValue(dict[key])]);
+        }
+        const column1Width = entries.reduce((width, entry) =>
+            entry[0].length > width ? entry[0].length : width, 1);
+        const column2Width = entries.reduce((width, entry) =>
+            entry[1].length > width ? entry[1].length : width, 1);
+
+        lines.push(id +
+            "┌" + Array(column1Width + 1).join("─") +
+            "┬" + Array(column2Width + 1).join("─") +
+            "┐");
+        for (let i = 0; i < entries.length; i++) {
+            const entry = entries[i];
+            lines.push(
+                "".padEnd(id.length, " ") +
+                "│" + entry[0].padEnd(column1Width, " ") +
+                "│" + entry[1].padEnd(column2Width, " ") +
+                "│");
+
+            if (i < entries.length - 1) {
+                lines.push(
+                    "".padEnd(id.length, " ") +
+                    "├" + "".padEnd(column1Width, "─") +
+                    "┼" + "".padEnd(column2Width, "─") +
+                    "┤");
+            }
+        }
+        lines.push("".padEnd(id.length, " ") +
+            "└" + Array(column1Width + 1).join("─") +
+            "┴" + Array(column2Width + 1).join("─") +
+            "┘");
     }
 
     function park() {
