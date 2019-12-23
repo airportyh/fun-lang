@@ -142,9 +142,21 @@ async function main() {
         for (let key in heap) {
             const object = heap[key];
             if (Array.isArray(object)) {
-                lines.push("&" + key + "┌" + Array(object.length).join("─┬") + "─┐");
-                lines.push("  │" + object.join("│") + "│");
-                lines.push("  └" + Array(object.length).join("─┴") + "─┘");
+                const displayItems = object.map(displayValue);
+                lines.push(
+                    key + "┌" +
+                    displayItems.map(item => "".padEnd(item.length, "─")).join("┬") +
+                    "┐");
+                if (displayItems.length > 0) {
+                    lines.push(
+                        "".padEnd(key.length, " ") +
+                        "│" + displayItems.join("│") + "│");
+                }
+                lines.push(
+                    "".padEnd(key.length, " ") +
+                    "└" + displayItems.map(item => "".padEnd(item.length, "─")).join("┴") +
+                     "┘");
+
             } else {
                 // dictionary
                 const entries = [];

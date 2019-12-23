@@ -59,7 +59,6 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* fix array display for more then one length contents
 * make more test programs to test how well debugger works
 * debugger rendering - consider building a more sophisticated layout framework to solve some space problems
 * debugger rendering - consider building a UI framework to handle panels, scrolling, updating, erasing past content, overflows, etc
@@ -78,6 +77,7 @@ being evaluated
 * stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* fix array display for more then one length contents (done)
 * for executable statements that are just a function call, don't pause again after the function evaluates(done)
 * separate $recordLine from the state modification runtime functions? (done)
 * heap rendering (done)
