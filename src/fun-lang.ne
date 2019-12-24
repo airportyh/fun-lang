@@ -349,9 +349,9 @@ list_literal
 list_items
     -> null
         {% () => [] %}
-    |  _ expression _
+    |  _ml expression _ml
         {% d => [d[1]] %}
-    |  _ expression _ "," list_items
+    |  _ml expression _ml "," list_items
         {%
             d => [
                 d[1],
@@ -372,17 +372,17 @@ dictionary_literal
 
 dictionary_entries
     -> null  {% () => [] %}
-    |  _ dictionary_entry _
+    |  _ml dictionary_entry _ml
         {%
             d => [d[1]]
         %}
-    |  _ dictionary_entry _ "," dictionary_entries
+    |  _ml dictionary_entry _ml "," dictionary_entries
         {%
             d => [d[1], ...d[4]]
         %}
 
 dictionary_entry
-    -> identifier _ ":" _ expression
+    -> identifier _ml ":" _ml expression
         {%
             d => [d[0], d[4]]
         %}
@@ -406,6 +406,12 @@ string_literal -> %string_literal {% convertTokenId %}
 number -> %number_literal {% convertTokenId %}
 
 identifier -> %identifier {% convertTokenId %}
+
+_ml -> multi_line_ws_char:*
+
+multi_line_ws_char
+    -> %ws
+    |  "\n"
 
 __ -> %ws:+
 

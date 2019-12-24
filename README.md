@@ -59,17 +59,27 @@ To learn more, read:
 
 ## Todos
 
+* make more test programs to test how well debugger works
+* optimize initial load time expression-matters
 * syntax - allow multiple line list and dictionary literals
 * don't pause after calling a built-in function
 * allow jumping to a particular line (ala breakpoints)
 * allow jumping to the end of the program
+* answering questions such as:
+   * what statement last modified this value?
+   * what values did this variable take on?
+   * did this condition ever occur?
+   * did this function ever get called?
+   * how many times did this function get called?
+   * how many times did this function get called with this parameter (or these parameters)?
 * add break statement syntax
+* optimize code display (don't have to redraw every frame)
 * have run.js also generate the intermediate files for ease of debugging
+* real IO (DOM, fs, network, etc)
 * clean up heap variables that were allocated local to a function call
 * add assertions
 * thing about immutable data in the language
 * maybe table display for the stack frame too
-* make more test programs to test how well debugger works
 * highlight the current line
 * flow layout for the heap to pack more stuff in
 * debugger rendering - consider building a more sophisticated layout framework to solve some space problems
@@ -79,13 +89,6 @@ To learn more, read:
 * put start and end info into sub-expressions too to allow highlighting sub-expressions that are
 being evaluated
 * colors!!
-* answering questions such as:
-   * what statement last modified this value?
-   * what values did this variable take on?
-   * did this condition ever occur?
-   * did this function ever get called?
-   * how many times did this function get called?
-   * how many times did this function get called with this parameter (or these parameters)?
 * stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline

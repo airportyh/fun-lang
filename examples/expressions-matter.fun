@@ -25,13 +25,14 @@ proc main() [
 ]
 
 proc expression_matter(a, b, c) [
-    results = []
-    push(results, a + b + c)
-    push(results, a + b * c)
-    push(results, (a + b) * c)
-    push(results, a * b + c)
-    push(results, a * (b + c))
-    push(results, a * b * c)
+    results = [
+        a + b + c,
+        a + b * c,
+        (a + b) * c,
+        a * b + c,
+        a * (b + c),
+        a * b * c
+    ]
     return reduce(fun (max, n) [
         if n > max [
             return n

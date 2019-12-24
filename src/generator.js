@@ -269,7 +269,7 @@ function generateCodeForExpression(expression) {
         if (!operator) {
             throw new Error("Unknown operator " + expression.operator.value);
         }
-        return left + " " + operator + " " + right;
+        return `(${left} ${operator} ${right})`;
     } else if (expression.type === "var_reference") {
         return `$getVariable("${expression.var_name.value}")`;
         // return expression.var_name.value;
