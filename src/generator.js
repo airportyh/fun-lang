@@ -208,10 +208,10 @@ function generateCodeForIfAlternate(alternate) {
 
 // Node is either fun_definition or proc_definition
 function generateFunction(node) {
-    const isAsync = node.type === "proc_definition";
+    const funName = node.name && node.name.value || null;
+    const isAsync = node.type === "proc_definition" && funName === "main";
     const firstLine = node.body.start.line;
     const lastLine = node.body.end.line;
-    const funName = node.name && node.name.value || null;
     const parameters = node
         .parameters
         .map(p => p.value)
@@ -244,7 +244,8 @@ const operatorMap = {
     "+": "+",
     "-": "-",
     "*": "*",
-    "/": "/"
+    "/": "/",
+    "%": "%"
 };
 
 function generateCodeForExpression(expression) {
@@ -264,7 +265,11 @@ function generateCodeForExpression(expression) {
     } else if (expression.type === "binary_operation") {
         const left = generateCodeForExpression(expression.left);
         const right = generateCodeForExpression(expression.right);
-        return left + " " + operatorMap[expression.operator.value] + " " + right;
+        const operator = operatorMap[expression.operator.value];
+        if (!operator) {
+            throw new Error("Unknown operator " + expression.operator.value);
+        }
+        return left + " " + operator + " " + right;
     } else if (expression.type === "var_reference") {
         return `$getVariable("${expression.var_name.value}")`;
         // return expression.var_name.value;

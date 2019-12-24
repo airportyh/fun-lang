@@ -4,6 +4,7 @@ const jsonr = require("@airportyh/jsonr");
 
 async function main() {
     const [windowWidth, windowHeight] = process.stdout.getWindowSize();
+    let codeLineOffset = 0;
     const topOffset = 1;
     const stackFrameWidth = 40;
     clearScreen();
@@ -12,6 +13,7 @@ async function main() {
         if (String(data) === 'q') {
             process.stdin.setRawMode(false);
             clearScreen();
+            setCursorVisible(true);
             process.exit(0);
         }
         if (isUpArrow(data)) {
@@ -26,15 +28,15 @@ async function main() {
         return;
     }
 
+    setCursorVisible(false);
+    clearScreen();
+
     const code = (await fs.readFile(filePath)).toString();
-
     const codeLines = code.split("\n");
-    const maxLineNumberLength = String(codeLines.length).length;
-    renderCodeLines(codeLines, maxLineNumberLength);
-
     const codeWidth = codeLines.reduce((longestWidth, line) =>
         line.length > longestWidth ? line.length : longestWidth, 0);
 
+    const maxLineNumberLength = String(codeLines.length).length;
     const dividerColumn = codeWidth + maxLineNumberLength + 5;
     drawDivider(dividerColumn);
     drawDivider(dividerColumn + stackFrameWidth);
@@ -47,30 +49,9 @@ async function main() {
     const history = jsonr.parse((await fs.readFile(historyFilePath)).toString());
     let currentHistoryIdx = 0;
 
-    renderProgramCounter();
-    renderStackFrame(dividerColumn + 1);
-    updateHistoryDisplay();
+    updateDisplay();
 
     // ========// UI/Stateful Helper functions ==============
-
-    function updateHistoryDisplay() {
-        const lastStepDisplay = `Step ${history.length} of ${history.length}`;
-        const display = `Step ${currentHistoryIdx + 1} of ${history.length}`.padEnd(lastStepDisplay.length, ' ');
-        printAt(1, windowHeight, display);
-        park();
-    }
-
-    function displayValue(value) {
-        if (typeof value === "string") {
-            return quote(value);
-        } else {
-            return String(value);
-        }
-    }
-
-    function quote(str) {
-        return '"' + str.replace(/\"/g, '\\"') + '"';
-    }
 
     function renderStackFrame() {
         const column = dividerColumn + 1;
@@ -101,10 +82,8 @@ async function main() {
 
         eraseProgramCounter();
         currentHistoryIdx++;
-        renderProgramCounter();
-        renderStackFrame();
-        updateHistoryDisplay();
-        renderHeap();
+        scrollCodeIfNeeded();
+        updateDisplay();
     }
 
     function stepBackward() {
@@ -114,22 +93,47 @@ async function main() {
 
         eraseProgramCounter();
         currentHistoryIdx--;
+        scrollCodeIfNeeded();
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        renderCodeLines(codeLines);
         renderProgramCounter();
         renderStackFrame();
         updateHistoryDisplay();
         renderHeap();
     }
 
+    function updateHistoryDisplay() {
+        const histEntry = history[currentHistoryIdx];
+        const line = histEntry.line;
+        const display = `Step ${currentHistoryIdx + 1} of ${history.length}`;
+        renderText(1, windowHeight, windowWidth, 1, [display]);
+        park();
+    }
+
+    function scrollCodeIfNeeded() {
+        const histEntry = history[currentHistoryIdx];
+        const line = histEntry.line;
+        if (line > (codeLineOffset + windowHeight - 1)) {
+            codeLineOffset = Math.max(0, line - 5);
+        }
+        if (line < (codeLineOffset + 1)) {
+            codeLineOffset = Math.max(0, line - 15);
+        }
+    }
+
     function eraseProgramCounter() {
         const histEntry = history[currentHistoryIdx];
         const line = histEntry.line;
-        printAt(1, line + topOffset - 1, " ");
+        printAt(1, line + topOffset - 1 - codeLineOffset, " ");
     }
 
     function renderProgramCounter() {
         const histEntry = history[currentHistoryIdx];
         const line = histEntry.line;
-        printAt(1, line + topOffset - 1, "→");
+        printAt(1, line + topOffset - 1 - codeLineOffset, "→");
         park();
     }
 
@@ -213,20 +217,37 @@ async function main() {
         }
     }
 
-    function renderCodeLines(codeLines, maxLineNumberLength) {
-        clearScreen();
-        for (let i = 0; i < codeLines.length; i++) {
-            const line = String(i + 1)
-                .padStart(maxLineNumberLength, " ")
-                + " " + codeLines[i];
-            printAt(3, i + topOffset, line);
-        }
+    function renderCodeLines(codeLines) {
+        const codeWidth = codeLines.reduce((longestWidth, line) =>
+            line.length > longestWidth ? line.length : longestWidth, 0);
+        const histEntry = history[currentHistoryIdx];
+        const line = histEntry.line;
+        const maxLineNumberLength = String(codeLines.length).length;
+        renderText(
+            maxLineNumberLength + 1,
+            1,
+            codeWidth,
+            windowHeight - 1,
+            codeLines.slice(codeLineOffset)
+        );
     }
 }
 
 main().catch((e) => console.log(e.stack));
 
 // ============= Helper functions ================
+
+function displayValue(value) {
+    if (typeof value === "string") {
+        return quote(value);
+    } else {
+        return String(value);
+    }
+}
+
+function quote(str) {
+    return '"' + str.replace(/\"/g, '\\"') + '"';
+}
 
 function renderText(x, y, width, height, textLines) {
     for (let i = 0; i < height; i++) {
@@ -272,6 +293,11 @@ function isDownArrow(data) {
         data[0] === 27 &&
         data[1] === 91 &&
         data[2] === 66;
+}
+
+// stoles from charm
+function setCursorVisible(visible) {
+    process.stdout.write(encode(visible ? '[?25h' : '[?25l'));
 }
 
 // Stolen from charm

@@ -59,6 +59,15 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
+* don't pause after calling a built-in function
+* syntax - allow multiple line list and dictionary literals
+* allow jumping to a particular line (ala breakpoints)
+* allow jumping to the end of the program
+* add break statement syntax
+* have run.js also generate the intermediate files for ease of debugging
+* clean up heap variables that were allocated local to a function call
+* add assertions
+* thing about immutable data in the language
 * maybe table display for the stack frame too
 * make more test programs to test how well debugger works
 * highlight the current line
@@ -80,6 +89,7 @@ being evaluated
 * stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
+* allow source view to automatically scroll to the current line (done)
 * fix fun expressions (done)
 * fix array display for more then one length contents (done)
 * for executable statements that are just a function call, don't pause again after the function evaluates(done)

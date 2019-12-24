@@ -19,7 +19,8 @@ const lexer = moo.compile({
     plus: "+",
     minus: "-",
     multiply: "*",
-    divide: "*",
+    divide: "/",
+    modulo: "%",
     colon: ":",
     comment: {
         match: /#[^\n]*/,

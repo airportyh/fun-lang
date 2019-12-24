@@ -107,3 +107,10 @@ exports.join = {
 }`,
     pure: true
 };
+
+exports.floor = {
+    code: `function floor(num) {
+    return Math.floor(num);
+}`,
+    pure: true
+};
