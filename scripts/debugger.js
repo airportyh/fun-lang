@@ -117,10 +117,12 @@ async function main() {
         const histEntry = history[currentHistoryIdx];
         const line = histEntry.line;
         if (line > (codeLineOffset + windowHeight - 1)) {
-            codeLineOffset = Math.max(0, line - 5);
+            codeLineOffset = Math.min(
+                codeLines.length - windowHeight,
+                line - Math.floor(windowHeight / 2));
         }
         if (line < (codeLineOffset + 1)) {
-            codeLineOffset = Math.max(0, line - 15);
+            codeLineOffset = Math.max(0, line - Math.floor(windowHeight / 2));
         }
     }
 

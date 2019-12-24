@@ -59,11 +59,10 @@ To learn more, read:
 
 ## Todos
 
+* allow jumping to a particular line (ala breakpoints)
 * make more test programs to test how well debugger works
 * optimize initial load time expression-matters
-* syntax - allow multiple line list and dictionary literals
 * don't pause after calling a built-in function
-* allow jumping to a particular line (ala breakpoints)
 * allow jumping to the end of the program
 * answering questions such as:
    * what statement last modified this value?
@@ -125,6 +124,7 @@ performance with baseline
 
 ### Done
 
+* syntax - allow multiple line list and dictionary literals (done)
 * make checker support loops and if statements (done)
 * fix Jest code coverage (done)
 * check for purity in nested fun expressions (x)
