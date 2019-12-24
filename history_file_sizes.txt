@@ -1,0 +1,13 @@
+With JSON.stringify:
+
+fib-recursive.fun: 46442
+fib.fun: 53114
+while-loop.fun: 3078
+arthmetic.fun: 1708
+
+With jsonr.stringify:
+
+fib-recursive.fun: 10403
+fib.fun: 44639
+while-loop.fun: 2037
+arthmetic.fun: 1124

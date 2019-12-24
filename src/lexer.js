@@ -7,6 +7,7 @@ const lexer = moo.compile({
     lt: "<",
     gte: ">=",
     gt: ">",
+    eq: "==",
     lparan: "(",
     rparan: ")",
     comma: ",",
@@ -18,7 +19,8 @@ const lexer = moo.compile({
     plus: "+",
     minus: "-",
     multiply: "*",
-    divide: "*",
+    divide: "/",
+    modulo: "%",
     colon: ":",
     comment: {
         match: /#[^\n]*/,

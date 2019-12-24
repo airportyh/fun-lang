@@ -59,7 +59,36 @@ To learn more, read:
 
 ## Todos
 
-* [Time Traveling Debugger](https://github.com/airportyh/fun-lang/tree/time-travel-debugger)
+* syntax - allow multiple line list and dictionary literals
+* don't pause after calling a built-in function
+* allow jumping to a particular line (ala breakpoints)
+* allow jumping to the end of the program
+* add break statement syntax
+* have run.js also generate the intermediate files for ease of debugging
+* clean up heap variables that were allocated local to a function call
+* add assertions
+* thing about immutable data in the language
+* maybe table display for the stack frame too
+* make more test programs to test how well debugger works
+* highlight the current line
+* flow layout for the heap to pack more stuff in
+* debugger rendering - consider building a more sophisticated layout framework to solve some space problems
+* debugger rendering - consider building a UI framework to handle panels, scrolling, updating, erasing past content, overflows, etc
+* optimize history file size by using more structure sharing or maybe compression mechanisms
+* display content of the console
+* put start and end info into sub-expressions too to allow highlighting sub-expressions that are
+being evaluated
+* colors!!
+* answering questions such as:
+   * what statement last modified this value?
+   * what values did this variable take on?
+   * did this condition ever occur?
+   * did this function ever get called?
+   * how many times did this function get called?
+   * how many times did this function get called with this parameter (or these parameters)?
+* stream to history file and forget history in memory to allow reclaiming of memory for app
+* be able to switch generator between debug mode and normal mode, so that I can compare
+performance with baseline
 * complete jest-based test suite and document it
 * check for purity in nested code blocks in general (if statements)
 * mandatory return statements in funs?
@@ -131,3 +160,26 @@ To learn more, read:
 * list (x)
 * dictionaries (x)
 * comments (x)
+* allow source view to automatically scroll to the current line (done)
+* fix fun expressions (done)
+* fix array display for more then one length contents (done)
+* for executable statements that are just a function call, don't pause again after the function evaluates(done)
+* separate $recordLine from the state modification runtime functions? (done)
+* heap rendering (done)
+* support for list (done)
+    * pop
+    * map
+    * filter
+    * reduce
+    * join
+    * concat
+    * split
+    * range
+* support for dictionary (done)
+* use jsonr to persist history (done)
+* write the debugger / adding tracking clauses for non-setting operations maybe (done)
+* render visual for stack frame (done)
+* step x of y display (done)
+* add call parameters to stack frame (done)
+* add retval display (done)
+>>>>>>> time-travel-debugger

@@ -14,14 +14,14 @@ exports.range = {
     for (let i = start; i < end; i++) {
         ret.push(i);
     }
-    return ret;
+    return $heapAllocate(ret);
 }`,
     pure: true
 };
 
 exports.split = {
     code: `function split(string, separator) {
-    return string.split(separator)
+    return $heapAllocate(string.split(separator));
 }`,
     pure: true
 };
@@ -34,42 +34,53 @@ exports.print = {
 };
 
 exports.pop = {
-    code: `function pop(array) {
-    return array.pop();
+    code: `function pop(arrayId) {
+    return $heapAllocate($heap[arrayId].pop());
 }`,
     pure: true
 };
 
 exports.push = {
-    code: `function push(array, item) {
-    return array.push(item);
+    code: `function push(arrayId, item) {
+    const array = $heap[arrayId];
+    const newArray = [...array, item];
+    $heap = {
+        ...$heap,
+        [arrayId]: newArray
+    };
+    return newArray.length;
 }`,
     pure: false
 };
 
 exports.concat = {
-    code: `function concat(one, other) {
-    return one.concat(other);
+    code: `function concat(oneId, otherId) {
+    const one = $heap[oneId];
+    const other = $heap[otherId];
+    return $heapAllocate(one.concat(other));
 }`,
     pure: true
 };
 
 exports.map = {
-    code: `function map(fn, arr) {
-    return arr.map(fn);
+    code: `function map(fn, arrayId) {
+    const arr = $heap[arrayId];
+    return $heapAllocate(arr.map(fn));
 }`,
     pure: true
 };
 
 exports.filter = {
-    code: `function filter(fn, arr) {
-    return arr.filter(fn);
+    code: `function filter(fn, arrayId) {
+    const arr = $heap[arrayId];
+    return $heapAllocate(arr.filter(fn));
 }`,
     pure: true
 };
 
 exports.reduce = {
-    code: `function reduce(fn, initValue, arr) {
+    code: `function reduce(fn, initValue, arrayId) {
+    const arr = $heap[arrayId];
     return arr.reduce(fn, initValue);
 }`,
     pure: true
@@ -90,8 +101,16 @@ exports.sqr = {
 };
 
 exports.join = {
-    code: `function join(array, separator) {
+    code: `function join(arrayId, separator) {
+    const array = $heap[arrayId];
     return array.join(separator);
+}`,
+    pure: true
+};
+
+exports.floor = {
+    code: `function floor(num) {
+    return Math.floor(num);
 }`,
     pure: true
 };

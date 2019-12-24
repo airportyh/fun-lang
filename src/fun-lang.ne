@@ -283,6 +283,7 @@ comparison_operator
     |  ">="  {% convertTokenId %}
     |  "<"   {% convertTokenId %}
     |  "<="  {% convertTokenId %}
+    |  "=="  {% convertTokenId %}
 
 additive_expression
     -> multiplicative_expression    {% id %}
@@ -300,7 +301,7 @@ additive_expression
 
 multiplicative_expression
     -> unary_expression     {% id %}
-    |  unary_expression _ [*/] _ multiplicative_expression
+    |  unary_expression _ [*/%] _ multiplicative_expression
         {%
             d => ({
                 type: "binary_operation",
@@ -328,7 +329,11 @@ unary_expression
     |  list_literal         {% id %}
     |  dictionary_literal   {% id %}
     |  indexed_access       {% id %}
-    |  fun_expression  {% id %}
+    |  fun_expression       {% id %}
+    |  "(" expression ")"
+        {%
+            data => data[1]
+        %}
 
 list_literal
     -> "[" list_items "]"
