@@ -59,8 +59,8 @@ To learn more, read:
 
 ## Todo (Time Travel Debugger)
 
-* don't pause after calling a built-in function
 * syntax - allow multiple line list and dictionary literals
+* don't pause after calling a built-in function
 * allow jumping to a particular line (ala breakpoints)
 * allow jumping to the end of the program
 * add break statement syntax
