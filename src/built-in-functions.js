@@ -86,6 +86,14 @@ exports.reduce = {
     pure: true
 };
 
+exports.count = {
+    code: `function count(arrayId) {
+    const arr = $heap[arrayId];
+    return arr.length;
+}`,
+    pure: true
+};
+
 exports.sqrt = {
     code: `function sqrt(num) {
     return Math.sqrt(num);

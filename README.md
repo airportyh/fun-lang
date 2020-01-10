@@ -59,10 +59,10 @@ To learn more, read:
 
 ## Todos
 
+* investigate why nearley freezes up on smiley.fun, also that case in jsonr
 * allow jumping to a particular line (ala breakpoints)
 * make more test programs to test how well debugger works
-* optimize initial load time expression-matters
-* don't pause after calling a built-in function
+* optimize initial load time expression-matters.fun
 * allow jumping to the end of the program
 * answering questions such as:
    * what statement last modified this value?
@@ -72,6 +72,7 @@ To learn more, read:
    * how many times did this function get called?
    * how many times did this function get called with this parameter (or these parameters)?
 * add break statement syntax
+* use Map to back dictionaries?
 * optimize code display (don't have to redraw every frame)
 * have run.js also generate the intermediate files for ease of debugging
 * real IO (DOM, fs, network, etc)
@@ -105,7 +106,6 @@ performance with baseline
 * function composition
 * function to get length of an array or dictionary
 * allow for loop to loop through dictionary
-* parenthesis
 * plus equals
 * check for undefined and unused variables
 * check for wrong number of arguments in function calls
@@ -124,6 +124,8 @@ performance with baseline
 
 ### Done
 
+* don't pause after calling a built-in function (done)
+* parenthesis (done)
 * syntax - allow multiple line list and dictionary literals (done)
 * make checker support loops and if statements (done)
 * fix Jest code coverage (done)

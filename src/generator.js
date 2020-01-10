@@ -274,7 +274,8 @@ function generateCodeForExpression(expression) {
         return `$getVariable("${expression.var_name.value}")`;
         // return expression.var_name.value;
     } else if (expression.type === "call_expression") {
-        return generateCallExpression(expression, true);
+        const pauseAfter = !builtInFunctions[expression.fun_name.value]
+        return generateCallExpression(expression, pauseAfter);
     } else if (expression.type === "indexed_access") {
         const subject = generateCodeForExpression(expression.subject);
         const index = generateCodeForExpression(expression.index);
