@@ -46,6 +46,9 @@ function $getVariable(varName) {
 }
 
 function $heapAccess(id) {
+    if (typeof id === "string") {
+        return id;
+    }
     return $heap[id];
 }
 
@@ -153,8 +156,7 @@ function generateCodeForExecutableStatement(statement) {
         const alternate = statement.alternate ?
             generateCodeForIfAlternate(statement.alternate) : "";
         return [
-            `$save(${statement.start.line});`,
-            `if (${condition}) {`,
+            `if ($save(${statement.start.line}), ${condition}) {`,
             indent(statement.consequent.statements.map(statement => {
                 return generateCodeForExecutableStatement(statement);
             }).join("\n")),
