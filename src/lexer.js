@@ -46,7 +46,9 @@ const lexer = moo.compile({
             if: "if",
             return: "return",
             and: "and",
-            or: "or"
+            or: "or",
+            true: "true",
+            false: "false"
         })
     }
 });

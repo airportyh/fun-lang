@@ -346,6 +346,7 @@ unary_expression
     |  string_literal       {% id %}
     |  list_literal         {% id %}
     |  dictionary_literal   {% id %}
+    |  boolean_literal      {% id %}
     |  indexed_access       {% id %}
     |  fun_expression       {% id %}
     |  "(" expression ")"
@@ -403,6 +404,26 @@ dictionary_entry
     -> identifier _ml ":" _ml expression
         {%
             d => [d[0], d[4]]
+        %}
+
+boolean_literal
+    -> "true"
+        {%
+            d => ({
+                type: "boolean_literal",
+                value: true,
+                start: tokenStart(d[0]),
+                end: tokenEnd(d[0])
+            })
+        %}
+    |  "false"
+        {%
+            d => ({
+                type: "boolean_literal",
+                value: false,
+                start: tokenStart(d[0]),
+                end: tokenEnd(d[0])
+            })
         %}
 
 fun_expression

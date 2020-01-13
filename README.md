@@ -59,6 +59,7 @@ To learn more, read:
 
 ## Todos
 
+* if statement should evaluate to a value in pure mode...
 * enforce horizontal layout so that each panel has enough space
 * allow jumping to a particular line (ala breakpoints)
 * make more test programs to test how well debugger works

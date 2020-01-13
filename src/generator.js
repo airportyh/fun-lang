@@ -287,6 +287,8 @@ function generateCodeForExpression(expression) {
         return `$get(${subject}, ${index})`;
     } else if (expression.type === "fun_expression") {
         return generateFunction(expression);
+    } else if (expression.type === "boolean_literal") {
+        return String(expression.value);
     } else {
         throw new Error("Unsupported AST node type for expressions: " + expression.type);
     }
