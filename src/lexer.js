@@ -44,7 +44,9 @@ const lexer = moo.compile({
             else: "else",
             in: "in",
             if: "if",
-            return: "return"
+            return: "return",
+            and: "and",
+            or: "or"
         })
     }
 });

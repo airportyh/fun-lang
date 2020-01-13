@@ -176,7 +176,7 @@ function checkExpression(expression, userCallables, sourceCode, vars, level) {
                 generateCodeContext(vars[var_name], sourceCode)
             );
         } else {
-            vars[var_name] = statement;
+            vars[var_name] = expression;
         }
         results.push(...checkExpression(
             expression.value, userCallables, sourceCode, vars, level + 1));

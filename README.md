@@ -59,11 +59,12 @@ To learn more, read:
 
 ## Todos
 
-* investigate why nearley freezes up on smiley.fun, also that case in jsonr
+* enforce horizontal layout so that each panel has enough space
 * allow jumping to a particular line (ala breakpoints)
 * make more test programs to test how well debugger works
 * optimize initial load time expression-matters.fun
 * allow jumping to the end of the program
+* add immutable update function or syntax for updating dictionaries
 * answering questions such as:
    * what statement last modified this value?
    * what values did this variable take on?
@@ -76,7 +77,7 @@ To learn more, read:
 * optimize code display (don't have to redraw every frame)
 * have run.js also generate the intermediate files for ease of debugging
 * real IO (DOM, fs, network, etc)
-* clean up heap variables that were allocated local to a function call
+* clean up heap variables that were allocated local to a function call (do we need GC??)
 * add assertions
 * thing about immutable data in the language
 * maybe table display for the stack frame too
@@ -92,7 +93,6 @@ being evaluated
 * stream to history file and forget history in memory to allow reclaiming of memory for app
 * be able to switch generator between debug mode and normal mode, so that I can compare
 performance with baseline
-* complete jest-based test suite and document it
 * check for purity in nested code blocks in general (if statements)
 * mandatory return statements in funs?
 * check that main proc exists
@@ -115,15 +115,15 @@ performance with baseline
 * IO
     * read_file
     * write_file
-* back-in-time debugger
-
-### Later
-
 * type annotations and compile-time type checking
 * source maps
 
 ### Done
 
+* investigate why nearley freezes up on smiley.fun, also that case in jsonr (done)
+* or, and operator (done)
+* complete jest-based test suite and document it (done)
+* back-in-time debugger (done)
 * don't pause after calling a built-in function (done)
 * parenthesis (done)
 * syntax - allow multiple line list and dictionary literals (done)

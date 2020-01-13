@@ -11,7 +11,7 @@ async function main() {
     const dir = path.dirname(filename);
     const outputFilePath = path.join(dir, path.basename(filename, ".fun") + ".ast");
     const code = (await fs.readFile(filename)).toString();
-    
+
     try {
         const ast = parse(code);
         await fs.writeFile(outputFilePath, JSON.stringify(ast, null, "  "));

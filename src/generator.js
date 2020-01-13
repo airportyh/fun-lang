@@ -50,6 +50,9 @@ function $heapAccess(id) {
 }
 
 function $get(id, index) {
+    if (typeof id === "string") {
+        return id[index];
+    }
     const object = $heap[id];
     return object[index];
 }
@@ -245,7 +248,9 @@ const operatorMap = {
     "-": "-",
     "*": "*",
     "/": "/",
-    "%": "%"
+    "%": "%",
+    "or": "||",
+    "and": "&&"
 };
 
 function generateCodeForExpression(expression) {
