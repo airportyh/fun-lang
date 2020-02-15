@@ -56,11 +56,18 @@ To learn more, read:
 
 * [The Fun User Manual](USER_MANUAL.md)
 * [The Fun Developer Manual](CONTRIBUTING.md)
+* Watch this [video series](https://www.youtube.com/playlist?list=PLSq9OFrD2Q3DasoOa54Vm9Mr8CATyTbLF) where I teach how to build a programming language.
 
 ## Todos
 
-* if statement should evaluate to a value in pure mode...
+* if statement should evaluate to a value
+* in pure mode, an if statement should have extra restrictions
+    * there should be only one expression within each clause, maybe with the exception of preceding var assignments
+    * else statement is required
+* variable scoping with any code block
 * enforce horizontal layout so that each panel has enough space
+* clean up checker error messages so that color formatting codes are inserted at display time,
+and doesn't have to interfere with the tests
 * allow jumping to a particular line (ala breakpoints)
 * make more test programs to test how well debugger works
 * optimize initial load time expression-matters.fun
